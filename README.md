@@ -111,4 +111,4 @@ Wersja demo działa na komputerze zespołu, a do jej udostępnienia służy tune
 
 ## Licencja
 
-{{LICENCJA_KODU}}. Prawa do zwycięskiego rozwiązania, także do kodu, przechodzą na MC (regulamin § 4), dlatego zależności mają wyłącznie licencje permisywne: [LICENSES-THIRD-PARTY.md](LICENSES-THIRD-PARTY.md).
+Prawa do zwycięskiego rozwiązania, także do kodu, przechodzą na MC (regulamin § 4), dlatego zależności mają wyłącznie licencje permisywne: [LICENSES-THIRD-PARTY.md](LICENSES-THIRD-PARTY.md).
