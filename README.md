@@ -102,8 +102,18 @@ Wersja demo działa na komputerze zespołu, a do jej udostępnienia służy tune
 
 - **Co powstało podczas hackathonu:** aplikacja (`app/`), testy aplikacji, wdrożenie, system projektowy, pomiary asystenta i dokumentacja.
 - **Materiały przygotowane przed wydarzeniem:** skille `.claude/skills/hn-*` (wspólny pakiet przygotowawczy zespołu: zasady zgłoszenia i kontrola repozytorium). Moduły `.claude/skills/kompas-*` (silnik oceny, analiza OSP, dokumenty i terminy, asystent AI, dane, ewaluacja) zainstalowane z pakietu `prep/kompas_kompetencji` **w trakcie hackathonu (21.11.2026, po publikacji treści zadania)**, wytworzone z pomocą Claude Code; przejrzane i dokończone przez zespół w repozytorium rozwiązania. Skille `hn-*` pochodzą z repozytorium przygotowawczego zespołu (kopiowane skryptem `install.sh` z setup).
-- **Narzędzia AI użyte przy tworzeniu:** Claude Code (kod, testy, dokumentacja). W działaniu aplikacji: `openai/gpt-oss-120b` przez darmowe API Groq; w pomiarach lokalnie `llama3.1:8b` i `nomic-embed-text` w Ollamie.
+- **Narzędzia AI użyte przy tworzeniu:** Claude Code (Anthropic), szczegóły niżej. W działaniu aplikacji: `openai/gpt-oss-120b` przez darmowe API Groq; w pomiarach lokalnie `llama3.1:8b` i `nomic-embed-text` w Ollamie.
 - **Kod i zasoby stron trzecich:** zależności z licencjami w [LICENSES-THIRD-PARTY.md](LICENSES-THIRD-PARTY.md) (MIT, BSD, Apache-2.0, PSF); htmx 2.0.4 (0BSD) w `app/static/`; fonty DejaVu w arkuszach PDF.
+
+### Gdzie używaliśmy AI przy tworzeniu projektu
+
+- **Kod i testy:** Claude Code (Anthropic) pomagał pisać i poprawiać aplikację (`app/`), moduły `kompas-*` (silnik oceny, analiza OSP, PDF i terminy, asystent), testy, skrypty danych i ewaluacji.
+- **Pakiet startowy:** moduły `kompas-*` z pakietu `prep/kompas_kompetencji` powstały z pomocą Claude Code. Zainstalowaliśmy je 21.11, po publikacji zadania, potem przejrzeliśmy i dokończyliśmy.
+- **Dokumentacja:** README, opisy w `docs/` i teksty zgłoszenia pisaliśmy z pomocą Claude Code.
+- **Wideo demo:** nagranie i montaż sterowane skryptami (Playwright, Remotion), które napisaliśmy z Claude Code. Na filmie jest działająca aplikacja, nie makieta.
+- **Prezentacja:** slajdy złożone z pomocą Claude Code.
+- **Wdrożenie:** udostępnienie przez ngrok i publiczna kopia repozytorium, z pomocą Claude Code.
+- **Bez AI:** decyzje merytoryczne, weryfikacja zgodności z przepisami i testy akceptacyjne robił zespół.
 
 ## Zespół
 
