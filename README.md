@@ -101,13 +101,14 @@ Wersja demo działa na komputerze zespołu, a do jej udostępnienia służy tune
 ## Ujawnienie
 
 - **Co powstało podczas hackathonu:** aplikacja (`app/`), testy aplikacji, wdrożenie, system projektowy, pomiary asystenta i dokumentacja.
-- **Materiały przygotowane przed wydarzeniem:** skille `.claude/skills/hn-*` (wspólny pakiet przygotowawczy zespołu: zasady zgłoszenia i kontrola repozytorium). Moduły `.claude/skills/kompas-*` (silnik oceny, analiza OSP, dokumenty i terminy, asystent AI, dane, ewaluacja) pochodzą z pakietu `prep/kompas_kompetencji` w repozytorium przygotowawczym zespołu {{POTWIERDZIĆ: przed wydarzeniem czy w trakcie}}.
+- **Materiały przygotowane przed wydarzeniem:** skille `.claude/skills/hn-*` (wspólny pakiet przygotowawczy zespołu: zasady zgłoszenia i kontrola repozytorium). Moduły `.claude/skills/kompas-*` (silnik oceny, analiza OSP, dokumenty i terminy, asystent AI, dane, ewaluacja) zainstalowane z pakietu `prep/kompas_kompetencji` **w trakcie hackathonu (21.11.2026, po publikacji treści zadania)**, wytworzone z pomocą Claude Code; przejrzane i dokończone przez zespół w repozytorium rozwiązania. Skille `hn-*` pochodzą z repozytorium przygotowawczego zespołu (kopiowane skryptem `install.sh` z setup).
 - **Narzędzia AI użyte przy tworzeniu:** Claude Code (kod, testy, dokumentacja). W działaniu aplikacji: `openai/gpt-oss-120b` przez darmowe API Groq; w pomiarach lokalnie `llama3.1:8b` i `nomic-embed-text` w Ollamie.
 - **Kod i zasoby stron trzecich:** zależności z licencjami w [LICENSES-THIRD-PARTY.md](LICENSES-THIRD-PARTY.md) (MIT, BSD, Apache-2.0, PSF); htmx 2.0.4 (0BSD) w `app/static/`; fonty DejaVu w arkuszach PDF.
 
 ## Zespół
 
-{{ZESPÓŁ: imię i nazwisko – rola}}
+- **Jakub Kaliński** — aplikacja end-to-end, integracja modułów `kompas-*`, asystent AI i demo (ngrok).
+- **Radosław Benedykciński** — rozwój aplikacji, weryfikacja merytoryczna (służba cywilna), testy i wsparcie zgłoszenia.
 
 ## Licencja
 
