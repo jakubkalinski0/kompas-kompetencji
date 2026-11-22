@@ -2,11 +2,11 @@
 
 Kompas Kompetencji prowadzi przełożonego w służbie cywilnej przez ocenę okresową i pierwszą ocenę: od opisu stanowiska (OSP) przez kryteria i wskaźniki behawioralne do arkusza PDF według wzoru z rozporządzenia. Przełożony opisuje własnymi słowami, co zaobserwował u pracownika, a asystent oceny zachowań proponuje poziom przy każdym wskaźniku z cytatem opisu z modelu kompetencji i fragmentem opisu przełożonego jako dowodem. Przełożony przyjmuje albo zmienia propozycje, sugerowany poziom kryterium liczy jawna reguła, decyzję podejmuje przełożony. Asystent AI prowadzi też z przełożonym rozmowę o przepisach: można pytać potocznie i dopytywać, każde zdanie odpowiedzi ma cytat jednostki redakcyjnej, a bez podstawy asystent odmawia. Administrator może dopisać do bazy wiedzy dokumenty urzędu. Rozwiązanie zadania KOMPAS KOMPETENCJI (Biuro Dyrektora Generalnego, Ministerstwo Cyfryzacji) na HackNation 2026.
 
-**Demo (2 min):** {{DEMO_URL}} · **Prezentacja:** {{PREZENTACJA_URL}} · **Działająca wersja:** {{RENDER_URL}} · **Repozytorium:** https://github.com/jakubkalinski0/kompas-kompetencji
+**Demo (2 min):** {{DEMO_URL}} · **Prezentacja:** {{PREZENTACJA_URL}} · **Działająca wersja:** {{APP_URL}} · **Repozytorium:** https://github.com/jakubkalinski0/kompas-kompetencji
 
 ![Wynik oceny okresowej w Kompasie](docs/screenshot.png)
 
-Logowanie jednym kliknięciem: przełożony **Marek Kierownik-Demo** albo HR **Zofia Kadrowa-Demo** (osoby fikcyjne). Aplikacja jest na komputer i tablet; na smartfonach wykrywa urządzenie mobilne i pokazuje komunikat, że telefony nie są obsługiwane (pkt 2 treści zadania). Pierwsze otwarcie po przerwie trwa do minuty.
+Logowanie jednym kliknięciem: przełożony **Marek Kierownik-Demo** albo HR **Zofia Kadrowa-Demo** (osoby fikcyjne). Aplikacja jest na komputer i tablet; na smartfonach wykrywa urządzenie mobilne i pokazuje komunikat, że telefony nie są obsługiwane (pkt 2 treści zadania). Wersję demo udostępniamy przez darmowy tunel ngrok: jeśli przy pierwszym wejściu zobaczysz jego stronę ostrzeżenia, kliknij „Visit Site”.
 
 ## Dla kogo i jaki problem rozwiązuje
 
@@ -96,7 +96,7 @@ Logika oceny jest w modułach w czystym Pythonie, a aplikacja łączy je w ście
 
 ## Wdrożenie i koszty
 
-Działająca wersja to darmowa instancja Render z jednym plikiem [render.yaml](render.yaml). W urzędzie wystarczy serwer z Pythonem 3.13 i lokalna Ollama zamiast Groq, żeby dane nie wychodziły poza sieć. Koszt modelu w prototypie: 0 zł. Eksport do EZD RP i import z systemu kadrowego opisuje kontrakt API (`/api/v1/integrations/contract`). Następny krok: pilotaż w MC na kilku ocenach. Szczegóły: [docs/wdrozenie.md](docs/wdrozenie.md).
+Wersja demo działa na komputerze zespołu, a do jej udostępnienia służy tunel ngrok, więc link działa tylko przy włączonym komputerze. Konfigurację pod hosting Render opisuje [render.yaml](render.yaml). W urzędzie wystarczy serwer z Pythonem 3.13 i lokalna Ollama zamiast Groq, żeby dane nie wychodziły poza sieć. Koszt modelu w prototypie: 0 zł. Eksport do EZD RP i import z systemu kadrowego opisuje kontrakt API (`/api/v1/integrations/contract`). Następny krok: pilotaż w MC na kilku ocenach. Szczegóły: [docs/wdrozenie.md](docs/wdrozenie.md).
 
 ## Ujawnienie
 

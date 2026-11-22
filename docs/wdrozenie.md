@@ -1,6 +1,8 @@
 # Wdrożenie
 
-## Render (działająca wersja)
+## Render (przygotowana konfiguracja)
+
+Wersja demo na HackNation działa na komputerze zespołu i jest udostępniana przez tunel ngrok, z limitami zapytań jak poniżej. Ta sekcja opisuje konfigurację pod hosting Render.
 
 Konfiguracja: [render.yaml](../render.yaml) (Blueprint, darmowa instancja, Frankfurt, Python 3.13.1, start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`, health check `/healthz`). Zmienna `LLM_API_KEY` ma `sync: false`, więc klucz wpisuje się ręcznie w panelu Render; `SESSION_SECRET` generuje Render. Model: `openai/gpt-oss-120b` przez API Groq zgodne z OpenAI (`LLM_PROVIDER=openai_compat`).
 
