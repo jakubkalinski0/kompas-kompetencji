@@ -1,0 +1,109 @@
+{% extends "process/_layout.html" %}
+{% block part %}{% if doc.form == 'first_eval' %}Wynik pierwszej oceny{% else %}Część II arkusza – wynik{% endif %}{% endblock %}
+{% block work %}
+{% set negative = ev.result == 'negatywna' %}
+{% set positive = ev.result == 'pozytywna' %}
+{% set first = doc.form == 'first_eval' %}
+<h1>Wynik oceny i arkusz</h1>
+{% if proc.demo %}<p class="flash">Ocena demo – tylko podgląd i pobranie arkusza PDF.</p>{% endif %}
+
+{% include "partials/_radar.html" %}
+
+<details class="table-more">
+  <summary>Tabela 1. Oceny cząstkowe ze wzorami</summary>
+  <table class="result">
+    <thead><tr><th>{{ 'Element oceny' if first else 'Kryterium' }}</th>{% if not first %}<th>Rodzaj</th>{% endif %}<th class="col-due">Sugestia systemu (wzór)</th><th class="col-dec">Decyzja przełożonego</th></tr></thead>
+    <tbody>
+    {% for c in ev.criteria %}
+      {% set s = c.suggestion or {} %}
+      <tr>
+        <td><strong>{% if proc.demo %}{{ c.name }}{% else %}<a href="/procesy/{{ proc.id }}/wskazniki/{{ c.id }}">{{ c.name }}</a>{% endif %}</strong></td>
+        {% if not first %}<td><span class="tag {{ 'periodic' if c.kind == 'mandatory' else 'demo' }}">{{ 'obowiązkowe' if c.kind == 'mandatory' else 'dodatkowe' }}</span></td>{% endif %}
+        <td class="cell-basis">{% if s.points is not none %}<span class="sug-cell num">{{ s.points }}&nbsp;pkt</span> <small>{{ s.formula }}</small>{% else %}<small>{{ s.formula or '—' }}</small>{% endif %}</td>
+        <td class="cell-dec{% if (not first and c.final_points == 1) or (first and c.final_points == 3) %} is-alert{% endif %}"><strong>{{ c.final_points|pts }}</strong>{% if c.final_points is not none and s.points is not none and c.final_points != s.points %}<br><span class="tag-note">inna niż sugestia</span>{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    <caption><b>Tabela 1.</b> Wynik liczy się wyłącznie z decyzji przełożonego.</caption>
+  </table>
+</details>
+
+<section id="wynik" class="verdict-box win{% if negative %} negative{% elif positive %} positive{% endif %}" aria-labelledby="wynik-title">
+  <div class="win-bar"><span class="win-box" aria-hidden="true"></span><h2 class="win-title" id="wynik-title">Wynik oceny</h2><span class="win-hatch" aria-hidden="true"></span>{% if negative %}<span class="win-aside">skutek prawny</span><span class="win-hatch short" aria-hidden="true"></span>{% elif positive %}<span class="win-aside">wynik pozytywny</span><span class="win-hatch short" aria-hidden="true"></span>{% endif %}<span class="win-box" aria-hidden="true"></span></div>
+  <div class="win-body">
+  {% if first %}
+  <p class="part-label">Pierwsza ocena (§ 10 ust. 1 rozp. 2015)</p>
+  <p class="result-word">{{ (ev.result or 'wynik niepełny')|upper }}{% if positive %}<span class="verdict-stamp">warunki spełnione</span>{% elif negative %}<span class="verdict-stamp">warunki niespełnione</span>{% endif %}</p>
+  {% if ev.outcome.formula %}<p class="num">{{ ev.outcome.formula }}</p>{% endif %}
+  <ul class="cond-list">
+    {% for c in ev.outcome.conditions %}
+    <li class="{{ 'cond-ok' if c.met else ('cond-fail' if c.met == false else 'cond-na') }}"><strong class="cond-mark">{{ '✓' if c.met else ('✗' if c.met == false else '?') }}</strong> {{ c.label }}{% if c.met is none %} <small class="muted">(brak danych)</small>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  {% if positive %}<p class="verdict-strip"><span class="vs-mark">✓</span> Ocena pozytywna – można wpisać wnioski rozwojowe i pobrać arkusz.</p>
+  {% elif negative %}<p class="verdict-strip"><span class="vs-mark">✕</span> Ocena negatywna – wymagane uzasadnienie (§ 10 ust. 4); wnioski rozwojowe niedostępne.</p>{% endif %}
+  {% elif ev.result %}
+  <p class="part-label">Ocena okresowa (§ 11 ust. 1 rozp. 2016)</p>
+  <p class="result-word">{{ ev.result|upper }}{% if positive %}<span class="verdict-stamp">bez skutku prawnego</span>{% elif negative %}<span class="verdict-stamp">skutek prawny</span>{% endif %}</p>
+  <p class="num">{{ ev.outcome.formula }}</p>
+  {% for r in ev.outcome.reasons %}<p class="verdict-reason">{{ r|plain }}</p>{% endfor %}
+  {% if positive %}<p class="verdict-strip"><span class="vs-mark">✓</span> Ocena pozytywna – możesz dodać wnioski do IPRZ{% if doc.employee.corps_status == 'urzednik_sc' %} i wniosek o stopień służbowy{% endif %}.</p>
+  {% elif negative %}<p class="verdict-strip"><span class="vs-mark">✕</span> Ocena negatywna – uzasadnienie obowiązkowe (§ 11 ust. 3).</p>{% endif %}
+  {% else %}
+  <p class="result-word pending">Uzupełnij decyzje dla wszystkich kryteriów, aby wyliczyć wynik.</p>
+  {% endif %}
+  </div>
+</section>
+
+{% for g in ev.guard if g.severity in ('alert', 'warning') %}<p class="msg msg-{{ g.severity }}">{{ g.message|plain }}<span class="src">{{ g.source|plain }}</span></p>{% endfor %}
+{% for e in ev.validation.errors %}<p class="msg msg-alert">{{ e.message|plain }}{% if e.source %}<span class="src">{{ e.source|plain }}</span>{% endif %}</p>{% endfor %}
+{% for w in ev.validation.warnings %}<p class="msg">{{ w.message|plain }}</p>{% endfor %}
+
+{% if not proc.demo %}
+<form method="post" action="/procesy/{{ proc.id }}/podsumowanie">
+  <h2>Dane do arkusza</h2>
+  <div style="display:flex; gap:18px; flex-wrap:wrap">
+    <label class="field"><span>Data rozmowy oceniającej</span><input type="date" name="interview_date" value="{{ doc.interview_date or today }}"></label>
+    {% if not first %}<label class="field"><span>Data sporządzenia oceny (koniec okresu – przypis 7)</span><input type="date" name="period_to" value="{{ (doc.period or {}).to or today }}"></label>{% endif %}
+  </div>
+  <label class="field{% if negative %} field-neg{% endif %}"><span>Uzasadnienie oceny {% if negative %}<span class="tag-inline-neg">obowiązkowe przy ocenie negatywnej ({{ '§ 10 ust. 4 rozp. 2015' if first else '§ 11 ust. 3' }})</span>{% else %}<span class="tag-inline-pos">opcjonalnie przy pozytywnej</span>{% endif %}</span>
+    <textarea name="justification" rows="4" style="max-width:none">{{ doc.justification or '' }}</textarea></label>
+  {% if first %}
+  <label class="field{% if positive %} field-pos{% endif %}"><span>Wnioski dotyczące rozwoju zawodowego – tylko przy ocenie pozytywnej, w porozumieniu z kierującym komórką (§ 10 ust. 6, przypis 8)</span>
+    <textarea name="development_conclusions" rows="3" style="max-width:none" {% if negative %}disabled{% endif %}>{{ doc.development_conclusions or '' }}</textarea></label>
+  {% if negative %}<p class="verdict-note neg">✗ Przy ocenie negatywnej pole jest wyłączone.</p>{% endif %}
+  <p><label><input type="checkbox" name="unit_head_participated" value="1" {% if (doc.unit_head or {}).participated_in_interview %}checked{% endif %}>
+     Kierujący komórką ({{ (doc.unit_head or {}).full_name or '—' }}) uczestniczył w rozmowie oceniającej (§ 8 ust. 2)</label><br>
+     <label><input type="checkbox" name="unit_head_agreement" value="1" {% if (doc.unit_head or {}).agreement_confirmed %}checked{% endif %}>
+     Ocena dokonana w porozumieniu z kierującym komórką (art. 38 ust. 2 ustawy)</label></p>
+  {% else %}
+  <label class="field{% if positive %} field-pos{% endif %}"><span>Wnioski do indywidualnego programu rozwoju zawodowego (§ 11 ust. 1 pkt 5)</span>
+    <textarea name="development_conclusions" rows="3" style="max-width:none">{{ doc.development_conclusions or '' }}</textarea></label>
+  {% if doc.employee.corps_status == 'urzednik_sc' %}
+  <label class="part3-card{% if positive %} pos{% elif negative %} neg{% endif %}"><input type="checkbox" name="part3_requested" value="1" {% if doc.part3_requested %}checked{% endif %}>
+    <span>Wniosek o kolejny stopień służbowy (Część III – przy ocenie pozytywnej urzędnika SC)</span></label>
+  {% endif %}
+  {% endif %}
+  <div class="form-actions{% if positive %} fa-pos{% elif negative %} fa-neg{% endif %}">
+    <button class="btn secondary" type="submit">Zapisz dane</button>
+    <a class="btn{% if positive %} btn-ok{% elif negative %} btn-neg{% endif %}{% if not ev.validation.complete %} disabled{% endif %}" href="/procesy/{{ proc.id }}/arkusz.pdf" target="_blank" rel="noopener">Pobierz arkusz PDF</a>
+    <span class="muted">Zapisz przed pobraniem PDF. Arkusz nie zawiera notatek S-D-R ani sugestii.</span>
+  </div>
+</form>
+{% else %}
+<p><a class="btn" href="/procesy/{{ proc.id }}/arkusz.pdf" target="_blank" rel="noopener">Pobierz arkusz PDF</a></p>
+{% endif %}
+
+<h2>Ślad decyzji</h2>
+<ol class="trail">
+  {% for e in trail %}
+  <li><span class="when">{{ e.at|dt }}</span>
+    <span><strong>{{ TRAIL_LABELS.get(e.action, e.action) }}</strong>{% if e.criterion_name %} – {{ e.criterion_name }}{% endif %}
+      {% if e.suggested is not none or e.final is not none %}: sugestia {{ e.suggested if e.suggested is not none else '—' }} ↣ decyzja {{ e.final }}{% if e.source == 'decyzja' %} pkt{% endif %}{% endif %}
+      {% if e.note %}<br><small>{{ e.note }}</small>{% endif %}
+      <br><small class="muted">{{ e.actor }}</small></span></li>
+  {% else %}
+  <li><span class="when">—</span><span class="muted">Brak wpisów.</span></li>
+  {% endfor %}
+</ol>
+{% endblock %}

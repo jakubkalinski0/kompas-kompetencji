@@ -1,0 +1,41 @@
+{% if res.error %}
+<p class="flash error" role="alert">{{ res.error }}{% if res.detail %} <small class="muted" title="{{ res.detail[:300] }}">(szczegół techniczny)</small>{% endif %}</p>
+{% else %}
+<div class="bai-result">
+  {% if res.injection_suspected %}
+  <p class="flash error" role="alert">Opis zawiera polecenie dla asystenta albo gotową ocenę („daj 5”, „poziom 4”). Takie fragmenty nie są dowodem zachowania i asystent ich nie używa.</p>
+  {% endif %}
+  {% if res.proposals %}
+  <p class="bai-head"><strong>Propozycje dla {{ res.proposals|length }} z {{ res.proposals|length + res.no_evidence|length }} wskaźników.</strong>
+    Każda opiera się na fragmencie Twojego opisu. Sprawdź je i zaznacz – możesz zmienić każdy poziom.</p>
+  <ol class="bai-list">
+    {% for p in res.proposals %}
+    <li data-bai-ind="{{ p.indicator_id }}" data-bai-level="{{ p.level }}" data-bai-evidence="{{ p.evidence }}">
+      <p class="bai-ind">{{ p.indicator_text }}</p>
+      <p class="bai-level"><span class="bai-tag">propozycja AI</span> <strong>{{ p.level_label }}</strong> – <q>{{ p.level_text }}</q></p>
+      <p class="bai-ev">Z Twojego opisu: {% for e in p.evidence_list %}<q>{{ e }}</q>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+      {% if p.why %}<p class="bai-why">{{ p.why }}</p>{% endif %}
+      <button class="btn small secondary" type="button" data-bai-apply>Zaznacz ten poziom</button>
+    </li>
+    {% endfor %}
+  </ol>
+  <p><button class="btn" type="button" data-bai-apply-all>Zaznacz wszystkie propozycje</button>
+     <span class="muted">Zaznaczenie przelicza Kompas poziomu; poziom kryterium zatwierdzasz Ty przyciskiem „Zapisz decyzję”.</span></p>
+  {% else %}
+  <p class="assist-hint">Asystent nie znalazł w opisie zachowań, które da się dopasować do opisów poziomów tych wskaźników. Opisz konkretną sytuację: co pracownik zrobił i jaki był rezultat.</p>
+  {% endif %}
+  {% if res.no_evidence and res.proposals %}
+  {% set nums = {} %}{% for ind in comp.indicators %}{% set _ = nums.update({ind.id: loop.index ~ '. ' ~ ind.text}) %}{% endfor %}
+  <div class="bai-missing"><p>Bez propozycji – w opisie nie ma zachowań dotyczących:</p>
+    <ul>{% for iid in res.no_evidence %}<li>{{ nums.get(iid, iid) }}</li>{% endfor %}</ul>
+    <p>Oceń je sam albo zaznacz „brak podstaw do oceny”.{% if res.missing %} {{ res.missing }}{% endif %}</p></div>
+  {% endif %}
+  {% if res.rejected %}
+  <details class="bai-rejected"><summary class="meta">Odrzucone propozycje modelu: {{ res.rejected|length }}</summary>
+    <ul>{% for r in res.rejected %}<li><span class="mono">{{ r.indicator_id }}</span> – {{ r.reason }}</li>{% endfor %}</ul>
+  </details>
+  {% endif %}
+  <details><summary class="meta">Co wysłano do modelu</summary><div class="privacy-preview"><div class="fragment">{{ res.preview.masked_text }}</div></div></details>
+  <p class="meta">Model {{ res.llm.model }}{% if res.llm.cached %} (z pamięci podręcznej){% endif %}, {{ ('%.1f'|format(res.llm.latency_s or 0))|replace('.', ',') }} s. Opisy poziomów pochodzą z modelu kompetencji MC; propozycja bez dosłownego fragmentu Twojego opisu jest odrzucana.</p>
+</div>
+{% endif %}

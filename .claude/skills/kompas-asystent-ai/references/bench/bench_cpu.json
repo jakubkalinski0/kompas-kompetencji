@@ -1,0 +1,30 @@
+{
+ "cpu_only": true,
+ "models": {
+  "llama3.2:3b": {
+   "cold_start_s": 73.201,
+   "load_duration_s": 40.9,
+   "latency_median_s": 37.92,
+   "latency_max_s": 38.799,
+   "tokens_per_s_median": 3.81,
+   "rows": [
+    {
+     "q": "W jakim terminie przełożony przeprowadza rozmowę wstępną z nowym pracownikiem?",
+     "latency_s": 38.799,
+     "prompt_tokens": 755,
+     "completion_tokens": 85,
+     "tokens_per_s": 4.65,
+     "answer": "Według § 3 rozporządzenia Prezesa Rady Ministrów z 23 lipca 2015 r., przełożony przeprowadza rozmowę wstępną z nowym pracownikiem w terminie 21 dni od dnia nawiązania z ocenianym stosunku pracy. [rozp2015:par3]"
+    },
+    {
+     "q": "Ile kryteriów dodatkowych mogę wybrać w ocenie okresowej?",
+     "latency_s": 37.045,
+     "prompt_tokens": 444,
+     "completion_tokens": 56,
+     "tokens_per_s": 2.97,
+     "answer": "Według rozporządzenia Prezesa Rady Ministrów z 4 kwietnia 2016 r., oceniający może wybrać z wykazu kryteriów oceny nie więcej niż 3 kryteria dodatkowe."
+    }
+   ]
+  }
+ }
+}

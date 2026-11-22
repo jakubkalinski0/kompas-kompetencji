@@ -1,0 +1,710 @@
+{
+  "summary": {
+    "n": 36,
+    "n_in_scope": 29,
+    "n_out_of_scope": 7,
+    "refusal_accuracy": 0.694,
+    "correct_refusals_out_of_scope": "7/7",
+    "false_refusals_in_scope": "11/29",
+    "citation_validity": "35/36 odpowiedzi bez niezweryfikowanych cytatów",
+    "answered_with_citation": "18/18",
+    "cites_expected_unit": "18/18",
+    "keypoint_coverage_mean": 0.648,
+    "latency_p50_s": 23.487,
+    "latency_p95_s": 44.173,
+    "model": "llama3.1:8b"
+  },
+  "rows": [
+    {
+      "id": "h_first_01",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 25.49,
+      "answer": "Od dnia ustalenia przez strony stosunku pracy, że oceniany będzie podlegać pierwszej ocenie. [rozp2015:par3]",
+      "cited_ids": [
+        "rozp2015:par3"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 25.348,
+        "prompt_tokens": 3210,
+        "completion_tokens": 38,
+        "tokens_per_s": 6.79,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.667
+    },
+    {
+      "id": "h_first_02",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (cosinus 0.74 < 0.74)",
+      "source": "rule",
+      "latency_s": 0.072,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_first_03",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 13.809,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_first_04",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 17.415,
+      "answer": "Sprawozdanie składane przed pierwszą oceną musi obejmować okres pracy nie krótszy niż 7 miesięcy, zgodnie z § 6 ust. 1 rozporządzenia Prezesa Rady Ministrów z 23 lipca 2015 r. [rozp2015:par6].",
+      "cited_ids": [
+        "rozp2015:par6"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 17.342,
+        "prompt_tokens": 2255,
+        "completion_tokens": 76,
+        "tokens_per_s": 6.38,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_first_05",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 18.404,
+      "answer": "Ocena pierwsza jest pozytywna, ponieważ średnia ocen cząstkowych wynosi 5,4 punktów, co przekracza próg 5 punktów. [rozp2015:par7][rozp2015:par9]",
+      "cited_ids": [
+        "rozp2015:par7",
+        "rozp2015:par9"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 18.11,
+        "prompt_tokens": 2947,
+        "completion_tokens": 65,
+        "tokens_per_s": 6.22,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.0
+    },
+    {
+      "id": "h_first_06",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 18.802,
+      "answer": "Nie. Zgodnie z § 10 ust. 1 pkt 2 rozporządzenia, warunkiem przyznania pozytywnej pierwszej oceny jest złożenie sprawozdania w wyznaczonym terminie. [rozp2015:par10]",
+      "cited_ids": [
+        "rozp2015:par10"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 18.706,
+        "prompt_tokens": 2787,
+        "completion_tokens": 63,
+        "tokens_per_s": 6.12,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.333
+    },
+    {
+      "id": "h_first_07",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 14.114,
+      "answer": "Kierujący komórką organizacyjną, w której nowy pracownik jest zatrudniony, może uczestniczyć w rozmowie oceniającej. [rozp2015:par8]",
+      "cited_ids": [
+        "rozp2015:par8"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 13.989,
+        "prompt_tokens": 2385,
+        "completion_tokens": 51,
+        "tokens_per_s": 6.2,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_first_08",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (pokrycie 0.16 < 0.2)",
+      "source": "rule",
+      "latency_s": 0.152,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_first_09",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 17.319,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_first_10",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 39.863,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_first_11",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 43.666,
+      "answer": "Zgodnie z art. 35 ust. 4 ustawy, jeśli umowa na czas określony zostanie przedłużona, to bezpośredni przełożony wyznacza nowy termin na złożenie sprawozdania. Nowy termin powinien umożliwić dokonanie pierwszej oceny nie później niż miesiąc przed zakończeniem stosunku pracy. Bezpośredni przełożony musi niezwłocznie zawiadomić ocenianego na piśmie o nowo wyznaczonym terminie, dołączając jednocześnie kopię takiego pisma do arkusza pierwszej oceny. [źródło niezweryfikowane][rozp2015:par5]",
+      "cited_ids": [
+        "rozp2015:par5"
+      ],
+      "invalid_citations": [
+        "ustawa_sc:art35"
+      ],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 43.548,
+        "prompt_tokens": 3038,
+        "completion_tokens": 179,
+        "tokens_per_s": 5.67,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.25
+    },
+    {
+      "id": "h_first_12",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 59.851,
+      "answer": "[pominięto w publicznej kopii: fragment materiału MC]",
+      "cited_ids": [
+        "model_kompetencji:rzetelnosc",
+        "rozp2015:par2"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 59.763,
+        "prompt_tokens": 3023,
+        "completion_tokens": 291,
+        "tokens_per_s": 5.7,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.5
+    },
+    {
+      "id": "h_first_13",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 23.487,
+      "answer": "Oceniany otrzymuje kopię części I i II arkusza po dokonaniu czynności związanych z pierwszą oceną, o czym mowa jest w § 4 ust. 4 rozporządzenia z 23 lipca 2015 r. (Dz. U. poz. 1144) [rozp2015:par4].",
+      "cited_ids": [
+        "rozp2015:par4"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 23.384,
+        "prompt_tokens": 2553,
+        "completion_tokens": 84,
+        "tokens_per_s": 6.4,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_first_14",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 44.173,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_periodic_01",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 22.471,
+      "answer": "W przypadku zmiany stanowiska pracy, wiążącej się z istotną zmianą zakresu obowiązków, w terminie 30 dni od zmiany stanowiska pracy ponownie dokonuje się czynności, o których mowa w § 5 i § 6. [rozp2016:par9]",
+      "cited_ids": [
+        "rozp2016:par9"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 22.327,
+        "prompt_tokens": 3273,
+        "completion_tokens": 80,
+        "tokens_per_s": 5.27,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.667
+    },
+    {
+      "id": "h_periodic_02",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 47.112,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_periodic_03",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 26.568,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_periodic_04",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 39.348,
+      "answer": "Nie, nie możesz zmienić terminu na wniosek pracownika. Zgodnie z art. 81 ust. 4 ustawy o służbie cywilnej, ocenę okresową sporządza się co 24 miesiące. W przypadku, gdy od ostatniej oceny okresowej minęły cztery miesiące, nie jest to jeszcze czas, w którym powinna być sporządzona kolejna ocena. Pracownik nie spełnia warunków, o których mowa w art. 81 ust. 6 ustawy o służbie cywilnej, aby zmienić termin oceny. [ustawa_sc:art81][ustawa_sc:art81].",
+      "cited_ids": [
+        "ustawa_sc:art81"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 39.23,
+        "prompt_tokens": 2851,
+        "completion_tokens": 163,
+        "tokens_per_s": 5.93,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.0
+    },
+    {
+      "id": "h_periodic_05",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 30.681,
+      "answer": "Zgodnie z § 8 rozporządzenia Prezesa Rady Ministrów z 4 kwietnia 2016 r. (Dz. U. poz. 470) oceniający może zmienić termin oceny w przypadkach określonych w art. 81 ust. 8 ustawy z dnia 21 listopada 2008 r. o służbie cywilnej. W takim przypadku oceniający niezwłocznie zawiadamia pisemnie ocenianego o nowym terminie sporządzenia oceny na piśmie. Kopię pisma dołącza się do arkusza. [rozp2016:par8]",
+      "cited_ids": [
+        "rozp2016:par8"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 30.527,
+        "prompt_tokens": 2086,
+        "completion_tokens": 159,
+        "tokens_per_s": 6.28,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.25
+    },
+    {
+      "id": "h_periodic_06",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 28.144,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_periodic_07",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 24.962,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_periodic_08",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 22.358,
+      "answer": "Po zapoznaniu pracownika z kryteriami oceny oryginał arkusza trafia do akt osobowych ocenianego, a kopię części I arkusza oceniający doręcza ocenianemu. [rozp2016:par6][rozp2016:par12]",
+      "cited_ids": [
+        "rozp2016:par6",
+        "rozp2016:par12"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 22.238,
+        "prompt_tokens": 2546,
+        "completion_tokens": 72,
+        "tokens_per_s": 6.11,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_periodic_09",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 15.15,
+      "answer": "Tak, potwierdza podpisem, zgodnie z § 6 ust. 2 rozporządzenia Prezesa Rady Ministrów z 4 kwietnia 2016 r. [rozp2016:par6].",
+      "cited_ids": [
+        "rozp2016:par6"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 14.969,
+        "prompt_tokens": 2175,
+        "completion_tokens": 55,
+        "tokens_per_s": 7.02,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.333
+    },
+    {
+      "id": "h_periodic_10",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 25.132,
+      "answer": "Zgodnie z art. 83 ust. 3 ustawy o służbie cywilnej, sprzeciw do oceny okresowej rozpatruje się w terminie 14 dni od dnia wniesienia. Ponieważ sprzeciw został złożony trzy dni temu, urząd ma jeszcze 11 dni na jego rozpatrzenie. [ustawa_sc:art83]",
+      "cited_ids": [
+        "ustawa_sc:art83"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 24.966,
+        "prompt_tokens": 2763,
+        "completion_tokens": 93,
+        "tokens_per_s": 5.76,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_periodic_11",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 33.05,
+      "answer": "Jeśli sprzeciw od oceny okresowej nie zostanie uwzględniony, pracownik może odwołać się do sądu pracy w terminie 14 dni od dnia doręczenia decyzji albo od dnia upływu terminu, o którym mowa w art. 83 ust. 3 ustawy o służbie cywilnej [ustawa_sc:art83].",
+      "cited_ids": [
+        "ustawa_sc:art83"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 32.929,
+        "prompt_tokens": 2542,
+        "completion_tokens": 95,
+        "tokens_per_s": 5.9,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_periodic_12",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 24.581,
+      "answer": "Tak, możesz wnioskować o kolejny stopień służbowy dla podwładnego. Zgodnie z § 11 ust. 5 rozporządzenia Prezesa Rady Ministrów z 4 kwietnia 2016 r. (Dz. U. poz. 470), w przypadku przyznania oceny pozytywnej ocenianemu będącemu urzędnikiem służby cywilnej, oceniający może sporządzić umotywowany wniosek o przyznanie ocenianemu kolejnego stopnia służbowego, wypełniając część III arkusza. [rozp2016:par11:ust5]",
+      "cited_ids": [
+        "rozp2016:par11:ust5"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 24.483,
+        "prompt_tokens": 2128,
+        "completion_tokens": 163,
+        "tokens_per_s": 8.54,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_periodic_13",
+      "expect_refusal": false,
+      "refused": true,
+      "refusal_reason": "odpowiedź LLM bez poprawnego cytatu",
+      "source": "rule",
+      "latency_s": 25.044,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": false
+    },
+    {
+      "id": "h_periodic_14",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 25.286,
+      "answer": "Odpowiedź: Stosuje się kryteria obowiązkowe wymienione w § 4 ust. 2 rozporządzenia Prezesa Rady Ministrów z 4 kwietnia 2016 r. (Dz. U. poz. 470), które to są: 1) zarządzanie ludźmi; 2) podejmowanie decyzji i odpowiedzialność; 3) organizacja pracy i orientacja na osiąganie celów; 4) współpraca; 5) komunikacja. [rozp2016:par4][rozp2016:par2]",
+      "cited_ids": [
+        "rozp2016:par4",
+        "rozp2016:par2"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 25.243,
+        "prompt_tokens": 2741,
+        "completion_tokens": 140,
+        "tokens_per_s": 7.0,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 0.667
+    },
+    {
+      "id": "h_periodic_15",
+      "expect_refusal": false,
+      "refused": false,
+      "refusal_reason": "",
+      "source": "llm",
+      "latency_s": 41.901,
+      "answer": "Nie. Zgodnie z art. 89 ust. 2 ustawy o służbie cywilnej, urzędnik służby cywilnej, który od otrzymania ostatniego stopnia służbowego uzyskał dwie kolejne następujące po sobie pozytywne oceny okresowe na jednym z dwóch najwyższych poziomów przewidzianych w skali ocen, otrzymuje kolejny stopień służbowy w terminie 30 dni od dnia zapoznania urzędnika służby cywilnej z oceną okresową. Jednakże, zgodnie z art. 51 ust. 1 ustawy, dyrektor generalny urzędu przyznaje urzędnikowi służby cywilnej najniższy stopień służbowy przysługujący od dnia mianowania. Oznacza to, że urzędnik służby cywilnej nie otrz",
+      "cited_ids": [
+        "ustawa_sc:art89",
+        "ustawa_sc:art51"
+      ],
+      "invalid_citations": [],
+      "llm": {
+        "model": "llama3.1:8b",
+        "provider": "ollama",
+        "latency_s": 41.754,
+        "prompt_tokens": 2164,
+        "completion_tokens": 302,
+        "tokens_per_s": 8.26,
+        "cached": false
+      },
+      "refusal_correct": true,
+      "cites_expected_unit": true,
+      "keypoint_coverage": 1.0
+    },
+    {
+      "id": "h_out_01",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (cosinus 0.71 < 0.74)",
+      "source": "rule",
+      "latency_s": 0.084,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    },
+    {
+      "id": "h_out_02",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (cosinus 0.74 < 0.74)",
+      "source": "rule",
+      "latency_s": 0.074,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    },
+    {
+      "id": "h_out_03",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "prośba o decyzję o ocenie (reguła, bez LLM)",
+      "source": "rule",
+      "latency_s": 0.0,
+      "answer": "Nie proponuję poziomu, punktów ani wyniku oceny konkretnego pracownika – tę decyzję podejmuje przełożony. Mogę wyjaśnić skalę ocen, progi i reguły z przepisów albo pomóc przygotować rozmowę.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    },
+    {
+      "id": "h_out_04",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (cosinus 0.67 < 0.74)",
+      "source": "rule",
+      "latency_s": 0.052,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    },
+    {
+      "id": "h_out_05",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (pokrycie 0.16 < 0.2)",
+      "source": "rule",
+      "latency_s": 0.059,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    },
+    {
+      "id": "h_out_06",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (pokrycie 0.14 < 0.2)",
+      "source": "rule",
+      "latency_s": 0.07,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    },
+    {
+      "id": "h_out_07",
+      "expect_refusal": true,
+      "refused": true,
+      "refusal_reason": "retrieval poniżej progu (pokrycie 0.12 < 0.2)",
+      "source": "rule",
+      "latency_s": 0.058,
+      "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+      "cited_ids": [],
+      "invalid_citations": [],
+      "llm": null,
+      "refusal_correct": true
+    }
+  ]
+}

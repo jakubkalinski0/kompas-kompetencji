@@ -1,0 +1,31 @@
+{% extends "process/_layout.html" %}
+{% block part %}Warunki § 10 ust. 1 pkt 1–2 rozp. 2015{% endblock %}
+{% block work %}
+<h1>Egzamin i sprawozdanie</h1>
+<p class="lead">Ocena pozytywna wymaga łącznie: egzaminu, terminowego sprawozdania, maks. jednej oceny 3 pkt i oceny łącznej ≥ 5 pkt (§ 10 ust. 1).</p>
+<form method="post" action="/procesy/{{ proc.id }}/warunki">
+  <fieldset class="indicator" style="max-width:52em">
+    <legend>Czy oceniany zaliczył egzamin ze służby przygotowawczej?</legend>
+    <div class="levels">
+      {% for v, label in [('tak', 'Tak'), ('nie', 'Nie'), ('nie_dotyczy', 'Nie dotyczy (wyjątek § 10 ust. 3)')] %}
+      <label class="level" style="grid-template-columns: 22px 1fr"><input type="radio" name="exam" value="{{ v }}" {% if doc.exam == v %}checked{% endif %} required><span>{{ label }}</span></label>
+      {% endfor %}
+    </div>
+    <p class="part-label" style="margin-top:8px">Jeśli „nie dotyczy” – który wyjątek zachodzi</p>
+    <div class="levels">
+      {% for key, label in exemptions.items() %}
+      <label class="level" style="grid-template-columns: 22px 1fr"><input type="radio" name="exam_exemption" value="{{ key }}" {% if doc.exam_exemption == key %}checked{% endif %}><span>{{ label }}</span></label>
+      {% endfor %}
+    </div>
+  </fieldset>
+  <fieldset class="indicator" style="max-width:52em">
+    <legend>Czy sprawozdanie zostało złożone w terminie?</legend>
+    <p class="basis">Termin z rozmowy wstępnej: {{ ((doc.first_eval_intro or {}).report_deadline or {}).from|d }} – {{ ((doc.first_eval_intro or {}).report_deadline or {}).to|d }} (przy zmianie wg § 5 – nowy termin).</p>
+    <div class="levels">
+      <label class="level" style="grid-template-columns: 22px 1fr"><input type="radio" name="report" value="tak" {% if doc.report_submitted_on_time == true %}checked{% endif %} required><span>Tak</span></label>
+      <label class="level" style="grid-template-columns: 22px 1fr"><input type="radio" name="report" value="nie" {% if doc.report_submitted_on_time == false %}checked{% endif %}><span>Nie</span></label>
+    </div>
+  </fieldset>
+  <div class="form-actions"><button class="btn go" type="submit">Zapisz i przejdź do elementów oceny</button></div>
+</form>
+{% endblock %}

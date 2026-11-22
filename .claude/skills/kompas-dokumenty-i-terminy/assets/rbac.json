@@ -1,0 +1,34 @@
+{
+  "_info": "Model ról i uprawnień Kompasu Kompetencji (propozycja). Zasada: najmniejsze uprawnienia + minimalizacja danych (pkt 5 pełnej treści). HR dostaje widok procesu z białej listy pól; notatki S-D-R i historia czatu z asystentem rozmowy są wyłącznie dla autora (przełożonego).",
+  "private_fields": ["criteria[].indicator_ratings[].sdr_note", "assistant_chat", "karta_przygotowania", "guard", "criteria[].override_note"],
+  "roles": {
+    "przelozony": {
+      "label": "Przełożony (oceniający / bezpośredni przełożony)",
+      "scope": "own",
+      "permissions": ["process:read", "process:create", "evaluation:write", "evaluation:decide", "sdr:read", "sdr:write",
+                      "assistant:formal", "assistant:interview", "assistant_chat:read", "pdf:arkusz", "pdf:karta", "deadlines:read"],
+      "view": "full"
+    },
+    "kierujacy_komorka": {
+      "label": "Kierujący komórką organizacyjną (pierwsza ocena: uzgodnienie i podpis, § 8 ust. 2 i § 10 ust. 6 rozp. 2015)",
+      "scope": "unit",
+      "permissions": ["process:read", "evaluation:read", "first_eval:approve", "pdf:arkusz", "deadlines:read"],
+      "view": "redacted"
+    },
+    "hr_admin": {
+      "label": "HR / administrator procesu",
+      "scope": "all",
+      "permissions": ["process:read_status", "deadlines:read", "reminders:send", "reminders:read", "pdf:arkusz_final", "users:manage"],
+      "view": "allowlist",
+      "allow_fields": ["process_id", "case_id", "type", "form", "status", "status_label", "status_history", "dates", "events", "flags",
+                       "employee.full_name", "employee.unit", "employee.position", "evaluator.full_name", "evaluator.email",
+                       "unit_head.full_name", "result", "reminders"]
+    },
+    "pracownik": {
+      "label": "Pracownik oceniany (opcjonalnie: wgląd w zakończoną ocenę)",
+      "scope": "self",
+      "permissions": ["evaluation:read_final", "pdf:arkusz_final"],
+      "view": "redacted"
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "form": "periodic_c",
+  "case_id": "demo-jan-2026",
+  "office_name": "Ministerstwo Cyfryzacji (dane fikcyjne – demo)",
+  "employee": {
+    "full_name": "Jan Testowy",
+    "first_name": "Jan",
+    "last_name": "Testowy",
+    "position": "Radca w Wydziale Prawnym",
+    "unit": "Departament Prawny",
+    "corps_status": "pracownik_sc"
+  },
+  "evaluator": {
+    "full_name": "Marek Kierownik-Demo",
+    "first_name": "Marek",
+    "last_name": "Kierownik-Demo",
+    "position": "Dyrektor Departamentu Cyberbezpieczeństwa",
+    "unit": "Departament Cyberbezpieczeństwa"
+  },
+  "part1": {
+    "criteria_meeting_date": "2024-12-02",
+    "evaluation_deadline": "2026-11-30"
+  },
+  "interview_date": "2026-11-27",
+  "period": {
+    "from": "2024-12-02",
+    "to": "2026-11-30"
+  },
+  "criteria": [
+    {
+      "id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "rzetelnosc",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "rzetelnosc.1",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "rzetelnosc.2",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "organizacja_pracy_i_orientacja_na_osiaganie_celow",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.1",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.2",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.4",
+          "level": null,
+          "no_basis": true,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.5",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "wspolpraca",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wspolpraca.1",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.4",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.5",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.6",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.4",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    }
+  ],
+  "justification": null,
+  "development_conclusions": "Kurs legislacji UE; udział w zespole ds. aktów wykonawczych.",
+  "part3_requested": false,
+  "audit_log": []
+}

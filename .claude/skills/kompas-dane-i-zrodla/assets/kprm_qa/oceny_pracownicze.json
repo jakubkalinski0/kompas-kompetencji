@@ -1,0 +1,423 @@
+[
+  {
+    "id": "kprm_qa_1",
+    "question": "Dlaczego warto sporządzać oceny pracownicze?",
+    "answer": "Przeprowadzanie oceny okresowej w służbie cywilnej ma przede wszystkim na celu:\npodnoszenie efektywności i poprawę jakości pracy,\ndoskonalenie sprawności organizacyjnej,\nprzekazywanie pracownikowi informacji na temat oceny jego pracy,\nzwiększanie poziomu motywacji i pobudzanie zaangażowania,\ndostarczanie przełożonemu i kierownictwu informacji pozwalających podejmować racjonalne decyzje kadrowe,\nzdobywanie informacji nt. osiągnięć, wykorzystywanych umiejętności i potrzeb rozwojowych pracownika,\nsporządzenie wniosków dot. indywidualnego programu rozwoju zawodowego,\nuzyskanie dodatkowych informacji do opracowania planu szkoleń.",
+    "process": [
+      "periodic",
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_2",
+    "question": "Czy urlop wypoczynkowy należy uznać za usprawiedliwioną nieobecność, o której mowa w przepisach ustawy o służbie cywilnej?",
+    "answer": "Tak. Okresami usprawiedliwionej nieobecności1 są wszystkie okresy pozostawania w stosunku pracy i nieświadczenia pracy, które uznaje się za usprawiedliwione na mocy przepisów prawa2. Zatem okolicznościami usprawiedliwiającymi nieobecność mogą być np.: urlop wypoczynkowy, urlop szkoleniowy, choroba, urlop bezpłatny, urlop macierzyński, urlop wychowawczy.\n1. Art. 35 ust. 4 oraz art. 81 ust. 7 ustawy o służbie cywilnej.\n2. Kodeks pracy, ustawa o służbie cywilnej, rozporządzenie Ministra Pracy i Polityki Socjalnej w sprawie usprawiedliwiania nieobecności w pracy oraz udzielania pracownikom zwolnień od pracy, a także inne przepisy, na podstawie których niektóre kategorie pracowników korzystają z dodatkowych zwolnień od pracy.",
+    "process": [
+      "periodic",
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 35 ust. 4",
+      "art. 81 ust. 7"
+    ]
+  },
+  {
+    "id": "kprm_qa_3",
+    "question": "Czy nieprzestrzeganie przez oceniającego przepisów dot. przeprowadzenia pierwszej oceny w służbie cywilnej bądź oceny okresowej powoduje nieważność tej oceny?",
+    "answer": "Nie. Naruszenia przepisów podczas przeprowadzania oceny w służbie cywilnej (np. nieprzeprowadzenie rozmowy oceniającej, naruszenie terminów) nie powodują nieważności z mocy prawa oceny, przy sporządzaniu której doszło do tych nieprawidłowości.\nCzynności, które wykonuje oceniający w trakcie przeprowadzania procesu oceniania są czynnościami z zakresu prawa pracy. W prawie pracy obowiązuje zaś zasada, że skutek prawny w postaci nieważności z mocy prawa występuje jedynie wówczas, gdy przepis prawa tak stanowi1. Przepisy ustawy o służbie cywilnej nie przewidują nieważności czynności dokonanych z naruszeniem prawa przez oceniającego przeprowadzającego pierwszą ocenę lub ocenę okresową.\n1. Na przykład art. 18 § 2 i 3, art. 1013, art. 292 Kodeksu pracy.",
+    "process": [
+      "periodic",
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "art. 1013",
+      "art. 18",
+      "art. 292",
+      "§ 2"
+    ]
+  },
+  {
+    "id": "kprm_qa_4",
+    "question": "Czy nieprzestrzeganie przez oceniającego przepisów w zakresie sporządzania ocen w służbie cywilnej może skutkować konsekwencjami wobec oceniającego?",
+    "answer": "Tak. Nieprzestrzeganie przepisów w zakresie dokonywania pierwszej oceny oraz oceny okresowej może zostać uznane za naruszenie obowiązków pracowniczych przez oceniającego i być podstawą do podjęcia przez pracodawcę różnych działań, w tym objęcia oceniającego odpowiedzialnością dyscyplinarną.",
+    "process": [
+      "periodic",
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_5",
+    "question": "Czy Szef Służby Cywilnej może nakazać dyrektorowi generalnemu (kierownikowi) urzędu konkretne postępowanie w zakresie dokonywania ocen w służbie cywilnej unieważnienie oceny?",
+    "answer": "Przepisy ustawy o służbie cywilnej przewidują kompetencje Szefa Służby Cywilnej m.in. do czuwania nad przestrzeganiem zasad służby cywilnej i kierowania procesem zarządzania zasobami ludzkimi w służbie cywilnej1, lecz uprawnienia te nie obejmują wydawania wiążących poleceń w sprawach z zakresu prawa pracy należących do wyłącznej właściwości pracodawcy.\nNie jest zatem możliwe, aby Szef Służby Cywilnej wydał polecenie dyrektorowi generalnemu (kierownikowi) urzędu w sprawie dotyczącej wykonywania przez niego – w imieniu pracodawcy – czynności ze stosunku pracy wobec osób zatrudnionych w kierowanym przez niego urzędzie. Nie może więc nakazać np. uwzględnienia sprzeciwu od oceny okresowej, czy unieważnić taką ocenę.\n1. Art. 15 ust. 1 pkt 1 i 2 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic",
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 15 ust. 1 pkt 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_6",
+    "question": "Czy wszyscy członkowie korpusu służby cywilnej podlegają ocenie okresowej?",
+    "answer": "Nie. Ocenie okresowej podlegają wyłącznie pracownicy służby cywilnej zatrudnieni na podstawie umowy o pracę na czas nieokreślony oraz urzędnicy służby cywilnej1. Osoby zatrudnione na wyższych stanowiskach w służbie cywilnej oraz pracownicy zatrudnieni na podstawie umowy o pracę na czas określony nie podlegają ocenie okresowej.\n1. Art. 81 ust. 1 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_7",
+    "question": "Kto sporządza ocenę okresową?",
+    "answer": "Zgodnie z przepisami ustawy ocenę okresową sporządza bezpośredni przełożony1. Proces oceniania kończący się sporządzeniem oceny na piśmie należy do jego wyłącznej kompetencji.\n1. Art. 81 ust. 1 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_8",
+    "question": "Czego dotyczy ocena okresowa?",
+    "answer": "Ocena okresowa dotyczy sposobu wykonywania przez ocenianego jego obowiązków wynikających z opisu zajmowanego stanowiska pracy1.\n1. Art. 81 ust. 3 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 3"
+    ]
+  },
+  {
+    "id": "kprm_qa_9",
+    "question": "Jak często sporządza się ocenę okresową?",
+    "answer": "Przepisy ustawy o służbie cywilnej wprowadzają sztywny termin na sporządzenie oceny okresowej. Co do zasady sporządza się ją co 24 miesiące1, licząc od dnia zakończenia poprzedniej oceny okresowej lub od dnia zatrudnienia na czas nieokreślony.\nJednak przepisy ustawy regulują kwestie związane z możliwością sporządzenia oceny okresowej w terminie innym niż dwudziestoczteromiesięczny. Wskazują na konkretne okoliczności, których wystąpienie prowadzi do obligatoryjnej zmiany terminu oceny okresowej:\nw razie zmiany stanowiska pracy, wiążącej się z istotną zmianą zakresu obowiązków, pod warunkiem że od dnia sporządzenia ostatniej oceny okresowej upłynęło więcej niż 6 miesięcy, a przypadku osób ocenianych po raz pierwszy, jeżeli okres podlegający ocenie jest dłuższy niż 6 miesięcy2;\nw razie usprawiedliwionej nieobecności ocenianego w pracy, trwającej dłużej niż miesiąc, termin 24 miesięczny ulega przedłużeniu o czas tej nieobecności3;\nw sytuacji uzyskania negatywnej oceny okresowej oceniany podlega ponownej ocenie po upływie 6 miesięcy od dnia zapoznania się z oceną4.\nPrzepisy ustawy dają także bezpośredniemu przełożonemu możliwość – nie obligując go do tego – podjęcia decyzji o zmianie terminu sporządzenia oceny okresowej5.\n1. Art. 81 ust. 4 ustawy o służbie cywilnej.\n2. Art. 81 ust. 6 ustawy o służbie cywilnej.\n3. Art. 81 ust. 7 ustawy o służbie cywilnej.\n4. Art. 81 ust. 9 ustawy o służbie cywilnej.\n5. Art. 81 ust. 8 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 4",
+      "Art. 81 ust. 6",
+      "Art. 81 ust. 7",
+      "Art. 81 ust. 8",
+      "Art. 81 ust. 9"
+    ]
+  },
+  {
+    "id": "kprm_qa_10",
+    "question": "Od jakiego momentu należy liczyć 24-miesięczny termin oceny?",
+    "answer": "Okres 24 miesięcy to czas od dnia sporządzenia jednej oceny okresowej do dnia sporządzenia kolejnej oceny. W przypadku sporządzania oceny okresowej po raz pierwszy termin ten należy liczyć od dnia zatrudnienia na czas nieokreślony.\nZatem przykładowo w przypadku sporządzenia oceny okresowej 4 kwietnia 2016 r. termin sporządzenia kolejnej oceny okresowej przypadnie na 4 kwietnia 2018 r.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_11",
+    "question": "Jak należy liczyć termin ocen okresowych?",
+    "answer": "Ustawa o służbie cywilnej nie zawiera regulacji dotyczących sposobu obliczania terminów ocen okresowych, ani terminów sprzeciwów od tych ocen. Dlatego w związku z art. 9 ust. 1 ustawy1 oraz art. 300 Kodeksu pracy2 terminy te oblicza się zgodnie z zasadami prawa cywilnego, które zostały określone w art. 110 i następnych Kodeksu cywilnego3.\n1. Art. 9 ust. 1 ustawy o służbie cywilnej.\n2. Art. 300 Kodeksu pracy.\n3. Art. 110-115 Kodeksu cywilnego.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 110",
+      "Art. 300",
+      "Art. 9 ust. 1",
+      "art. 110",
+      "art. 300",
+      "art. 9 ust. 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_12",
+    "question": "Jak postąpić w sytuacji, kiedy w arkuszu oceny wpisano błędny termin oceny okresowej?",
+    "answer": "Korekta błędnie wskazanego terminu oceny okresowej powinna nastąpić w takim samym trybie, jaki został przewidziany dla ustalenia terminu oceny: oceniający wpisuje do arkusza nowy termin oceny a oceniany potwierdza podpisem zapoznanie się z tym terminem.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_13",
+    "question": "Czy w czasie nieobecności oceniającego inna osoba może sporządzić ocenę okresową?",
+    "answer": "Nieobecność w pracy ocenianego lub oceniającego nie stanowi sama w sobie prawnej przeszkody dla przeprowadzenia czynności niezbędnych do sporządzenia oceny ani dla samego sporządzenia oceny. Jednak dokonanie konkretnych czynności – w zależności od sytuacji – może wymagać zgody zarówno ocenianego, jak i oceniającego. Sporządzenie oceny w taki sposób może więc okazać się niemożliwe, np. ze względu na okoliczności nieobecności lub brak zgody ocenianego bądź oceniającego.\nW sytuacji przedłużającej się nieobecności bezpośredniego przełożonego, która utrudnia przeprowadzenie oceny, ocenę taką powinien przeprowadzić np. pośredni przełożony, bądź osoba wykonująca zadania w jego zastępstwie. Jeśli jest taka możliwość, należałoby wówczas zasięgnąć opinii bezpośredniego przełożonego.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_14",
+    "question": "Czy przekształcenie stosunku pracy z umowy o pracę na czas nieokreślony w mianowanie w służbie cywilnej pociąga za sobą jakieś konsekwencje dotyczące oceny okresowej?",
+    "answer": "Nie. Zmiana statusu pracownika służby cywilnej na urzędnika służby cywilnej w żaden sposób nie wpływa na proces oceny, chyba, że wiąże się ona ze zmianą stanowiska pracy i istotną zmianą zakresu obowiązków, a od dnia sporządzenia ostatniej oceny okresowej upłynęło więcej niż 6 miesięcy1.\n1. Art. 81 ust. 6 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 6"
+    ]
+  },
+  {
+    "id": "kprm_qa_15",
+    "question": "Czy wypełnienie wniosków dotyczących indywidualnego programu rozwoju zawodowego w ocenie okresowej jest obowiązkowe?",
+    "answer": "Tak. Obowiązek taki wynika wprost z przepisów ustawy1 i rozporządzenia w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej2.\n1. Art. 81 ust. 5 ustawy o służbie cywilnej.\n2. § 11 ust. 1 pkt 5 rozporządzenia Prezesa Rady Ministrów w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 5",
+      "§ 11 ust. 1 pkt 5"
+    ]
+  },
+  {
+    "id": "kprm_qa_16",
+    "question": "Co oznacza zawarte przepisie art. 81 ust. 9 ustawy sformuowanie \"po upływie 6 miesięcy od dnia zapoznania się z oceną”?",
+    "answer": "Użycie sformułowania „po upływie 6 miesięcy od dnia zapoznania się z oceną” oznacza, że ponowna ocena okresowa powinna być sporządzona niezwłocznie po dniu, w którym minie 6 miesięcy od dnia zapoznania się ocenianego z oceną negatywną.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_17",
+    "question": "Jak postępować w sytuacji, gdy bezpośredni przełożony jest nieobecny w terminie sporządzenia oceny okresowej na piśmie (nieobecność trwa krótko, np. 2 dni)?",
+    "answer": "W sytuacji niespodziewanej nieobecności oceniającego – spowodowanej np. chorobą – w dniu, w którym przypadał termin sporządzenia oceny okresowej na piśmie, ocenę tę należy sporządzić na piśmie niezwłocznie po jego powrocie do pracy (z adnotacją o nieobecności na arkuszu).\nObowiązek działania niezwłocznego, jak przyjmuje się powszechnie w doktrynie i orzecznictwie, oznacza nakaz podjęcia określonej czynności natychmiast po ustaniu ewentualnych przyczyn obiektywnie uniemożliwiających dokonanie danej czynności.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  },
+  {
+    "id": "kprm_qa_18",
+    "question": "Czy w razie powierzenia pracownikowi innej pracy, na podstawie art. 42 § 4 Kodeksu pracy, która wiąże się z istotną zmianą realizowanych obowiązków w tym czasie, następuje obowiązek sporządzenia oceny okresowej w związku z art. 81 ust. 6 ustawy o służbie cywilnej?",
+    "answer": "Powierzenie pracownikowi, w przypadkach uzasadnionych potrzebami pracodawcy, innej pracy niż określona w umowie o pracę na okres nie przekraczający 3 miesięcy w roku kalendarzowym nie może być utożsamiane ze zmianą stanowiska pracy, o której mowa w przepisie art. 81 ust. 6 ustawy. A zatem w razie zastosowania przepisu art. 42 § 4 Kodeksu pracy nie powstaje obowiązek sporządzenia oceny okresowej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "art. 42",
+      "art. 81 ust. 6",
+      "§ 4"
+    ]
+  },
+  {
+    "id": "kprm_qa_19",
+    "question": "Czy w przypadku usprawiedliwionej nieobecności pracownika, np. spowodowanej chorobą, trwającej dłużej niż miesiąc, okres podlegania ocenie sporządzanej w trybie art. 81 ust. 9 ustawy o służbie cywilnej – czyli po otrzymaniu negatywnej oceny okresowej – ulega wydłużeniu o tę nieobecność?",
+    "answer": "Zgodnie z art. 81 ust. 9 ustawy1 w razie uzyskania negatywnej oceny okresowej oceniany podlega ponownej ocenie po upływie 6 miesięcy od dnia zapoznania się z oceną. Natomiast w myśl art. 81 ust. 7 ustawy2 w razie usprawiedliwionej nieobecności ocenianego w pracy, trwającej dłużej niż miesiąc, termin, o którym mowa w ust. 4, ulega przedłużeniu o czas tej nieobecności.\nWobec powyższego należy przede wszystkim zauważyć różnice między cytowanym przepisem art. 81 ust. 9 ustawy, a przepisem ust. 7 tego artykułu. Istotne znaczenie prawne ma różnica polegająca na tym, że przepis ust. 7, wprowadzając obowiązkową regulację dotyczącą zmiany terminu oceny okresowej, odnosi tę regulację wyraźnie i wyłącznie (przez użycie sformułowania „termin, o którym mowa w ust. 4”) do oceny dokonywanej w terminie „podstawowym” wprowadzonym przepisem art. 81 ust. 4 ustawy, czyli w terminie 24-miesięcznym. Tego rodzaju odesłania nie zawiera natomiast przepis ust. 9, co prowadzi do wniosku, że wskazany w nim termin 6 miesięcy na sporządzenie oceny ponownej po ocenie negatywnej nie podlega wydłużeniu na podstawie przepisu art. 81 ust. 7 ustawy.\n1. Art. 81 ust. 9 ustawy o służbie cywilnej.\n2. Art. 81 ust. 7 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 81 ust. 7",
+      "Art. 81 ust. 9",
+      "art. 81 ust. 4",
+      "art. 81 ust. 7",
+      "art. 81 ust. 9"
+    ]
+  },
+  {
+    "id": "kprm_qa_20",
+    "question": "Czy z urzędnikiem służby cywilnej będącym w okresie przedemerytalnym można rozwiązać stosunek pracy w związku z otrzymaniem przez niego dwóch, następujących po sobie, negatywnych ocen okresowych (art. 71 ust. 1 pkt 1 ustawy o służbie cywilnej)?",
+    "answer": "Z art. 71 ust. 5 ustawy o służbie cywilnej wynika, że rozwiązanie stosunku pracy z urzędnikiem służby cywilnej z przyczyn określonych w art. 71 ust. 1-3 ustawy nie może naruszać przepisów dotyczących szczególnej ochrony pracowników w zakresie wypowiedzenia i rozwiązania stosunku pracy1. Wobec powyższego urzędnikowi służby cywilnej podlegającemu ochronie przedemerytalnej nie można wypowiedzieć stosunku pracy na podstawie przepisów art. 71 ust. 1-3 ustawy o służbie cywilnej.\n1. Art. 71 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 71",
+      "art. 71 ust. 1",
+      "art. 71 ust. 5"
+    ]
+  },
+  {
+    "id": "kprm_qa_21",
+    "question": "Czy w przypadku otrzymania przez urzędnika służby cywilnej drugiej negatywnej oceny okresowej, będącej jego kolejną negatywną oceną, i złożeniu przez tego urzędnika odwołania do sądu pracy, pracodawca powinien wstrzymać się z wypowiedzeniem mu stosunku pracy do czasu wydania prawomocnego wyroku?",
+    "answer": "Przepisy ustawy o służbie cywilnej1 stanowią, iż wypowiedzenie stosunku pracy urzędnikowi służby cywilnej powinno nastąpić po otrzymaniu przez niego drugiej, następującej po sobie, negatywnej oceny okresowej. Dokonanie przez pracodawcę wypowiedzenia stosunku pracy w przypadku zaistnienia wyżej wymienionej przesłanki, gdy urzędnik służby cywilnej nie złożył sprzeciwu od oceny okresowej do dyrektora generalnego urzędu, powinno nastąpić z upływem terminu na złożenie tego sprzeciwu2. Natomiast w przypadku złożenia sprzeciwu od oceny do dyrektora generalnego urzędu, z chwilą nieuwzględnienia sprzeciwu, albo nierozpatrzenia sprzeciwu w określonym przepisami terminie3.\nBrak jest podstaw do wstrzymania wypowiedzenia stosunku pracy do czasu ewentualnego odwołania się urzędnika służby cywilnej od negatywnej oceny okresowej do sądu pracy, a w przypadku złożenia takiego odwołania do czasu prawomocnego wyroku sądowego.\n1. Art. 71 ust. 1 pkt 1 ustawy o służbie cywilnej.\n2. Art. 83 ust. 1 ustawy o służbie cywilnej.\n3. Art. 83 ust. 3 ustawy o służbie cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 71 ust. 1 pkt 1",
+      "Art. 83 ust. 1",
+      "Art. 83 ust. 3"
+    ]
+  },
+  {
+    "id": "kprm_qa_22",
+    "question": "Czy w uzasadnieniu przyznanej oceny okresowej można odnieść się tylko do jednego kryterium oceny?",
+    "answer": "Tak. Przepisy rozporządzenia wprowadziły elastyczne zasady sporządzania uzasadnienia ocen. Można je sporządzić jako ogólne omówienie całej oceny, szczegółowe odniesienie się do wszystkich, czy tylko do niektórych z ocen cząstkowych.\nUzasadnienie ocen jest obligatoryjne tylko w przypadku przyznania ocenianemu negatywnej oceny okresowej1. W przypadku przyznania oceny pozytywnej uzasadnienie jest fakultatywne2. Niezależnie od tego Departament Służby Cywilnej zaleca jednak uzasadnianie wszystkich ocen cząstkowych dla wzmocnienia otrzymywanej przez pracownika informacji zwrotnej.\n1. § 11 ust. 3 rozporządzenia Prezesa Rady Ministrów w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.\n2. § 11 ust. 4 rozporządzenia Prezesa Rady Ministrów w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "§ 11 ust. 3",
+      "§ 11 ust. 4"
+    ]
+  },
+  {
+    "id": "kprm_qa_23",
+    "question": "Czy trzeba wybierać kryteria dodatkowe oceny okresowej?",
+    "answer": "Nie. Jest to możliwość, a nie obowiązek. Zgodnie z przepisami kryteria dodatkowe oceniający może wybrać, jeżeli jest to uzasadnione ze względu na charakter obowiązków wynikających z opisu stanowiska pracy zajmowanego przez ocenianego1.\n 1. § 5 ust. 2 rozporządzenia Prezesa Rady Ministrów w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+    "process": [
+      "periodic"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "§ 5 ust. 2"
+    ]
+  },
+  {
+    "id": "kprm_qa_24",
+    "question": "Kto podlega pierwszej ocenie w służbie cywilnej?",
+    "answer": "Pierwszej ocenie podlega osoba podejmująca po raz pierwszy pracę w służbie cywilnej (zatrudniona na podstawie art. 35 ust. 3 ustawy o służbie cywilnej)1. Pierwszej ocenie może również podlegać osoba zatrudniona w celu zastępstwa nieobecnego członka korpusu służby cywilnej2.\n1. Art. 37 ust. 1 ustawy o służbie cywilnej.\n2. Art. 37 ust. 2 ustawy o służbie cywilnej.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 37 ust. 1",
+      "Art. 37 ust. 2",
+      "art. 35 ust. 3"
+    ]
+  },
+  {
+    "id": "kprm_qa_25",
+    "question": "Czy absolwent KSAP podlega pierwszej ocenie w służbie cywilnej?",
+    "answer": "Absolwent KSAP, który złożył wniosek o mianowanie w służbie cywilnej nie podlega pierwszej ocenie w służbie cywilnej1. Zatem absolwent KSAP, który tego nie zrobił i spełnia przesłanki do uznania go za osobę podejmującą po raz pierwszy pracę w służbie cywilnej będzie podlegał pierwszej ocenie w służbie cywilnej.\n 1. Art. 37 ust. 3 ustawy o służbie cywilnej.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 37 ust. 3"
+    ]
+  },
+  {
+    "id": "kprm_qa_26",
+    "question": "Czy osoba, która była kilkukrotnie zatrudniona w służbie cywilnej tylko na podstawie umowy o pracę na czas określony, i której nie przyznano pozytywnej pierwszej oceny w służbie cywilnej, jest osobą podejmującą po raz pierwszy pracę w służbie cywilnej?",
+    "answer": "Tak. Osoba, która była wcześniej zatrudniona kilka razy w służbie cywilnej, ale zawsze było to zatrudnienie na podstawie umowy o pracę na czas określony, jest osobą podejmującą po raz pierwszy pracę w służbie cywilnej. Przez osobę podejmującą po raz pierwszy pracę w służbie cywilnej rozumie się osobę, która nie była wcześniej zatrudniona w służbie cywilnej na czas nieokreślony albo nie była zatrudniona na czas określony 12 miesięcy i nie otrzymała pozytywnej pierwszej oceny albo nie jest osobą zatrudnianą w służbie cywilnej na podstawie art. 34 ust. 1 ustawy o służbie cywilnej1.\n 1. Art. 35 ust. 5 ustawy o służbie cywilnej.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 35 ust. 5",
+      "art. 34 ust. 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_27",
+    "question": "Jak należy przedłużyć okres trwania umowy o pracę, o którym mowa w art. 35 ust. 4 ustawy o służbie cywilnej?",
+    "answer": "Zastosowanie ww. przepisu oznacza zmianę terminu rozwiązania się umowy o pracę zawartej na podstawie przepisu art. 35 ust. 3 ustawy. Nowy termin tego rozwiązania ustala się poprzez dodanie okresu usprawiedliwionej nieobecności do terminu, w którym umowa uległaby rozwiązaniu z upływem 12 miesięcy od dnia jej nawiązania. W dokumencie stwierdzającym przedłużenie umowy należy wskazać nową datę rozwiązania umowy.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "art. 35 ust. 3"
+    ]
+  },
+  {
+    "id": "kprm_qa_28",
+    "question": "Czy kierujący komórką organizacyjną w przypadku przyznania pozytywnej pierwszej oceny ma obowiązek wnioskowania do dyrektora generalnego urzędu o zawarcie z ocenionym umowy o pracę na czas nieokreślony?",
+    "answer": "Tak. W przypadku przyznania pozytywnej pierwszej oceny w służbie cywilnej, kierujący komórką organizacyjną powinien złożyć do dyrektora generalnego urzędu wniosek o zawarcie z ocenionym umowy o pracę na czas nieokreślony1. Jeżeli tego nie zrobi będzie to naruszeniem obowiązujących przepisów.\n 1. Art. 38 ust. 3 pkt 1 ustawy o służbie cywilnej.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 38 ust. 3 pkt 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_29",
+    "question": "Czy negatywna pierwsza ocena uniemożliwia ponowne zatrudnienie osoby, która ją otrzymała?",
+    "answer": "Nie. W przypadku przyznania negatywnej pierwszej oceny w służbie cywilnej, kierujący komórką organizacyjną, powinien złożyć do dyrektora generalnego urzędu wniosek o niezawieranie z ocenionym umowy o pracę na czas nieokreślony albo o rozwiązanie umowy o pracę na czas określony1. Nie ma przeszkód prawnych do zawarcia kolejnej umowy o pracę na czas określony, z taką osobą, z tym, że może to być wyłącznie umowa, o której mowa w art. 35 ust. 3 ustawy. Decyzja w tym zakresie należy do dyrektora generalnego urzędu. Pracodawca przed ponownym zatrudnieniem takiego pracownika powinien rozważyć fakt otrzymania przez niego negatywnej pierwszej oceny. Istotne znaczenie powinno odegrać przeprowadzenie analizy powodów uzasadniających przyznanie takiej oceny. Nie wydaje się racjonalne ponowne zatrudnienie osoby, której negatywna pierwsza ocena odnosi się do postawy, zaangażowania, postępów w pracy, relacji ze współpracownikami oraz terminowości wykonywania zadań.\n 1. Art. 38 ust. 3 pkt 2 ustawy o służbie cywilnej.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 38 ust. 3 pkt 2",
+      "art. 35 ust. 3"
+    ]
+  },
+  {
+    "id": "kprm_qa_30",
+    "question": "Czy z pracownikiem, z którym została zawarta umowa o pracę na czas określony 12 miesięcy (na podstawie art. 35 ust. 3 ustawy o służbie cywilnej) można zawrzeć umowę o pracę na czas nieokreślony przed upływem tego terminu jeżeli uzyskał on pozytywną pierwszą ocenę w służbie cywilnej?",
+    "answer": "Tak. W takiej sytuacji możliwe jest wcześniejsze rozwiązanie umowy o pracę zawartej na czas określony 12 miesięcy np. za porozumieniem stron i nawiązanie umowy o pracę na czas nieokreślony.\nUstawa o służbie cywilnej nie reguluje kwestii terminu zawarcia umowy o pracę na czas nieokreślony z pracownikiem, który otrzymał pozytywną pierwszą ocenę w służbie cywilnej. W związku z tym zastosowanie znajdą przepisy Kodeksu pracy i inne przepisy prawa pracy1.\n1. Art. 9 ust. 1 ustawy o służbie cywilnej.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": [
+      "Art. 9 ust. 1"
+    ]
+  },
+  {
+    "id": "kprm_qa_31",
+    "question": "Czy pracownik może wnieść do dyrektora generalnego urzędu sprzeciw od pierwszej oceny w służbie cywilnej?",
+    "answer": "Nie. Przepisy ustawy o służbie cywilnej nie przewidują trybu odwoławczego od sporządzonej pierwszej oceny w służbie cywilnej, a zatem dyrektorowi generalnemu urzędu nie przysługują uprawnienia do zmiany treści pierwszej oceny w służbie cywilnej dokonanej przez bezpośredniego przełożonego w porozumieniu z kierującym komórką organizacyjną.\nJeżeli pracownik uzna, że jego prawa w związku z tą oceną zostały naruszone to może dochodzić swoich roszczeń przed sądem pracy.",
+    "process": [
+      "first"
+    ],
+    "url": "https://www.gov.pl/web/sluzbacywilna/oceny-pracownicze",
+    "accessed": "2026-11-21",
+    "legal_refs": []
+  }
+]

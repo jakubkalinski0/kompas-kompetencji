@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pl" data-nav="top"{% if request and is_mobile_request(request) %} class="is-mobile"{% endif %}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Kompas Kompetencji{% endblock %}</title>
+  <script>
+    (function(){
+      var d=document.documentElement;
+      d.classList.add("js");
+      var uad=navigator.userAgentData, ua=navigator.userAgent||"";
+      var tablet=/iPad|Tablet|PlayBook|Silk/i.test(ua);
+      var phone=(uad&&uad.mobile===true)||(!tablet&&/iPhone|iPod|Windows Phone|IEMobile|Opera Mini|Opera Mobi|BlackBerry|BB10|\bMobile\b/i.test(ua));
+      if(!phone&&!tablet&&window.matchMedia&&matchMedia("(hover: none) and (pointer: coarse)").matches&&Math.min(screen.width,screen.height)<600)phone=true;
+      if(phone)d.classList.add("is-mobile");
+    })();
+  </script>
+  {# kroje OFL hostowane lokalnie: pełne polskie znaki (latin + latin-ext), bez CDN #}
+  <link rel="preload" href="/static/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/bona-nova-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/bona-nova-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/bona-nova-sc-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/bona-nova-sc-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/static/fonts/ibm-plex-mono-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/vendor/htmx.min.js" defer></script>
+  <script src="/static/art.js" defer></script>
+  <script src="/static/radar.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  {% set path = request.url.path if request else '' %}
+  <div class="mobile-block" role="alert">
+    <div class="win">
+      <div class="win-bar"><span class="win-box" aria-hidden="true"></span><span class="win-title">Kompas Kompetencji</span><span class="win-hatch" aria-hidden="true"></span><span class="win-box" aria-hidden="true"></span></div>
+      <div class="win-body">
+        <h1>Kompas Kompetencji nie działa na smartfonach</h1>
+        <p>Arkusz oceny i dane pracowników nie są obsługiwane na telefonach. Otwórz aplikację na komputerze albo tablecie.</p>
+      </div>
+    </div>
+  </div>
+  <div class="app">
+    <a class="skip" href="#tresc">Przejdź do treści</a>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark" data-mark aria-hidden="true"><svg viewBox="0 0 22 22" width="22" height="22" focusable="false" shape-rendering="crispEdges">
+          <circle cx="11" cy="11" r="10.25" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="0" width="2" height="2" fill="var(--blue)"/>
+          <g class="brand-needle"><polygon points="11,2.5 13.8,11 8.2,11" fill="var(--blue)"/>
+            <polygon points="8.2,11 13.8,11 11,19.5" fill="var(--paper)" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="11" cy="11" r="1.5" fill="var(--paper)" stroke="currentColor" stroke-width="1.2"/></g>
+        </svg></span><span>Kompas Kompetencji</span></a>
+      <nav class="topnav" aria-label="Główna nawigacja">
+        {% if user and user.role == 'przelozony' %}
+          <a href="/pulpit"{% if path.startswith('/pulpit') or path.startswith('/procesy') %} aria-current="page"{% endif %}>Pulpit</a>
+          <a href="/asystent"{% if path.startswith('/asystent') %} aria-current="page"{% endif %}>Asystent AI</a>
+          <a href="/zrodla"{% if path.startswith('/zrodla') %} aria-current="page"{% endif %}>Źródła</a>
+        {% elif user and user.role == 'hr_admin' %}
+          <a href="/hr"{% if path.startswith('/hr') %} aria-current="page"{% endif %}>Panel HR</a>
+          <a href="/zrodla"{% if path.startswith('/zrodla') %} aria-current="page"{% endif %}>Baza wiedzy</a>
+        {% endif %}
+        <a href="/design"{% if path.startswith('/design') %} aria-current="page"{% endif %}>System projektowy</a>
+      </nav>
+      <div class="topbar-mid">{% block navsteps %}{% endblock %}</div>
+      {% block caseref %}<span class="case-ref">ocena pracownicza w służbie cywilnej</span>{% endblock %}
+      {% if user %}
+      <div class="who">
+        <span class="who-name">{{ user.full_name }}</span>
+        <span class="role-tag">{{ ROLE_LABELS.get(user.role, user.role) }}</span>
+        <form method="post" action="/logout" data-logout><button class="btn link" type="submit">Zmień rolę</button></form>
+      </div>
+      {% endif %}
+    </header>
+    <div id="tresc" tabindex="-1"></div>
+    {% block body %}{% endblock %}
+    <footer class="foot"><span class="foot-mark" aria-hidden="true"></span><span>Kompas Kompetencji · Służba Cywilna</span><span class="foot-right">Ministerstwo Cyfryzacji · Prototyp</span></footer>
+  </div>
+</body>
+</html>

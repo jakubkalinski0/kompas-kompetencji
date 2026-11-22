@@ -1,0 +1,9 @@
+# Zależności produkcyjne (wszystkie na licencjach permisywnych; bez GPL/AGPL).
+fastapi==0.115.0          # MIT (z nim starlette – BSD-3, pydantic – MIT, anyio – MIT)
+uvicorn==0.32.0           # BSD-3
+jinja2==3.1.5             # BSD-3 (z nim markupsafe – BSD-3)
+python-multipart==0.0.22  # Apache-2.0 – upload OSP (.docx)
+itsdangerous==2.2.0       # BSD-3 – podpisane ciasteczko sesji (SessionMiddleware)
+reportlab==4.4.10         # BSD – PDF arkuszy
+pypdf==6.7.5              # BSD-3 – tekst z PDF wgrywanych do bazy wiedzy asystenta
+tzdata==2025.2            # Apache-2.0 – strefa Europe/Warsaw także na Windows

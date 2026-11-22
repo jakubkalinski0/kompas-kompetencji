@@ -1,0 +1,9 @@
+{
+  "title": "Ustawa z dnia 21 listopada 2008 r. o służbie cywilnej – tekst jednolity",
+  "dz_u": "Dz. U. 2026 poz. 590 (obwieszczenie Marszałka Sejmu z 2026-04-17)",
+  "eli": "https://eli.gov.pl/eli/DU/2026/590/ogl",
+  "url": "https://api.sejm.gov.pl/eli/acts/DU/2026/590/text.pdf",
+  "accessed": "2026-11-21",
+  "stan_prawny_na": "2026-04-14",
+  "uwagi": "Tekst z PDF obwieszczenia (pdftotext), naglowki stron usunięte, przypisy dolne oznaczone prefiksem [przypis]. Wersja urzedowa to PDF w Dz. U.; ten plik sluzy do wyszukiwania i cytowania. Kontrola zmian po t.j. patrz research/02_proces_i_przepisy.md."
+}

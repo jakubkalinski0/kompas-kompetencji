@@ -1,0 +1,23 @@
+<div class="ai-proposals" id="osp-ai-slot" aria-live="polite">
+  {% if ai.error %}
+  <p class="msg">{{ ai.error }}{% if ai.detail %} <small class="muted" title="{{ ai.detail[:300] }}">(szczegół techniczny)</small>{% endif %}</p>
+  <button type="button" class="btn secondary small" hx-post="/procesy/{{ proc.id }}/kryteria/ai" hx-target="#osp-ai-slot" hx-swap="outerHTML" hx-disabled-elt="this">Spróbuj ponownie</button>
+  {% else %}
+  {% for c in ai.accepted %}
+  <article class="ai-cand">
+    <h3>{{ c.name }} <button type="button" class="btn small secondary" data-check-criterion="{{ c.criterion_id }}">Zaznacz</button></h3>
+    <p class="statute">Zadanie {{ c.task_no }}: „{{ c.task_quote }}”</p>
+    {% if c.rationale %}<p>{{ c.rationale }}</p>{% endif %}
+    {% if c.indicator_ids %}<ul class="ai-inds">{% for i in c.indicator_ids %}<li>{{ INDICATOR_TEXT.get(i, i) }}</li>{% endfor %}</ul>{% endif %}
+  </article>
+  {% else %}
+  <p class="muted">Brak propozycji z dosłownym cytatem zadania w OSP.</p>
+  {% endfor %}
+  {% if ai.indicators_to_discuss %}
+  <h3>Wskaźniki do omówienia na starcie okresu</h3>
+  <ul class="ai-inds">{% for it in ai.indicators_to_discuss %}<li><strong>{{ CATALOG.get(it.criterion_id, it.criterion_id) }}:</strong> {{ INDICATOR_TEXT.get(it.indicator_id, it.indicator_id) }}{% if it.why %} <small class="muted">– {{ it.why }}</small>{% endif %}</li>{% endfor %}</ul>
+  {% endif %}
+  {% if ai.injection_flag_from_model %}<p class="msg msg-warning">W OSP wykryto tekst przypominający polecenie – potraktowano jako dane.</p>{% endif %}
+  <p class="meta">Model {{ ai.llm.model }}{% if ai.llm.cached %} (cache){% endif %} · przyjęte: {{ ai.accepted|length }}{% if ai.rejected %} · odrzucone przez walidator: {{ ai.rejected|length }} (brak cytatu, kryterium obowiązkowe lub nieznany wskaźnik){% endif %} · propozycja – wybierasz Ty.</p>
+  {% endif %}
+</div>

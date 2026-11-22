@@ -1,0 +1,66 @@
+{% set conv = proc is defined and proc and proc.doc %}
+<aside class="assist" id="assist" aria-label="Asystent AI">
+ <div class="win assist-win">
+  <div class="win-bar"><span class="win-box" aria-hidden="true"></span><span class="win-title">Asystent AI</span><span class="win-hatch" aria-hidden="true"></span><span class="win-aside">z cytatem</span><span class="win-hatch short" aria-hidden="true"></span><span class="win-box" aria-hidden="true"></span></div>
+  <div class="win-body">
+  {% if conv %}
+  <div class="assist-tabs" role="tablist" aria-label="Rodzaj asystenta">
+    <button type="button" role="tab" id="tab-formal" aria-selected="true" aria-controls="assist-formal" data-tab="assist-formal">Asystent formalny</button>
+    <button type="button" role="tab" id="tab-conv" aria-selected="false" aria-controls="assist-conv" data-tab="assist-conv">Asystent rozmowy</button>
+  </div>
+  {% endif %}
+  <section id="assist-formal" role="tabpanel" aria-labelledby="tab-formal" data-assist-scope>
+    {% if not conv %}<h2>Asystent formalny oceny</h2>{% endif %}
+    <p class="scope">Rozmawiaj o zasadach oceny – możesz dopytywać. Odpowiada z cytatem przepisu, poradnika, Q&A KPRM albo modelu MC; bez podstawy odmawia. Nie proponuje ocen.
+       <a href="/asystent">Pełny widok</a> · <a href="/zrodla">Źródła</a></p>
+    <form id="assist-form" class="assist-ask" hx-post="/asystent/formalny" hx-target="#assist-answers" hx-swap="afterbegin"
+          hx-include="#assist-answers input[name=history]"
+          hx-on::after-request="if(event.detail.successful) this.reset()">
+      <input type="hidden" name="process" value="{{ assistant_process or '' }}">
+      <label class="field"><span>Pytanie</span>
+        <textarea name="question" maxlength="500" required data-submit-enter placeholder="np. Ile kryteriów dodatkowych mogę wybrać?"></textarea>
+      </label>
+      <button class="btn small" type="submit">Zapytaj</button>
+      <button class="btn link" type="button" data-assist-clear="assist-answers" hidden>Nowa rozmowa</button>
+      <span class="htmx-indicator">Szukam w przepisach…</span>
+    </form>
+    <div class="examples" aria-label="Przykładowe pytania">
+      {% if assistant_process == 'first' %}
+      <button type="button" data-question="W jakim terminie przełożony przeprowadza rozmowę wstępną w ramach pierwszej oceny?">Termin rozmowy wstępnej</button>
+      <button type="button" data-question="Kiedy pierwsza ocena jest negatywna?">Kiedy pierwsza ocena jest negatywna?</button>
+      <button type="button" data-question="Kogo nie dotyczy egzamin ze służby przygotowawczej przy pierwszej ocenie?">Wyjątki od egzaminu</button>
+      {% else %}
+      <button type="button" data-question="Ile kryteriów dodatkowych mogę wybrać w ocenie okresowej?">Ile kryteriów dodatkowych?</button>
+      <button type="button" data-question="Kiedy ocena okresowa jest negatywna?">Kiedy ocena okresowa jest negatywna?</button>
+      <button type="button" data-question="W jakim terminie oceniany może wnieść sprzeciw od oceny okresowej?">Termin sprzeciwu</button>
+      {% endif %}
+      <button type="button" data-question="Co zrobić, gdy nie miałem okazji zaobserwować danego zachowania pracownika?">Brak podstaw do oceny</button>
+    </div>
+    <div id="assist-answers" aria-live="polite" data-persist="kk-assist-side"></div>
+  </section>
+  {% if conv %}
+  <section id="assist-conv" role="tabpanel" aria-labelledby="tab-conv" hidden>
+    <p class="scope">Przygotowuje pytania, feedback S-D-R, szkic uzasadnienia i wnioski z Twoich notatek. Maskuje dane osobowe („Pracownik A”). Nie proponuje ocen.</p>
+    <form id="conv-form" hx-post="/procesy/{{ proc.id }}/asystent/rozmowa" hx-target="#conv-answers" hx-swap="afterbegin">
+      <label class="field"><span>Wskazówka (opcjonalnie)</span>
+        <textarea name="question" maxlength="500" placeholder="np. skup się na terminowości raportów"></textarea></label>
+      <div class="conv-actions">
+        <button class="btn small" type="submit" name="action" value="questions">Pytania na rozmowę</button>
+        <button class="btn small secondary" type="submit" name="action" value="feedback">Informacja zwrotna</button>
+        <button class="btn small secondary" type="submit" name="action" value="justification">Szkic uzasadnienia</button>
+        <button class="btn small secondary" type="submit" name="action" value="development">{{ 'Wnioski rozwojowe' if proc.kind == 'first' else 'Wnioski do IPRZ' }}</button>
+      </div>
+      <span class="htmx-indicator">Przygotowuję…</span>
+    </form>
+    <p><button class="btn link" type="button" hx-get="/procesy/{{ proc.id }}/asystent/podglad" hx-target="#conv-preview">Co zostanie wysłane do modelu?</button></p>
+    <div id="conv-preview"></div>
+    <div id="conv-answers" aria-live="polite"></div>
+    <p class="scope"><a href="/procesy/{{ proc.id }}/karta.pdf" target="_blank" rel="noopener">Karta przygotowania do rozmowy (PDF)</a> –
+       dokument roboczy; nie trafia do akt ani do HR.{% if not proc.demo %} <a href="/asystent?proces={{ proc.id }}#rozmowa">Pełny widok</a>{% endif %}</p>
+  </section>
+  {% endif %}
+  <p class="privacy">Asystent odrzuca pytania o ocenę pracownika.</p>
+  </div>
+ </div>
+</aside>
+<button class="btn assist-toggle" type="button" data-assist-toggle aria-controls="assist">Asystent AI</button>

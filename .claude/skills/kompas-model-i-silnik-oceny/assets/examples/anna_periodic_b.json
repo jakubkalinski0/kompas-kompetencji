@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.0",
+  "form": "periodic_b",
+  "case_id": "demo-anna-2026",
+  "office_name": "Ministerstwo Cyfryzacji (dane fikcyjne – demo)",
+  "employee": {
+    "full_name": "Anna Przykładowa",
+    "first_name": "Anna",
+    "last_name": "Przykładowa",
+    "position": "Naczelniczka Wydziału Analiz Zagrożeń",
+    "unit": "Departament Cyberbezpieczeństwa",
+    "corps_status": "urzednik_sc"
+  },
+  "evaluator": {
+    "full_name": "Marek Kierownik-Demo",
+    "first_name": "Marek",
+    "last_name": "Kierownik-Demo",
+    "position": "Dyrektor Departamentu Cyberbezpieczeństwa",
+    "unit": "Departament Cyberbezpieczeństwa"
+  },
+  "part1": {
+    "criteria_meeting_date": "2024-11-08",
+    "evaluation_deadline": "2026-11-06"
+  },
+  "interview_date": "2026-11-05",
+  "period": {
+    "from": null,
+    "to": "2026-11-06"
+  },
+  "criteria": [
+    {
+      "id": "zarzadzanie_ludzmi",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "zarzadzanie_ludzmi.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.3",
+          "level": 5,
+          "no_basis": false,
+          "sdr_note": "S: rotacja 2 osób w wydziale; D: plan wdrożenia i mentoring; R: nowe osoby samodzielne po 6 tygodniach."
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.4",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.5",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.6",
+          "level": null,
+          "no_basis": true,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "podejmowanie_decyzji_i_odpowiedzialnosc",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "podejmowanie_decyzji_i_odpowiedzialnosc.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "podejmowanie_decyzji_i_odpowiedzialnosc.2",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "podejmowanie_decyzji_i_odpowiedzialnosc.3",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": "Decyzje w incydencie z marca wymagały kilku konsultacji z dyrektorem – zostaję przy 5 pkt."
+    },
+    {
+      "id": "organizacja_pracy_i_orientacja_na_osiaganie_celow",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.1",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.2",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.3",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.4",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.5",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "wspolpraca",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wspolpraca.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.4",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.5",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.6",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.4",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "myslenie_analityczne",
+      "kind": "additional",
+      "indicator_ratings": [
+        {
+          "indicator_id": "myslenie_analityczne.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "myslenie_analityczne.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "myslenie_analityczne.3",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    }
+  ],
+  "justification": "Ocena pozytywna: kryteria spełniane co najmniej na poziomie oczekiwań, wyróżniające zarządzanie zespołem i współpraca.",
+  "development_conclusions": "Szkolenie z delegowania i podejmowania decyzji w sytuacjach kryzysowych; udział w programie mentoringu dla kadry kierowniczej.",
+  "previous_evaluation": {
+    "result": "pozytywna",
+    "level_label": "na poziomie oczekiwań",
+    "date": "2024-10-15"
+  },
+  "part3_requested": true,
+  "part3": {
+    "appointment_year": 2019,
+    "current_grade": "drugi",
+    "current_grade_date": "2021-05-04",
+    "requested_grade": "trzeci",
+    "motivation": "Stabilnie wysoka jakość zarządzania wydziałem i współpracy międzydepartamentowej w całym okresie oceny."
+  },
+  "audit_log": []
+}

@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kompas-kompetencji/evaluation_schema/1.0",
+  "title": "Dokument oceny – Kompas Kompetencji (kontrakt C3)",
+  "description": "Jeden dokument = jedna ocena (okresowa B/C albo pierwsza). Pola oznaczone w opisie jako 'ENGINE' wypełnia silnik (scripts/kompas_engine); pola 'PRZEŁOŻONY' wypełnia człowiek. Silnik nigdy nie ustawia final_points. Daty w formacie ISO YYYY-MM-DD, znaczniki czasu ISO 8601. Reguły biznesowe (skale, progi, warunki oceny) są w assets/forms_config.json, nie w tym schemacie.",
+  "type": "object",
+  "required": ["schema_version", "form", "employee", "evaluator", "criteria"],
+  "properties": {
+    "schema_version": {"type": "string", "enum": ["1.0"]},
+    "form": {"type": "string", "enum": ["periodic_b", "periodic_c", "first_eval"], "description": "periodic_b = Arkusz B (zał. nr 3 rozp. 2016), periodic_c = Arkusz C (zał. nr 4 rozp. 2016), first_eval = Arkusz pierwszej oceny (zał. nr 2 rozp. 2015)."},
+    "case_id": {"type": "string", "description": "Identyfikator procesu w aplikacji (opcjonalny)."},
+    "office_name": {"type": "string", "description": "NAZWA URZĘDU (wszystkie arkusze)."},
+    "employee": {"$ref": "#/$defs/employee"},
+    "evaluator": {"$ref": "#/$defs/person", "description": "Oceniający / bezpośredni przełożony."},
+    "unit_head": {"$ref": "#/$defs/unit_head", "description": "first_eval: kierujący komórką organizacyjną (art. 38 ust. 2 ustawy, § 8 ust. 2 i § 10 ust. 6 rozp. 2015)."},
+    "part1": {"$ref": "#/$defs/part1"},
+    "first_eval_intro": {"$ref": "#/$defs/first_eval_intro"},
+    "interview_date": {"type": ["string", "null"], "format": "date", "description": "Data przeprowadzenia rozmowy oceniającej (Cz. II arkusza B/C, przypis 5; Cz. III arkusza pierwszej oceny)."},
+    "period": {"$ref": "#/$defs/period"},
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "description": "periodic: 5 obowiązkowych + najwyżej 3 dodatkowe (limit sprawdza reguła P-MAX-ADDITIONAL, nie schemat); first_eval: dokładnie 5 elementów.",
+      "items": {"$ref": "#/$defs/criterion"}
+    },
+    "average": {"type": ["number", "null"], "description": "ENGINE. Średnia arytmetyczna ocen cząstkowych (final_points), zaokrąglona do 2 miejsc; null, dopóki brakuje którejkolwiek final_points."},
+    "average_display": {"type": ["string", "null"], "description": "ENGINE. Średnia z przecinkiem dziesiętnym, np. '5,40'."},
+    "overall_level": {"$ref": "#/$defs/overall_level"},
+    "result": {"type": ["string", "null"], "enum": ["pozytywna", "negatywna", null], "description": "ENGINE. Wynik wyliczony z reguł (§ 11 ust. 1 pkt 3–4 rozp. 2016; § 10 rozp. 2015)."},
+    "justification": {"type": ["string", "null"], "description": "PRZEŁOŻONY. Uzasadnienie – obowiązkowe przy ocenie negatywnej (§ 11 ust. 3 rozp. 2016; § 10 ust. 4 rozp. 2015)."},
+    "development_conclusions": {"type": ["string", "null"], "description": "PRZEŁOŻONY. periodic: wnioski do IPRZ (§ 11 ust. 1 pkt 5 rozp. 2016, art. 81 ust. 5 ustawy). first_eval: wnioski dotyczące rozwoju zawodowego – tylko przy ocenie pozytywnej (§ 10 ust. 6 rozp. 2015, przypis 8)."},
+    "previous_evaluation": {"$ref": "#/$defs/previous_evaluation"},
+    "part3_requested": {"type": "boolean", "description": "PRZEŁOŻONY. periodic: czy oceniający składa wniosek o kolejny stopień służbowy (Część III)."},
+    "part3": {"$ref": "#/$defs/part3"},
+    "part3_attached": {"type": ["string", "null"], "enum": ["tak", "nie", "nie_dotyczy", null], "description": "ENGINE. Pole 'CZY DO OCENY OKRESOWEJ DOŁĄCZONO WNIOSEK…' (przypis 16); nie_dotyczy = pracownik SC."},
+    "exam": {"type": ["string", "null"], "enum": ["tak", "nie", "nie_dotyczy", null], "description": "first_eval. Oceniany zaliczył egzamin ze służby przygotowawczej (przypis 5 arkusza pierwszej oceny)."},
+    "exam_exemption": {"type": ["string", "null"], "enum": ["ksap_bez_wniosku_o_mianowanie", "zastepstwo", "wyzsze_stanowisko", null], "description": "first_eval, gdy exam = nie_dotyczy: który z trzech wyjątków § 10 ust. 3 rozp. 2015 zachodzi."},
+    "report_submitted_on_time": {"type": ["boolean", "null"], "description": "first_eval. Sprawozdanie złożone w wyznaczonym terminie (§ 10 ust. 1 pkt 2 rozp. 2015)."},
+    "objection_notice": {"type": ["string", "null"], "description": "ENGINE. Pouczenie o sprzeciwie (art. 83 ust. 1 ustawy) – tylko periodic."},
+    "audit_log": {"type": "array", "items": {"$ref": "#/$defs/audit_entry"}},
+    "validation": {"$ref": "#/$defs/validation"},
+    "guard": {"type": "array", "items": {"$ref": "#/$defs/guard_message"}, "description": "ENGINE. Komunikaty strażnika błędów (guard.py)."},
+    "print": {
+      "type": "object",
+      "description": "ENGINE. Wskazówki dla renderera PDF.",
+      "properties": {
+        "include_part3": {"type": "boolean"},
+        "include_previous_evaluation": {"type": "boolean"},
+        "include_development_conclusions": {"type": "boolean"},
+        "include_objection_notice": {"type": "boolean"}
+      }
+    }
+  },
+  "$defs": {
+    "person": {
+      "type": "object",
+      "required": ["full_name", "position"],
+      "properties": {
+        "full_name": {"type": "string", "minLength": 1},
+        "first_name": {"type": "string"},
+        "last_name": {"type": "string"},
+        "position": {"type": "string", "description": "Pełna nazwa stanowiska z rozszerzeniem (przypis 2 arkuszy B/C)."},
+        "unit": {"type": "string", "description": "Komórka organizacyjna."}
+      }
+    },
+    "employee": {
+      "type": "object",
+      "required": ["full_name", "position", "corps_status"],
+      "properties": {
+        "full_name": {"type": "string", "minLength": 1},
+        "first_name": {"type": "string"},
+        "last_name": {"type": "string"},
+        "position": {"type": "string"},
+        "unit": {"type": "string"},
+        "corps_status": {"type": "string", "enum": ["urzednik_sc", "pracownik_sc"]},
+        "employment_start": {"type": ["string", "null"], "format": "date", "description": "first_eval: data nawiązania stosunku pracy (przypis 1 arkusza pierwszej oceny – przy zastępstwie data ustalenia, że oceniany podlega pierwszej ocenie)."},
+        "osp_ref": {"type": "string", "description": "Opcjonalnie: identyfikator/plik OSP."}
+      }
+    },
+    "unit_head": {
+      "type": "object",
+      "required": ["full_name"],
+      "properties": {
+        "full_name": {"type": "string"},
+        "position": {"type": "string"},
+        "unit": {"type": "string"},
+        "participated_in_interview": {"type": "boolean", "description": "§ 8 ust. 2 rozp. 2015 – może uczestniczyć w rozmowie oceniającej."},
+        "agreement_confirmed": {"type": "boolean", "description": "Porozumienie z kierującym komórką (art. 38 ust. 2 ustawy; § 10 ust. 6 rozp. 2015 dla wniosków rozwojowych)."},
+        "signed_on": {"type": ["string", "null"], "format": "date", "description": "Data podpisu w części 'Potwierdzenie dokonania pierwszej oceny'."}
+      }
+    },
+    "part1": {
+      "type": "object",
+      "description": "periodic: Część I arkusza B/C.",
+      "properties": {
+        "criteria_meeting_date": {"type": ["string", "null"], "format": "date", "description": "Data rozmowy z § 5 ust. 1 i zapoznania z kryteriami (podpisy w Cz. I); = period.from (przypis 6)."},
+        "evaluation_deadline": {"type": ["string", "null"], "format": "date", "description": "Termin sporządzenia oceny (Cz. I)."},
+        "goals": {"type": ["string", "null"], "description": "Cele omówione w rozmowie (§ 5 ust. 1 pkt 4) – opcjonalne, nie drukuje się w arkuszu."}
+      }
+    },
+    "first_eval_intro": {
+      "type": "object",
+      "description": "first_eval: Rozmowa wstępna (§ 3–4 rozp. 2015).",
+      "properties": {
+        "intro_interview_date": {"type": ["string", "null"], "format": "date"},
+        "report_deadline": {"$ref": "#/$defs/date_range"},
+        "evaluation_window": {"$ref": "#/$defs/date_range"}
+      }
+    },
+    "date_range": {
+      "type": "object",
+      "properties": {
+        "from": {"type": ["string", "null"], "format": "date"},
+        "to": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "period": {
+      "type": "object",
+      "description": "periodic: OKRES, W KTÓRYM OCENIANY PODLEGAŁ OCENIE (Cz. II).",
+      "properties": {
+        "from": {"type": ["string", "null"], "format": "date", "description": "Przypis 6: data zapoznania ocenianego z kryteriami oceny (Cz. I)."},
+        "to": {"type": ["string", "null"], "format": "date", "description": "Przypis 7: data sporządzenia oceny na piśmie albo – przy art. 81 ust. 6 ustawy, gdy ocena nie została sporządzona przed zmianą stanowiska – ostatni dzień pracy na stanowisku."},
+        "to_basis": {"type": "string", "enum": ["data_sporzadzenia_oceny", "art_81_ust_6_ostatni_dzien_na_stanowisku"]}
+      }
+    },
+    "indicator_rating": {
+      "type": "object",
+      "required": ["indicator_id"],
+      "properties": {
+        "indicator_id": {"type": "string", "description": "Np. 'komunikacja.1' (competency_model.json, kontrakt C1)."},
+        "level": {"type": ["integer", "null"], "minimum": 1, "maximum": 5, "description": "PRZEŁOŻONY. Poziom opisu zachowania 1–5 (1 = znacznie poniżej … 5 = znacznie powyżej oczekiwań); null = nie oceniono."},
+        "no_basis": {"type": "boolean", "description": "PRZEŁOŻONY. 'brak podstaw do oceny' – wskaźnik wyłączony ze średniej."},
+        "sdr_note": {"type": ["string", "null"], "description": "PRZEŁOŻONY. Przykład Sytuacja–Działanie–Rezultat. Notatka robocza – nie drukuje się w arkuszu urzędowym."}
+      }
+    },
+    "suggestion": {
+      "type": ["object", "null"],
+      "description": "ENGINE. Sugerowany poziom kryterium (funkcja pomocnicza; nie jest oceną).",
+      "properties": {
+        "points": {"type": ["integer", "null"], "description": "Sugerowane punkty w skali formularza (periodic 1/3/5/7/9; first_eval 3/5/7)."},
+        "level": {"type": ["integer", "null"], "minimum": 1, "maximum": 5, "description": "Poziom 1–5 skali modelu/rozporządzenia 2016."},
+        "level_key": {"type": ["string", "null"]},
+        "level_label": {"type": ["string", "null"]},
+        "average": {"type": ["number", "null"]},
+        "average_display": {"type": ["string", "null"]},
+        "method": {"type": "string", "enum": ["mean", "median"]},
+        "formula": {"type": ["string", "null"], "description": "Wzór do pokazania przełożonemu, np. '(7+5+7)/3 = 6,33 → powyżej oczekiwań → 7 pkt'."},
+        "rated_count": {"type": "integer"},
+        "no_basis_count": {"type": "integer"},
+        "unrated_count": {"type": "integer"},
+        "total_count": {"type": "integer"},
+        "mapping_note": {"type": ["string", "null"], "description": "first_eval: informacja o mapowaniu 5 poziomów → 3/5/7 (do potwierdzenia z mentorem MC)."},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "required": ["id", "kind"],
+      "properties": {
+        "id": {"type": "string", "description": "ASCII snake_case (kontrakt C1), np. 'komunikacja'."},
+        "name": {"type": "string", "description": "Nazwa kryterium/elementu w brzmieniu rozporządzenia."},
+        "kind": {"type": "string", "enum": ["mandatory", "additional", "first_eval_element"]},
+        "indicator_ratings": {"type": "array", "items": {"$ref": "#/$defs/indicator_rating"}},
+        "suggestion": {"$ref": "#/$defs/suggestion"},
+        "final_points": {"type": ["integer", "null"], "enum": [1, 3, 5, 7, 9, null], "description": "PRZEŁOŻONY. Ocena cząstkowa wybrana przez przełożonego. periodic: 1/3/5/7/9; first_eval: 3/5/7."},
+        "override_note": {"type": ["string", "null"], "description": "PRZEŁOŻONY. Opcjonalna, nieblokująca notatka przy odejściu od sugestii."}
+      }
+    },
+    "overall_level": {
+      "type": ["object", "null"],
+      "description": "ENGINE. periodic: ogólny poziom spełniania kryteriów (§ 11 ust. 1 pkt 2 rozp. 2016). first_eval: null (rozp. 2015 nie przewiduje poziomu ogólnego, tylko ocenę łączną).",
+      "properties": {
+        "level": {"type": "integer", "minimum": 1, "maximum": 5},
+        "key": {"type": "string"},
+        "label": {"type": "string"},
+        "range_label": {"type": "string", "description": "Np. 'powyżej 4 punktów do 6 punktów'."}
+      }
+    },
+    "previous_evaluation": {
+      "type": ["object", "null"],
+      "description": "periodic, urzędnik SC: DANE DOTYCZĄCE POPRZEDNIEJ OCENY OKRESOWEJ (przypisy 14–15).",
+      "properties": {
+        "result": {"type": ["string", "null"], "enum": ["pozytywna", "negatywna", null]},
+        "level_label": {"type": ["string", "null"], "description": "Np. 'na poziomie oczekiwań' (przypis 15)."},
+        "date": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "part3": {
+      "type": ["object", "null"],
+      "description": "periodic: Część III – wniosek o przyznanie kolejnego stopnia służbowego (art. 89 ust. 1 ustawy; § 11 ust. 5 rozp. 2016; przypis 18).",
+      "properties": {
+        "appointment_year": {"type": ["integer", "null"]},
+        "current_grade": {"type": ["string", "null"]},
+        "current_grade_date": {"type": ["string", "null"], "format": "date"},
+        "requested_grade": {"type": ["string", "null"]},
+        "motivation": {"type": ["string", "null"], "description": "Umotywowanie wniosku."}
+      }
+    },
+    "audit_entry": {
+      "type": "object",
+      "required": ["at", "actor", "action"],
+      "properties": {
+        "at": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string", "description": "Kto (login/rola), np. 'marek.kierownik-demo (przełożony)'."},
+        "action": {"type": "string", "enum": ["final_points_set", "override_suggestion", "indicator_rated", "result_computed", "note_added", "document_validated"]},
+        "criterion_id": {"type": ["string", "null"]},
+        "suggested": {"type": ["integer", "null"]},
+        "final": {"type": ["integer", "null"]},
+        "note": {"type": ["string", "null"], "description": "Opcjonalna, nieblokująca notatka przełożonego."}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "description": "ENGINE. Wynik walidacji formalnej.",
+      "properties": {
+        "ok": {"type": "boolean"},
+        "complete": {"type": "boolean", "description": "Czy dokument jest gotowy do druku (wszystkie final_points i pola obowiązkowe)."},
+        "errors": {"type": "array", "items": {"$ref": "#/$defs/issue"}},
+        "warnings": {"type": "array", "items": {"$ref": "#/$defs/issue"}}
+      }
+    },
+    "issue": {
+      "type": "object",
+      "properties": {
+        "rule_id": {"type": "string"},
+        "message": {"type": "string"},
+        "path": {"type": "string"},
+        "source": {"type": "string"}
+      }
+    },
+    "guard_message": {
+      "type": "object",
+      "properties": {
+        "rule_id": {"type": "string"},
+        "severity": {"type": "string", "enum": ["info", "hint", "alert", "warning"]},
+        "criterion_id": {"type": ["string", "null"]},
+        "indicator_id": {"type": ["string", "null"]},
+        "message": {"type": "string"},
+        "source": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {"process_id": "P-2026-001", "type": "periodic", "form": "periodic_b", "status": "do_podpisu",
+   "employee": {"full_name": "Anna Przykładowa", "unit": "Wydział Rozwoju Usług, Departament Demo", "position": "Naczelnik wydziału"},
+   "evaluator": {"full_name": "Marek Kierownik-Demo", "email": "marek.kierownik-demo@example.invalid"},
+   "dates": {"previous_evaluation_date": "2024-11-20", "previous_result": "pozytywna", "criteria_meeting_date": "2024-11-25",
+             "evaluation_deadline": "2026-11-25"}},
+  {"process_id": "P-2026-002", "type": "periodic", "form": "periodic_c", "status": "kryteria_ustalone",
+   "employee": {"full_name": "Jan Testowy", "unit": "Departament Prawny Demo", "position": "Radca"},
+   "evaluator": {"full_name": "Marek Kierownik-Demo", "email": "marek.kierownik-demo@example.invalid"},
+   "dates": {"previous_evaluation_date": "2024-11-04", "previous_result": "pozytywna", "criteria_meeting_date": "2024-12-02",
+             "evaluation_deadline": "2026-12-01"}},
+  {"process_id": "P-2026-003", "type": "periodic", "form": "periodic_c", "status": "nie_rozpoczeta",
+   "employee": {"full_name": "Ewa Fikcyjna", "unit": "Departament Cyberbezpieczeństwa", "position": "Starszy specjalista"},
+   "evaluator": {"full_name": "Marek Kierownik-Demo", "email": "marek.kierownik-demo@example.invalid"},
+   "dates": {"previous_evaluation_date": "2026-10-20", "previous_result": "negatywna", "previous_acquainted_date": "2026-10-22"}},
+  {"process_id": "P-2026-004", "type": "first", "form": "first_eval", "status": "w_trakcie",
+   "employee": {"full_name": "Piotr Nowak-Demo", "unit": "Wydział Rozwoju Usług, Departament Demo", "position": "Specjalista"},
+   "evaluator": {"full_name": "Anna Przykładowa", "email": "anna.przykladowa@example.invalid"},
+   "unit_head": {"full_name": "Marek Kierownik-Demo"},
+   "dates": {"employment_start": "2026-01-12", "intro_interview_date": "2026-01-20",
+             "report_deadline": {"from": "2026-09-14", "to": "2026-09-25"}, "report_submitted_date": "2026-09-22"}}
+]

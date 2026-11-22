@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+{% from "_ui.html" import bar %}
+{% block title %}System projektowy – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">/design · system projektowy</span>{% endblock %}
+{% block body %}
+<section class="band">
+  <div class="art art-band" data-art="compass" data-cx="0.6" data-cy="0.98" data-r="0.92" data-seed="47" data-keep-left="0.12"></div>
+  <div class="band-inner">
+    <div>
+      <p class="part-label">System projektowy</p>
+      <h1>Roman Pilaster – narzędzia w oknach, dokument na liniach</h1>
+      <p>Ocena pracownika to sprawa z sygnaturą, arkuszem w częściach i podstawą prawną przy każdej decyzji.
+         Narzędzia (wybór roli, asystent, Kompas poziomu, wynik) stoją w oknach z mosiężnym obrysem. Dokumenty (rejestry, arkusz, przepisy) zostają na liniach.
+         Komponenty poniżej renderuje ten sam arkusz stylów co aplikacja.</p>
+    </div>
+    <dl class="counters">
+      <div><dt>Zaokrąglenia</dt><dd>0</dd></div>
+      <div><dt>Kroje OFL</dt><dd>4</dd></div>
+      <div><dt>Role kolorów</dt><dd>4</dd></div>
+    </dl>
+  </div>
+</section>
+<main class="page">
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">I</div><p class="sheet-note">Kierunek wizualny</p></div>
+    <div class="sheet-main">
+      <h2>Kierunek: Roman Pilaster (wariant lekki)</h2>
+      <p class="lead">Neoklasyczny język instytucjonalny w lekkim wydaniu: czysty trawertyn zamiast wzorzystego tła, głęboka czerwień Oxblood dla decyzji przełożonego,
+         antyczny mosiądz dla sugestii systemu i ornamentu, szeryfowa typografia Bona Nova oraz rzymska numeracja kroków I–VI.
+         Układ zachowuje podział na okna narzędziowe, sygnatury spraw i dosłowne cytowanie przepisów.</p>
+      <table class="register">
+        <thead><tr><th>Motyw architektoniczny</th><th>Zastosowanie w Kompasie</th></tr></thead>
+        <tbody>
+          <tr><td>Meander (fryz SVG 24×10)</td><td>Pasek nawigacji oraz paski tytułowe okien <code>.win-bar</code> (z obróconym mosiężnym rombem <code>.win-box</code>).</td></tr>
+          <tr><td>Kanelowane pilastry</td><td>Pionowe obramowanie ekranu logowania oraz marginesy kroków procesu <code>.sheet-margin</code> (bez ciężkich głowic i tympanonów).</td></tr>
+          <tr><td>Kolumnada w znaku wodnym</td><td>Pasy nagłówkowe <code>.band</code> (Pulpit, Panel HR, Źródła, <code>/design</code>), wygaszone gradientem do bieli karty.</td></tr>
+          <tr><td>Reaktywny kompas w rastrze</td><td>Tarcza <code>&lt;canvas&gt;</code> (<code>[data-art]</code>): igła na sprężynie szuka kursora lub fokusu klawiatury, kwadraciki odsuwają się o jedno pole siatki. Znak w topbarze (22×22 px) działa tak samo.</td></tr>
+          <tr><td>Cyfry rzymskie I–VI</td><td>Kroki procesu (<code>.stepnav</code>, <code>.sheet-no</code>) w kroju kapitalikowym Bona Nova SC.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">II</div><p class="sheet-note">Tokeny w :root pliku app.css. Kontrast liczony wg WCAG 2.1 (wszystkie pary tekst/tło ≥ AA, główne AAA).</p></div>
+    <div class="sheet-main">
+      <h2>Kolory i cztery role znaczeniowe</h2>
+      <div class="swatches">
+        {% for name, var, hexv, role in [
+          ('Trawertyn', '--paper', '#f4f1ea', 'Czyste tło stron (bez pola magnetycznego i kropek).'),
+          ('Karta', '--field', '#fcfbf8', 'Okna, formularze, tabele, kafelki KPI, topbar i stopka.'),
+          ('Kamień', '--art', '#eae4d7', 'Tło próbek, podgląd maskowania RODO, pasywne elementy.'),
+          ('Atrament', '--ink', '#1c1716', 'Tekst główny, obrysy okien, cienie. 15,7:1 na trawertynie (17,1:1 na karcie).'),
+          ('Atrament 2', '--ink-2', '#433b37', 'Tekst drugorzędny i opisy. 9,7:1.'),
+          ('Atrament 3', '--ink-3', '#635953', 'Etykiety, metadane, placeholdery. 6,0:1 na trawertynie, 5,7:1 na mosiądzu jasnym.'),
+          ('Linia', '--rule', '#c8beae', 'Podział sekcji i pól.'),
+          ('Linia wiersza', '--rule-2', '#e0d8ca', 'Podział wierszy w tabelach i listach.'),
+          ('Oxblood', '--blue', '#5c1022', 'Władza i decyzja człowieka (pełne wypełnienie), karta sprawy, przyciski główne, aktywny krok. 12,0:1; biały na nim 13,5:1.'),
+          ('Oxblood ciemny', '--blue-deep', '#3d0916', 'Odnośniki, najechanie na przycisk główny. 14,9:1.'),
+          ('Oxblood jasny', '--blue-ink', '#f5e8eb', 'Tło wybranego opisu zachowania i zaznaczonego kryterium.'),
+          ('Oxblood miękki', '--blue-soft', '#efd1d8', 'Tekst drugorzędny na ciemnej belce sprawy. 9,5:1 na Oxbloodzie.'),
+          ('Antyczny mosiądz', '--brass', '#7c5c1e', 'Sugestia systemu, nagłówki tabel, ramki przycisków drugorzędnych, akcent rastra. 5,5:1 na trawertynie (6,0:1 na karcie).'),
+          ('Linia mosiężna', '--brass-line', '#b5934c', 'Podwójne linie 3px double, fryz meandrowy, wewnętrzne obrysy okien.'),
+          ('Mosiądz jasny', '--moss', '#f2ead7', '„Tu jesteś”, sugestia, flaga „zbliża się” (z atramentem 14,8:1).'),
+          ('Zieleń', '--ok', '#1f5c3a', 'Ocena POZYTYWNA i potwierdzenie zapisu. 7,0:1 (tło --ok-wash #e8f3ec).'),
+          ('Czerwień', '--red', '#b91c1c', 'Wyłącznie skutek prawny: ocena NEGATYWNA, termin minął, obowiązkowe uzasadnienie. 5,7:1 (tło --red-wash #fdeaea).')] %}
+        <div class="swatch"><div class="chip" style="background: var({{ var }})"></div>
+          <div><div class="name">{{ name }}</div><div class="tok">{{ var }} · {{ hexv }}</div><div class="role">{{ role }}</div></div></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">III</div><p class="sheet-note">Stała zasada w całej aplikacji: jedno znaczenie, jeden wygląd.</p></div>
+    <div class="sheet-main">
+      <h2>Sugestia systemu, decyzja człowieka, skutek prawny</h2>
+      <p class="lead">System podpowiada przerywanym mosiądzem, przełożony decyduje pełnym Oxbloodem, a przepis wyznacza skutek prawny czerwienią.
+         Każda z ról wygląda tak samo w całym procesie.</p>
+      <section class="compass win" style="position: static">
+        <div class="compass-head win-bar"><span class="win-box" aria-hidden="true"></span><span class="win-title">Kompas poziomu</span><span class="win-hatch" aria-hidden="true"></span><span class="counts win-aside">ocenione 3 z 4 · brak podstaw: 1</span><span class="win-box" aria-hidden="true"></span></div>
+        <div class="compass-body">
+          <p class="formula"><span class="formula-label">sugestia</span> <b>(7+5+7)/3 = 6,33 ↣ powyżej oczekiwań ↣ 7 pkt</b></p>
+          <div class="decision-form">
+            <fieldset class="decision">
+              <legend>Twoja decyzja</legend>
+              {% for p, l in [(1, 'znacznie poniżej oczekiwań'), (3, 'poniżej oczekiwań'), (5, 'na poziomie oczekiwań'), (7, 'powyżej oczekiwań'), (9, 'znacznie powyżej oczekiwań')] %}
+              <label class="pt{% if p == 7 %} suggested{% endif %}"><input type="radio" name="demo-points" value="{{ p }}" {% if p == 5 %}checked{% endif %}>
+                <b>{{ p }} pkt</b><span>{{ l }}</span>{% if p == 7 %}<span class="sug">sugestia</span>{% endif %}</label>
+              {% endfor %}
+            </fieldset>
+            <div class="decision-actions"><span class="btn">Zapisz decyzję</span></div>
+          </div>
+          <p class="decided">Zapisana decyzja: <strong>5 pkt</strong> – inna niż sugestia (7 pkt), wpis w śladzie decyzji.</p>
+          <p class="msg msg-alert">Rzetelność: „znacznie poniżej oczekiwań” (1 pkt) oznacza ocenę okresową NEGATYWNĄ niezależnie od średniej.<span class="src">§ 11 ust. 1 pkt 4 i ust. 3 rozp. 2016</span></p>
+        </div>
+      </section>
+      <ul class="rules-list" style="margin-top:22px">
+        <li><span class="yes">sugestia</span><span>Przerywany antyczny mosiądz (<code>2px dashed var(--brass)</code>) na jasnym tle i etykieta „sugestia” – wzór liczony regułą, nigdy wybrany za człowieka. Tak samo propozycja arkusza z OSP i propozycje AI.</span></li>
+        <li><span class="yes">decyzja</span><span>Pełne wypełnienie Oxblood (<code>var(--blue)</code>) – to, co zatwierdził przełożony; wyłącznie decyzje wchodzą do wyniku i arkusza PDF.</span></li>
+        <li><span class="yes">tu jesteś</span><span>Jasny mosiądz (<code>var(--moss)</code>) i linia Oxblood – aktywny krok, kryterium, zakładka. Nie oznacza wyboru oceny.</span></li>
+        <li><span class="no">skutek</span><span>Czerwień (<code>var(--red)</code>) – wyłącznie ocena negatywna, obowiązkowe uzasadnienie i przekroczony termin.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">IV</div><p class="sheet-note">Cztery lokalne rodziny OFL w /static/fonts (latin i latin-ext z ĄĆĘŁŃÓŚŹŻ) – zero zapytań CDN.</p></div>
+    <div class="sheet-main">
+      <h2>Typografia (OFL, bez CDN)</h2>
+      <p class="lead">Polski krój szeryfowy Bona Nova i kapitaliki Bona Nova SC nadają rangę tytułom, cyfrom rzymskim i cytatom prawnym.
+         Archivo niesie formularze i tabele, a IBM Plex Mono – sygnatury, daty, wzory i paski okien.</p>
+      <div class="type-row"><div class="spec">Bona Nova SC · 700<br>znak, cyfry I–VI, liczniki KPI, werdykt</div>
+        <div style="font-family:var(--sc); font-size:32px; font-weight:700; letter-spacing:.04em; line-height:1.05">KOMPAS KOMPETENCJI · I II III IV V VI · 6,33</div></div>
+      <div class="type-row"><div class="spec">Bona Nova · 700<br>tytuły pasów i ekranów (h1, h2)</div>
+        <div style="font-family:var(--display); font-size:34px; font-weight:700; letter-spacing:-.015em; line-height:1.08">Ocena okresowa – Ewa Fikcyjna</div></div>
+      <div class="type-row"><div class="spec">Bona Nova · 400 Italic<br>cytaty przepisów i fragmenty OSP</div>
+        <div class="statute">§ 11. 1. Sporządzenie oceny na piśmie polega na: 1) przyznaniu ocen cząstkowych odpowiednio do poziomu spełniania przez ocenianego każdego z kryteriów obowiązkowych i kryteriów dodatkowych…</div></div>
+      <div class="type-row"><div class="spec">Archivo Variable · 400 / 600<br>treść, formularze, tabele, przyciski</div>
+        <div>Dla każdego wskaźnika zaznacz opis zachowania, który najlepiej oddaje zachowanie ocenianego w okresie oceny. Zażółć gęślą jaźń.</div></div>
+      <div class="type-row"><div class="spec">IBM Plex Mono · 400 / 500 / 600<br>paski okien, etykiety, sygnatury, wzory</div>
+        <div><span class="win-title" style="font-size:13px">Kompas poziomu</span> · <span class="part-label">Część II arkusza – wynik</span><br>
+          <span class="mono" style="font-size:13.5px">P-2026-747B · do 20.01.2027 · (5+5+5+7+5+7)/6 = 5,67</span></div></div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">V</div><p class="sheet-note">Od 1280 px trzy obszary; poniżej 1280 px asystent wysuwany; na smartfonach blokada po wykryciu urządzenia (<code>html.is-mobile</code>).</p></div>
+    <div class="sheet-main">
+      <h2>Układ ekranu procesu</h2>
+      <div class="anatomy">
+        <div>Nagłówek (stały): kompas · KOMPAS KOMPETENCJI · Pulpit · Źródła · System projektowy · [fryz meandrowy / skrót kroków] · osoba · ROLA</div>
+        <div>Kroki (cyfry rzymskie): ✓ I Opis stanowiska · ✓ II Arkusz · [III] Kryteria … ↢ Wszystkie oceny</div>
+        <div class="a-docket">Karta sprawy (Oxblood + linia mosiężna): oceniany, stanowisko ··· Sygnatura · Arkusz · Status · Najbliższy termin</div>
+        <div class="a-row"><span>Margines z kanelurą:<br>„V” w Bona Nova SC<br>podstawa prawna</span><span>Treść kroku na liniach: tytuł, formularz, tabele<br><br>[okno] Kompas poziomu – przypięty u dołu</span><span>[okno] Asystent formalny / Asystent rozmowy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">VI</div><p class="sheet-note">Klasy z app.css; każdy element występuje w aplikacji.</p></div>
+    <div class="sheet-main">
+      <h2>Komponenty</h2>
+      <h3>Okno</h3>
+      <section class="win" style="max-width:34em">
+        {{ bar('Rozpocznij ocenę', aside='2 ścieżki') }}
+        <div class="win-body"><p>Obramowanie 1,5 px atramentu, wewnętrzna ramka mosiężna, romb 45°, meander w pasku i subtelny cień 4 px.
+          Okno z fokusem podświetla pasek w Oxbloodzie.</p><label class="field"><span>Pole w oknie</span><input type="text" placeholder="Kliknij tutaj"></label></div>
+      </section>
+      <h3>Przyciski</h3>
+      <p style="display:flex; flex-wrap:wrap; gap:14px; align-items:center"><span class="btn go">Zatwierdź kryteria</span> <span class="btn secondary">Wybieram Arkusz B</span> <span class="btn small">Zapytaj</span>
+         <span class="btn disabled">Pobierz arkusz PDF</span> <span class="btn link">Zmień rolę</span></p>
+      <h3>Pola wyboru</h3>
+      <p style="display:flex; gap:22px; align-items:center"><label><input type="checkbox" checked> zaznaczone</label> <label><input type="checkbox"> puste</label>
+         <label><input type="radio" name="demo-r" checked> opcja wybrana</label> <label><input type="radio" name="demo-r"> opcja</label></p>
+      <h3>Znaczniki i flagi</h3>
+      <p style="display:flex; flex-wrap:wrap; gap:8px; align-items:center"><span class="role-tag">przełożony</span> <span class="role-tag">HR</span> <span class="tag periodic">Arkusz C</span> <span class="tag demo">przykład demo</span> <span class="cand-note">propozycja z OSP</span>
+         <span class="flag late">termin minął</span> <span class="flag soon">zbliża się</span> <span class="res-tag pos">pozytywna</span> <span class="res-tag neg">negatywna</span> <span class="confidence">pewność: wysoka</span></p>
+      <h3>Komunikaty</h3>
+      <p class="flash ok">Zapisano dane do arkusza.</p>
+      <p class="msg msg-warning">Koordynowanie nie musi oznaczać bezpośredniego kierowania – potwierdź arkusz.</p>
+      <p class="msg msg-hint">Wszystkie 3 ocenione wskaźniki mają ten sam poziom – sprawdź osobne obserwacje.<span class="src">Poradnik KPRM „Oceny okresowe w służbie cywilnej” (2016), s. 26</span></p>
+      <p class="flash error">Wybrano 4 kryteria dodatkowe – wolno najwyżej 3 (§ 5 ust. 2).</p>
+      <h3>Rejestr</h3>
+      <table class="register">
+        <thead><tr><th>Oceniany</th><th>Sygnatura / arkusz</th><th>Status</th><th class="col-due">Termin oceny</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ewa Fikcyjna</strong><br><small>Starsza specjalistka</small></td><td><span class="mono">P-2026-747B</span><br><span class="tag periodic">Arkusz C</span></td><td>W trakcie okresu oceny</td><td class="cell-due">20.01.2027</td></tr>
+          <tr><td><strong>Piotr Nowak-Demo</strong><br><small>Specjalista</small></td><td><span class="mono">P-2026-004</span><br><span class="tag first">Arkusz pierwszej oceny</span></td><td>Ocena sporządzona – do podpisu kierującego komórką</td><td class="cell-due">11.12.2026</td></tr>
+        </tbody>
+        <caption><b>Tabela 1.</b> Podpis pod tabelą: źródło danych i zakres kolumn.</caption>
+      </table>
+      <h3>Opis zachowania (wskaźnik)</h3>
+      <p class="muted">Tekst przykładowy – właściwe opisy pochodzą z modelu kompetencji MC.</p>
+      <fieldset class="indicator">
+        <legend>1. Przykładowy wskaźnik: przekazywanie informacji w sposób zrozumiały dla odbiorcy.</legend>
+        <div class="levels">
+          <label class="level"><input type="radio" name="demo-level"><span class="lvl-name">Na poziomie oczekiwań</span><span>Przykładowy opis zachowania na poziomie oczekiwań.</span></label>
+          <label class="level"><input type="radio" name="demo-level" checked><span class="lvl-name">Powyżej oczekiwań</span><span>Przykładowy opis zachowania powyżej oczekiwań – wybór przełożonego.</span></label>
+        </div>
+      </fieldset>
+      <h3>Werdykt</h3>
+      <section class="verdict-box win positive">
+        <div class="win-bar"><span class="win-box" aria-hidden="true"></span><span class="win-title">Wynik oceny</span><span class="win-hatch" aria-hidden="true"></span><span class="win-aside">wynik pozytywny</span><span class="win-hatch short" aria-hidden="true"></span><span class="win-box" aria-hidden="true"></span></div>
+        <div class="win-body"><p class="part-label">Ocena okresowa (§ 11 ust. 1 rozp. 2016)</p>
+          <p class="result-word">POZYTYWNA<span class="verdict-stamp">bez skutku prawnego</span></p>
+          <p class="num">(7+5+5+7+5)/5 = 5,80 ↣ na poziomie oczekiwań (powyżej 4 punktów do 6 punktów)</p>
+          <p class="verdict-strip"><span class="vs-mark">✓</span> Ocena pozytywna – możesz dodać wnioski do IPRZ.</p></div>
+      </section>
+      <section class="verdict-box win negative">
+        <div class="win-bar"><span class="win-box" aria-hidden="true"></span><span class="win-title">Wynik oceny</span><span class="win-hatch" aria-hidden="true"></span><span class="win-aside">skutek prawny</span><span class="win-hatch short" aria-hidden="true"></span><span class="win-box" aria-hidden="true"></span></div>
+        <div class="win-body"><p class="part-label">Ocena okresowa</p>
+          <p class="result-word">NEGATYWNA<span class="verdict-stamp">skutek prawny</span></p>
+          <p class="num">co najmniej jedna ocena cząstkowa „znacznie poniżej oczekiwań” (1 pkt) – § 11 ust. 1 pkt 4</p>
+          <p class="verdict-reason">Ocena negatywna – uzasadnienie obowiązkowe (§ 11 ust. 3).</p>
+          <p class="verdict-strip"><span class="vs-mark">✕</span> Przy ocenie negatywnej wnioski rozwojowe są niedostępne.</p></div>
+      </section>
+      <h3>Odpowiedź asystenta z cytatem</h3>
+      <article class="answer" style="max-width:34em">
+        <p class="q">W jakim terminie oceniany może wnieść sprzeciw od oceny okresowej?</p>
+        <div class="a">Od oceny okresowej przysługuje sprzeciw w terminie 7 dni od dnia zapoznania się z oceną <a class="cite-ref" href="#demo-cite">[1]</a>.</div>
+        <ol class="cites"><li id="demo-cite"><details open><summary>art. 83 ustawy z dnia 21 listopada 2008 r. o służbie cywilnej (Dz. U. 2026 poz. 590)</summary>
+          <div class="fragment">Art. 83. 1. Od oceny okresowej służy, w terminie 7 dni od dnia zapoznania się z oceną, sprzeciw do dyrektora generalnego urzędu…</div></details></li></ol>
+        <p class="meta">Model openai/gpt-oss-120b, 1,1 s. Cytaty sprawdzone z kontekstem.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="sheet-margin"><div class="sheet-no">VII</div><p class="sheet-note">Lista kontrolna przy zmianach interfejsu.</p></div>
+    <div class="sheet-main">
+      <h2>Zasady</h2>
+      <ul class="rules-list">
+        <li><span class="yes">tak</span><span>Okno tylko dla narzędzia (wybór, asystent, Kompas poziomu, wynik). Treść dokumentu – rejestry, arkusz, przepisy – na liniach.</span></li>
+        <li><span class="yes">tak</span><span>Przy każdym kroku i komunikacie podstawa prawna w kroju o stałej szerokości albo kursywą Bona Nova.</span></li>
+        <li><span class="yes">tak</span><span>Liczby, daty, sygnatury i wzory w IBM Plex Mono; przecinek dziesiętny („6,33”).</span></li>
+        <li><span class="yes">tak</span><span>Słownictwo przepisów i arkuszy: przełożony, oceniany, kryteria obowiązkowe i dodatkowe, ocena cząstkowa.</span></li>
+        <li><span class="yes">tło</span><span>Czysty trawertyn (<code>#f4f1ea</code>) bez siatki kropek i bez animowanego pola magnetycznego (<code>field.js</code> wyłączone).</span></li>
+        <li><span class="yes">kompas</span><span>Reaktywny kompas <code>&lt;canvas&gt;</code> z rozrzuconymi kwadracikami: igła na sprężynie szuka kursora albo fokusu klawiatury, przy <code>prefers-reduced-motion</code> rysuje jedną klatkę.</span></li>
+        <li><span class="no">nie</span><span>Zaokrąglenia, rozmyte cienie, pikselowy tekst <code>data-px</code>, ciężkie kolumny/głowice, emoji jako ikony, zewnętrzne CDN-y fontów.</span></li>
+        <li><span class="no">nie</span><span>Czerwień jako ozdoba – wyłącznie skutek prawny.</span></li>
+        <li><span class="no">nie</span><span>Sugestia wyglądająca jak decyzja – sugerowany przycisk (przerywany mosiądz) nigdy nie jest automatycznie zaznaczony.</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+{% endblock %}

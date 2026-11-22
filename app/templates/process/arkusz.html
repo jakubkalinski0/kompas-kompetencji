@@ -1,0 +1,52 @@
+{% extends "process/_layout.html" %}
+{% block part %}Wybór arkusza{% endblock %}
+{% block work %}
+{% set pr = proc.proposal %}
+{% set osp = (proc.osp or {}).parsed %}
+<h1>Który arkusz oceny?</h1>
+{% if pr %}
+<section class="proposal">
+  <p class="part-label">Propozycja Kompasu (z OSP{% if proc.osp.file %}: {{ proc.osp.file }}{% endif %})</p>
+  <p class="verdict">{{ FORM_LABELS[pr.proposed_form] }}
+    <span class="confidence">pewność: {{ {'high':'wysoka','medium':'średnia','low':'niska'}.get(pr.confidence, pr.confidence) }}</span></p>
+  <p>{{ pr.reason }}</p>
+  {% for w in pr.warnings %}<p class="msg msg-warning">{{ w }}</p>{% endfor %}
+  {% if pr.evidence.managing_quotes or pr.evidence.coordinating_quotes %}
+  <h3>Fragmenty OSP o kierowaniu lub koordynacji – do sprawdzenia</h3>
+  {% for q in (pr.evidence.managing_quotes + pr.evidence.coordinating_quotes)[:3] %}
+    <blockquote class="quote">{{ q.quote if q.quote is defined else q }}</blockquote>
+  {% endfor %}
+  {% endif %}
+  <details><summary>Podstawa prawna (dosłowne brzmienie)</summary>
+    {% for b in pr.legal_basis %}<p class="basis"><strong>{{ b.citation }}</strong><br>{{ b.quote }}</p>{% endfor %}
+  </details>
+</section>
+{% else %}
+<p class="lead">OSP pominięto – wybierz arkusz według rodzaju stanowiska.</p>
+{% endif %}
+
+{% if osp %}
+<details style="margin-top:14px"><summary>Co odczytano z OSP</summary>
+  <dl class="facts">
+    <dt>Stanowisko</dt><dd>{{ osp.part1.position_name or '—' }} {% if osp.part1.position_symbol %}({{ osp.part1.position_symbol }}){% endif %}</dd>
+    <dt>Komórka</dt><dd>{{ osp.part1.org_unit or '—' }}</dd>
+    <dt>Bezpośredni przełożony</dt><dd>{{ osp.part1.supervisor_direct or '—' }}</dd>
+    <dt>Podlegli pracownicy</dt><dd>{{ osp_subs|join('; ') or '—' }}</dd>
+    <dt>Kompetencje miękkie</dt><dd>{{ osp_soft|join(', ') or '—' }}</dd>
+  </dl>
+  {% if osp.part2.tasks.dominant %}<h3>Zadania dominujące</h3><ol>{% for t in osp.part2.tasks.dominant %}<li>{{ t.text }}</li>{% endfor %}</ol>{% endif %}
+  {% for w in proc.osp.warnings %}<p class="msg">{{ w }}</p>{% endfor %}
+</details>
+{% endif %}
+
+<form method="post" action="/procesy/{{ proc.id }}/arkusz">
+  <div class="form-actions">
+    {% set first = pr.proposed_form if pr else 'periodic_c' %}
+    {% set other = 'periodic_b' if first == 'periodic_c' else 'periodic_c' %}
+    <button class="btn" type="submit" name="form" value="{{ first }}">{% if pr %}Potwierdzam {{ FORM_LABELS[first] }}{% else %}Wybieram {{ FORM_LABELS[first] }}{% endif %}</button>
+    <button class="btn secondary" type="submit" name="form" value="{{ other }}">Wybieram {{ FORM_LABELS[other] }}</button>
+  </div>
+  <p class="muted" style="margin-top:8px"><strong>Arkusz B:</strong> {{ FORM_SCOPE.periodic_b }}.<br><strong>Arkusz C:</strong> {{ FORM_SCOPE.periodic_c }}.
+     Wybór zapisuje się w śladzie decyzji.</p>
+</form>
+{% endblock %}

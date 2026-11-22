@@ -1,0 +1,31 @@
+{% extends "process/_layout.html" %}
+{% block part %}Opis stanowiska pracy{% endblock %}
+{% block work %}
+<h1>Analiza opisu stanowiska pracy</h1>
+<p class="lead">Kompas odczyta podległych, zadania i kompetencje miękkie z OSP, a potem zaproponuje arkusz (B albo C) i kryteria dodatkowe. Decyzja należy do Ciebie.</p>
+
+<h2>Wczytaj OSP z pliku .docx</h2>
+<form method="post" action="/procesy/{{ proc.id }}/osp" enctype="multipart/form-data">
+  <input type="hidden" name="action" value="upload">
+  <label class="field"><span>Plik opisu stanowiska</span><input type="file" name="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></label>
+  <button class="btn" type="submit">Wczytaj i przeanalizuj</button>
+  <p class="muted" style="margin-top:6px">Plik przetwarzany w pamięci, bez zapisu; dane osobowe z OSP są pomijane.</p>
+</form>
+
+<h2>Albo użyj przykładowego OSP</h2>
+<p class="muted">Przykładowe OSP z materiałów MC (bez danych osobowych).</p>
+<div class="option-rows">
+  {% for s in samples %}
+  <form class="option-row" method="post" action="/procesy/{{ proc.id }}/osp">
+    <span><strong>{{ s.position }}</strong>{% if s.unit %} – {{ s.unit }}{% endif %}<br><small>{{ s.symbol }}</small></span>
+    <span><input type="hidden" name="action" value="sample"><input type="hidden" name="sample" value="{{ s.slug }}">
+      <button class="btn secondary small" type="submit">Użyj tego OSP</button></span>
+  </form>
+  {% endfor %}
+</div>
+
+<form method="post" action="/procesy/{{ proc.id }}/osp" style="margin-top:18px">
+  <input type="hidden" name="action" value="skip">
+  <button class="btn link" type="submit">Pomiń OSP i wybierz arkusz ręcznie</button>
+</form>
+{% endblock %}

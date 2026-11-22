@@ -1,0 +1,94 @@
+{#- Profil ocen cząstkowych: wykres radialny (SVG z serwera, geometria w app/radar.py) + lista kryteriów + szczegóły.
+    Pełny Oxblood = decyzja przełożonego, przerywany mosiądz = sugestia systemu, czerwień = skutek prawny zgłoszony przez silnik.
+    Zachowanie (najechanie, wybór, klawiatura, warstwy) – app/static/radar.js; bez JS widać wykres, listę i pierwsze szczegóły. -#}
+{% set R = radar %}
+{% set unit = 'elementu' if first else 'kryterium' %}
+<section class="win radar" aria-labelledby="radar-title" data-radar data-select="{{ R.first_select }}">
+  <div class="win-bar"><span class="win-box" aria-hidden="true"></span><h2 class="win-title" id="radar-title">Profil ocen cząstkowych</h2><span class="win-hatch" aria-hidden="true"></span><span class="win-aside">skala {{ R.scale|join('/') }} pkt</span><span class="win-hatch short" aria-hidden="true"></span><span class="win-box" aria-hidden="true"></span></div>
+  {% if R.empty or (not R.decided and not R.suggested) %}
+  <div class="win-body"><p class="radar-empty">Profil pojawi się po ocenie wskaźników co najmniej jednego {{ unit }}.</p></div>
+  {% else %}
+  <div class="radar-body">
+    <div class="radar-figure">
+      <svg class="radar-svg" viewBox="0 0 {{ R.size }} {{ R.size }}" role="img" aria-labelledby="radar-sum" focusable="false">
+        <path class="r-focus" d="{{ R.axes[0].hit }}" style="--rot: {{ R.axes[R.first_select].deg }}deg"/>
+        <g class="r-grid">
+          {% if R.grouped %}{% for a in R.axes %}<path class="r-group k-{{ a.kind }}" d="{{ a.group }}"/>{% endfor %}{% endif %}
+          {% for g in R.rings %}<circle class="r-ring{% if g.mid %} mid{% endif %}" cx="{{ R.c }}" cy="{{ R.c }}" r="{{ g.r }}"/>{% endfor %}
+        </g>
+        <g class="r-axes">{% for a in R.axes %}<line class="r-axis" data-axis="{{ a.i }}" x1="{{ R.c }}" y1="{{ R.c }}" x2="{{ a.x2 }}" y2="{{ a.y2 }}"/>{% endfor %}</g>
+        <g class="r-scale" aria-hidden="true">{% for g in R.rings %}<text x="{{ g.tx }}" y="{{ g.ty }}" dy="4">{{ g.p }}</text>{% endfor %}</g>
+        <g class="r-data">
+          <path class="r-sug" d="{{ R.sug_path }}"/>
+          <path class="r-dec{% if R.dec_closed %} closed{% endif %}" d="{{ R.dec_path }}"/>
+          {% for a in R.axes %}{% if a.differs %}<line class="r-dev" data-axis="{{ a.i }}" x1="{{ a.sx }}" y1="{{ a.sy }}" x2="{{ a.dx }}" y2="{{ a.dy }}" style="--i: {{ a.i }}"/>{% endif %}{% endfor %}
+          {% for a in R.axes %}{% if a.sx is not none %}<rect class="r-sp" data-axis="{{ a.i }}" x="{{ a.sx - 6 }}" y="{{ a.sy - 6 }}" width="12" height="12" style="--i: {{ a.i }}; --tx: {{ a.tx }}px; --ty: {{ a.ty }}px"/>{% endif %}{% endfor %}
+          {% for a in R.axes %}{% if a.dx is not none %}<rect class="r-dp{% if a.alert %} alert{% endif %}" data-axis="{{ a.i }}" x="{{ a.dx - 5.5 }}" y="{{ a.dy - 5.5 }}" width="11" height="11" style="--i: {{ a.i }}; --tx: {{ a.tx }}px; --ty: {{ a.ty }}px"/>{% endif %}{% endfor %}
+        </g>
+        <g class="r-labels">{% for a in R.axes %}<g class="r-lab{% if a.alert %} alert{% endif %}" data-axis="{{ a.i }}"><rect x="{{ a.lx - 15 }}" y="{{ a.ly - 11 }}" width="30" height="22"/><text x="{{ a.lx }}" y="{{ a.ly }}" dy="4.5">{{ a.no }}</text></g>{% endfor %}</g>
+        <rect class="r-pivot" x="{{ R.c - 4 }}" y="{{ R.c - 4 }}" width="8" height="8" aria-hidden="true"/>
+        <g class="r-hits">{% for a in R.axes %}<path class="r-hit" data-axis="{{ a.i }}" d="{{ a.hit }}"/>{% endfor %}</g>
+      </svg>
+      <p id="radar-sum" class="vh">Profil ocen cząstkowych w skali {{ R.scale|join('/') }} pkt.
+        {% for a in R.axes %}{{ a.name }}: decyzja {{ a.dec ~ ' pkt' if a.dec is not none else 'brak' }}, sugestia {{ a.sug ~ ' pkt' if a.sug is not none else 'brak' }}. {% endfor %}</p>
+      <div class="radar-tip" aria-hidden="true"></div>
+    </div>
+
+    <div class="radar-side">
+      <p class="radar-cols" aria-hidden="true"><span>{{ 'Element oceny' if first else 'Kryterium' }}</span><span>sug.</span><span>decyzja</span></p>
+      <ol class="radar-list">
+        {% for a in R.axes %}
+        <li><button type="button" class="ri{% if a.alert %} alert{% endif %}" data-axis="{{ a.i }}" aria-controls="cd-{{ a.id }}" aria-pressed="{{ 'true' if a.i == R.first_select else 'false' }}"
+             data-no="{{ a.no }}" data-name="{{ a.name }}" data-dec="{{ a.dec if a.dec is not none else '' }}" data-dec-label="{{ a.dec_label }}"
+             data-sug="{{ a.sug if a.sug is not none else '' }}" data-sug-label="{{ a.sug_label }}" data-alert="{{ '1' if a.alert else '' }}">
+          <span class="ri-no">{{ a.no }}</span>
+          <span class="ri-name">{{ a.name }}{% if R.grouped and a.kind == 'additional' %} <small>dodatkowe</small>{% endif %}</span>
+          <span class="ri-sug">{{ a.sug if a.sug is not none else '–' }}</span>
+          <span class="ri-dec">{{ a.dec if a.dec is not none else '–' }}{% if a.differs %}<i class="ri-diff" title="Decyzja inna niż sugestia">≠</i>{% endif %}</span>
+        </button></li>
+        {% endfor %}
+      </ol>
+      <div class="radar-legend">
+        <button type="button" class="lg lg-dec" data-layer="dec" aria-pressed="true"><i aria-hidden="true"></i>decyzja przełożonego</button>
+        <button type="button" class="lg lg-sug" data-layer="sug" aria-pressed="true"><i aria-hidden="true"></i>sugestia systemu</button>
+        {% if R.grouped %}<span class="lg-kind"><i class="k-mandatory" aria-hidden="true"></i>obowiązkowe <i class="k-additional" aria-hidden="true"></i>dodatkowe</span>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="radar-details">
+    {% for a in R.axes %}
+    <section class="crit-detail" id="cd-{{ a.id }}" data-axis="{{ a.i }}" aria-labelledby="cd-{{ a.id }}-t"{% if a.i != R.first_select %} hidden{% endif %}>
+      <header class="cd-head">
+        <span class="cd-no{% if a.alert %} alert{% endif %}">{{ a.no }}</span>
+        <h3 id="cd-{{ a.id }}-t">{{ a.name }}</h3>
+        <span class="tag">{{ a.kind_label }}</span>
+      </header>
+      <div class="cd-grid">
+        <dl class="cd-scores">
+          <div class="cd-dec{% if a.alert %} alert{% endif %}"><dt>Decyzja przełożonego</dt>
+            <dd>{% if a.dec is not none %}<b class="num">{{ a.dec }}&nbsp;pkt</b> {{ a.dec_label }}{% else %}<span class="muted">jeszcze nie podjęta</span>{% endif %}</dd></div>
+          <div class="cd-sug"><dt>Sugestia systemu</dt>
+            <dd>{% if a.sug is not none %}<b class="num">{{ a.sug }}&nbsp;pkt</b> {{ a.sug_label }}<span class="cd-formula">{{ a.formula }}</span>{% else %}<span class="muted">{{ a.formula or 'brak ocenionych wskaźników' }}</span>{% endif %}</dd></div>
+        </dl>
+        <figure class="cd-hist">
+          <figcaption class="part-label">Wskaźniki: ocenione {{ a.rated }} z {{ a.total }}{% if a.no_basis %} · brak podstaw: {{ a.no_basis }}{% endif %}</figcaption>
+          <p class="hist-scale">1 – znacznie poniżej, 5 – znacznie powyżej oczekiwań</p>
+          <ol class="hist" aria-label="Liczba wskaźników na każdym poziomie">
+            {% for lv in LEVELS %}{% set n = a.hist[loop.index0] %}
+            <li title="{{ lv.label }}: {{ n }}"><span class="hist-col" aria-hidden="true">{% for _ in range(n) %}<i></i>{% endfor %}</span>
+              <span class="hist-lv">{{ lv.level }}</span><span class="vh">{{ lv.label }}: {{ n }}</span></li>
+            {% endfor %}
+          </ol>
+        </figure>
+      </div>
+      {% if a.differs %}<p class="cd-diff">Decyzja jest o {{ a.delta|abs }}&nbsp;pkt {{ 'wyższa' if a.delta > 0 else 'niższa' }} niż sugestia{% if a.override_note %}. Notatka przełożonego: „{{ a.override_note.strip().rstrip('.') }}”{% else %} – w śladzie decyzji nie ma notatki{% endif %}.</p>{% endif %}
+      {% for w in a.warnings if w != a.formula %}<p class="msg msg-warning">{{ w|plain }}</p>{% endfor %}
+      {% for g in ev.guard if g.criterion_id == a.id %}<p class="msg msg-{{ g.severity }}">{{ g.message|plain }}<span class="src">{{ g.source|plain }}</span></p>{% endfor %}
+      {% if a.notes %}<p class="cd-notes muted">Notatki S-D-R do tego {{ unit }}: {{ a.notes }} – są w karcie przygotowania do rozmowy, nie w arkuszu.</p>{% endif %}
+      {% if not proc.demo %}<p class="cd-go"><a href="/procesy/{{ proc.id }}/wskazniki/{{ a.id }}">Wróć do ocen wskaźników tego {{ unit }} ↣</a></p>{% endif %}
+    </section>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

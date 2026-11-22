@@ -1,0 +1,57 @@
+{% set s = crit.suggestion or {} %}
+{% set alerts = guard|selectattr('severity', 'equalto', 'alert')|list %}
+<section class="compass win" id="compass" aria-live="polite" aria-label="Kompas poziomu i decyzja przełożonego"
+         data-average="{{ s.average if s.average is not none else '' }}" data-suggested="{{ s.points if s.points is not none else '' }}">
+  <div class="compass-head win-bar">
+    <span class="win-box" aria-hidden="true"></span>
+    <span class="win-title">Kompas poziomu</span>
+    <span class="win-hatch" aria-hidden="true"></span>
+    <span class="counts win-aside">ocenione {{ s.rated_count or 0 }} z {{ s.total_count or comp.indicators|length }}{% if s.no_basis_count %} · brak podstaw: {{ s.no_basis_count }}{% endif %}</span>
+    <span class="win-box" aria-hidden="true"></span>
+  </div>
+  <div class="compass-body">
+  <p class="formula">
+      {% if s.points is not none %}<span class="formula-label">sugestia</span> <b>{{ (s.formula|e)|replace(s.average_display, ('<span class="avg">' ~ s.average_display ~ '</span>')|safe, 1) }}</b>
+      {% elif not s.no_basis_count %}Zaznacz opisy zachowań powyżej – Kompas policzy sugestię i wzór.
+      {% else %}{{ s.formula }}{% endif %}
+  </p>
+  {% if s.points is not none %}{% for w in s.warnings or [] %}<p class="msg msg-warning">{{ w }}</p>{% endfor %}{% endif %}
+  {% if error %}<p class="flash error" role="alert">{{ error }}</p>{% endif %}
+  <form class="decision-form" hx-post="/procesy/{{ proc.id }}/wskazniki/{{ crit.id }}/decyzja" hx-target="#compass" hx-swap="outerHTML"
+        hx-disabled-elt="find button[type=submit]">
+    <fieldset class="decision">
+      <legend>Twoja decyzja</legend>
+      {% for p in points %}
+      <label class="pt{% if s.points == p %} suggested{% endif %}">
+        <input type="radio" name="points" value="{{ p }}" required {% if crit.final_points == p %}checked{% endif %}>
+        <b class="num">{{ p }}&nbsp;pkt</b><span>{{ point_labels[p|string] }}</span>
+        {% if s.points == p %}<span class="sug">sugestia</span>{% endif %}
+      </label>
+      {% endfor %}
+    </fieldset>
+    <div class="decision-actions">
+      <button class="btn" type="submit">Zapisz decyzję</button>
+      <span class="htmx-indicator">Zapisuję…</span>
+      <details class="note"><summary>Notatka do śladu decyzji</summary>
+        <textarea name="note" maxlength="1000" placeholder="Opcjonalnie: powód zmiany względem sugestii…">{{ crit.override_note or '' }}</textarea>
+      </details>
+    </div>
+  </form>
+  {% if crit.final_points is not none %}
+  <p class="decided{% if saved %} just-saved{% endif %}">Zapisana decyzja: <strong class="num">{{ crit.final_points }}&nbsp;pkt</strong>
+    {%- if s.points is not none and s.points != crit.final_points %} – inna niż sugestia ({{ s.points }}&nbsp;pkt); zapisano w śladzie decyzji.{% elif s.points is not none %} – zgodna z sugestią.{% endif %}
+    {% if saved %}
+      {% if next_cid %}<a class="btn small" href="/procesy/{{ proc.id }}/wskazniki/{{ next_cid }}">Następne: {{ CATALOG[next_cid] }} ↣</a>
+      {% else %}<a class="btn small" href="/procesy/{{ proc.id }}/podsumowanie">Wszystkie ocenione – wynik ↣</a>{% endif %}
+    {% endif %}
+  </p>
+  {% endif %}
+  {% for g in alerts %}<p class="msg msg-alert">{{ g.message|plain }}<span class="src">{{ g.source|plain }}</span></p>{% endfor %}
+  {% set hints = guard|rejectattr('severity', 'equalto', 'alert')|list %}
+  {% if hints %}
+  <details class="guard"><summary>Podpowiedzi strażnika błędów ({{ hints|length }})</summary>
+    {% for g in hints %}<p class="msg msg-{{ g.severity }}">{{ g.message|plain }}<span class="src">{{ g.source|plain }}</span></p>{% endfor %}
+  </details>
+  {% endif %}
+  </div>
+</section>

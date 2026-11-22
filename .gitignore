@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+*.log
+
+# Sekrety i lokalne ustawienia
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Wagi modeli (kilka GB)
+*.gguf
+*.safetensors
+
+# System i edytory
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+data/
+.llm_cache/calls.jsonl
+
+# Aplikacja: baza SQLite, cache embeddingów i odpowiedzi LLM, logi pomiarów
+var/
+.cache/
+.llm_cache/
+docs/eval/_run_*.log

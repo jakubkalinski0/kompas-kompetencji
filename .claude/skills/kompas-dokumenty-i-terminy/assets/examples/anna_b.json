@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0",
+  "office_name": "Urząd Demo (dane fikcyjne)",
+  "place": "Warszawa",
+  "case_id": "demo-anna-b",
+  "form": "periodic_b",
+  "employee": {
+    "full_name": "Anna Przykładowa",
+    "position": "Naczelnik wydziału",
+    "unit": "Wydział Rozwoju Usług, Departament Demo",
+    "corps_status": "urzednik_sc"
+  },
+  "evaluator": {
+    "full_name": "Marek Kierownik-Demo",
+    "position": "Dyrektor departamentu",
+    "unit": "Departament Demo"
+  },
+  "part1": {
+    "criteria_meeting_date": "2024-11-25",
+    "evaluation_deadline": "2026-11-25",
+    "goals": null
+  },
+  "interview_date": "2026-11-18",
+  "period": {
+    "from": "2024-11-25",
+    "to": "2026-11-20"
+  },
+  "criteria": [
+    {
+      "id": "zarzadzanie_ludzmi",
+      "name": "Zarządzanie ludźmi",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "zarzadzanie_ludzmi.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Zarządzanie ludźmi” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": "S: nowy członek zespołu; D: plan wdrożenia i mentor; R: samodzielna praca po 6 tygodniach."
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Zarządzanie ludźmi” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "zarzadzanie_ludzmi.3",
+          "indicator_text": "Przykładowy wskaźnik 3 kryterium „Zarządzanie ludźmi” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 3.67,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "podejmowanie_decyzji_i_odpowiedzialnosc",
+      "name": "Podejmowanie decyzji i odpowiedzialność",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "podejmowanie_decyzji_i_odpowiedzialnosc.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Podejmowanie decyzji i odpowiedzialność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "podejmowanie_decyzji_i_odpowiedzialnosc.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Podejmowanie decyzji i odpowiedzialność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "organizacja_pracy_i_orientacja_na_osiaganie_celow",
+      "name": "Organizacja pracy i orientacja na osiąganie celów",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Organizacja pracy i orientacja na osiąganie celów” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Organizacja pracy i orientacja na osiąganie celów” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 4.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "wspolpraca",
+      "name": "Współpraca",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wspolpraca.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.3",
+          "indicator_text": "Przykładowy wskaźnik 3 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 3.67,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "name": "Komunikacja",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe",
+      "name": "Wykorzystywanie wiedzy i doskonalenie zawodowe",
+      "kind": "additional",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Wykorzystywanie wiedzy i doskonalenie zawodowe” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Wykorzystywanie wiedzy i doskonalenie zawodowe” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 4.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    }
+  ],
+  "average": 6.33,
+  "result": "pozytywna",
+  "justification": "Ocena pozytywna na poziomie powyżej oczekiwań. Naczelniczka skutecznie wdrożyła nowych pracowników i terminowo zrealizowała projekty wydziału.",
+  "development_conclusions": "Szkolenie z zarządzania zmianą (I kw. 2027); udział w programie mentoringu dla kadry kierowniczej.",
+  "previous_evaluation": {
+    "result": "pozytywna",
+    "level_label": "na poziomie oczekiwań",
+    "date": "2024-11-20"
+  },
+  "part3_requested": true,
+  "part3": {
+    "appointment_year": 2015,
+    "current_grade": "pierwszy",
+    "current_grade_date": "2015-06-01",
+    "requested_grade": "drugiego",
+    "motivation": "Wyróżniająca się realizacja zadań kierowniczych w okresie oceny i pozytywna ocena okresowa powyżej oczekiwań."
+  }
+}

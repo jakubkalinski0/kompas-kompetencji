@@ -1,0 +1,31 @@
+{
+ "questions": {
+  "label": "Pytania na rozmowę",
+  "sources": {
+   "periodic": [{"source_id": "rozp2016", "unit": "§ 5"}, {"source_id": "rozp2016", "unit": "§ 10"}],
+   "first": [{"source_id": "rozp2015", "unit": "§ 3"}, {"source_id": "rozp2015", "unit": "§ 7"}, {"source_id": "rozp2015", "unit": "§ 2"}]
+  },
+  "instruction": "Przygotuj 6–9 otwartych pytań na rozmowę ({stage}). Pogrupuj je według zagadnień, które przepis każe omówić (podaj [id] przepisu przy nagłówku grupy), i według kryteriów z kontekstu. Przy pytaniach o kryteria nawiąż do wskaźników behawioralnych i przykładów z notatek (bez cytowania ocen). Dodaj 2 pytania o rozwój i potrzeby Pracownika A."
+ },
+ "feedback": {
+  "label": "Informacja zwrotna (S-D-R)",
+  "sources": {"periodic": [], "first": []},
+  "instruction": "Na podstawie przykładów S-D-R z notatek przygotuj informację zwrotną dla Pracownika A: dla każdego przykładu 2–3 zdania w schemacie sytuacja – działanie – rezultat – oczekiwanie na przyszłość. Zacznij od mocnych stron. Opisuj zachowania, nie cechy osoby. Nie dopisuj zdarzeń spoza notatek i nie podawaj ocen ani punktów."
+ },
+ "justification": {
+  "label": "Szkic uzasadnienia oceny",
+  "sources": {
+   "periodic": [{"source_id": "rozp2016", "unit": "§ 11 ust. 3"}, {"source_id": "rozp2016", "unit": "§ 11 ust. 4"}],
+   "first": [{"source_id": "rozp2015", "unit": "§ 10"}]
+  },
+  "instruction": "Przygotuj szkic uzasadnienia do arkusza (5–8 zdań) do edycji przez przełożonego. Opieraj się wyłącznie na przykładach z notatek, uporządkuj je według kryteriów. Jeśli kontekst zawiera wynik wybrany przez przełożonego, napisz o nim jako o ocenie przyznanej przez przełożonego; nie proponuj żadnego poziomu ani punktów. Brakujące informacje oznacz [uzupełnij: …]."
+ },
+ "development": {
+  "label": "Propozycje do IPRZ / wniosków rozwojowych",
+  "sources": {
+   "periodic": [{"source_id": "rozp2016", "unit": "§ 11 ust. 1"}, {"source_id": "ustawa_sc", "unit": "art. 81"}],
+   "first": [{"source_id": "rozp2015", "unit": "§ 10"}, {"source_id": "rozp2015", "unit": "arkusz pierwszej oceny, przypis 8)"}]
+  },
+  "instruction": "Zaproponuj 3–5 wniosków rozwojowych dla Pracownika A ({target}): zakres wiedzy do poszerzenia, umiejętności do doskonalenia i proponowane formy rozwoju (np. szkolenie, mentoring, coaching, udział w projekcie, samokształcenie). Każdy wniosek powiąż z przykładem z notatek albo z wskaźnikiem kompetencji [id]. Nie oceniaj pracownika."
+ }
+}

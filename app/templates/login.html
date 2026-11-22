@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% from "_ui.html" import bar %}
+{% block title %}Logowanie – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">Prototyp · dane fikcyjne</span>{% endblock %}
+{% block body %}
+<main class="login">
+  <div class="art art-hero" data-art="compass" data-cx="0.6" data-cy="0.5" data-r="0.4" data-seed="11" data-keep-left="0.3"></div>
+  <div class="login-hero">
+    <h1 class="wordmark"><span>Kompas</span> <span>Kompetencji</span></h1>
+    <p class="hero-sub">Ocena pracownika w służbie cywilnej, krok po kroku.</p>
+    <dl class="spec">
+      <dt>Zakres</dt><dd>pierwsza ocena i ocena okresowa</dd>
+      <dt>Tryb</dt><dd>prototyp · dane fikcyjne</dd>
+    </dl>
+
+    <section class="win login-win" aria-labelledby="login-title">
+      {{ bar('Wybierz rolę demo', tag='h2', id='login-title') }}
+      <div class="win-body">
+        {% include "_flash.html" %}
+        <p class="lead">Logowanie demo jednym kliknięciem (w urzędzie: SSO).</p>
+        <div class="accounts">
+          {% for u in users %}
+          <form class="account" method="post" action="/login">
+            <div>
+              <h3>{{ u.full_name }} <span class="role-tag">{{ 'przełożony' if u.role == 'przelozony' else 'HR' }}</span></h3>
+              <p class="muted">{{ u.position }}</p>
+              {% if u.role == 'przelozony' %}
+              <p>Prowadzi ocenę (OSP ↣ wskaźniki ↣ PDF) i korzysta z asystenta.</p>
+              {% else %}
+              <p>Widzi statusy i terminy, wysyła przypomnienia. Bez wglądu w wskaźniki, notatki S-D-R i rozmowy z asystentem.</p>
+              {% endif %}
+            </div>
+            <input type="hidden" name="persona" value="{{ u.id }}">
+            <button class="btn go" type="submit">Wejdź jako {{ 'przełożony' if u.role == 'przelozony' else 'HR' }}</button>
+          </form>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <p class="after-win">Pierwsze uruchomienie serwera demo trwa do minuty.
+      <a href="/design">System projektowy&nbsp;↣</a></p>
+  </div>
+
+  <div class="login-below">
+    <section class="win" aria-labelledby="src-title">
+      {{ bar('Na czym się opieramy?', tag='h2', id='src-title') }}
+      <div class="win-body">
+        <ul class="ticks">
+          <li>Ustawa o służbie cywilnej</li>
+          <li>Rozporządzenia PRM: pierwsza ocena (2015) i oceny okresowe (2016)</li>
+          <li>Poradniki oraz Q&amp;A KPRM</li>
+          <li>Model kompetencji Ministerstwa Cyfryzacji</li>
+        </ul>
+        <p class="muted">Asystent cytuje źródło albo odmawia odpowiedzi.</p>
+      </div>
+    </section>
+    <section class="win win-blue" aria-labelledby="how-title">
+      {{ bar('Jak działa Kompas?', tag='h2', id='how-title') }}
+      <div class="win-body">
+        <ol class="how">
+          <li><b>Opis stanowiska</b><span>Czyta OSP i proponuje arkusz B/C oraz kryteria dodatkowe.</span></li>
+          <li><b>Wskaźniki</b><span>Liczy sugerowany poziom ze wzorem; ocenę cząstkową wybierasz Ty.</span></li>
+          <li><b>Wynik i PDF</b><span>Wynik wynika wyłącznie z Twoich decyzji; gotowy arkusz PDF wg wzoru.</span></li>
+        </ol>
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock %}

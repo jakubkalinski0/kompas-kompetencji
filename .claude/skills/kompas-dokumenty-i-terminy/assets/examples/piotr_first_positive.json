@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "office_name": "Urząd Demo (dane fikcyjne)",
+  "place": "Warszawa",
+  "form": "first_eval",
+  "employee": {
+    "full_name": "Piotr Nowak-Demo",
+    "position": "Specjalista",
+    "unit": "Wydział Rozwoju Usług, Departament Demo",
+    "corps_status": "pracownik_sc",
+    "employment_start": "2026-01-12"
+  },
+  "evaluator": {
+    "full_name": "Anna Przykładowa",
+    "position": "Naczelnik wydziału",
+    "unit": "Wydział Rozwoju Usług, Departament Demo"
+  },
+  "unit_head": {
+    "full_name": "Marek Kierownik-Demo",
+    "position": "Dyrektor departamentu",
+    "unit": "Departament Demo",
+    "participated_in_interview": true,
+    "agreement_confirmed": true,
+    "signed_on": "2026-10-09"
+  },
+  "first_eval_intro": {
+    "intro_interview_date": "2026-01-20",
+    "report_deadline": {
+      "from": "2026-09-14",
+      "to": "2026-09-25"
+    },
+    "evaluation_window": {
+      "from": "2026-09-13",
+      "to": "2026-12-10"
+    }
+  },
+  "interview_date": "2026-10-05",
+  "period": {
+    "from": "2026-01-12",
+    "to": "2026-10-09"
+  },
+  "report_submitted_on_time": true,
+  "case_id": "demo-piotr-first-pos",
+  "exam": "nie_dotyczy",
+  "criteria": [
+    {
+      "id": "rzetelnosc",
+      "name": "Rzetelność",
+      "kind": "first_eval_element",
+      "indicator_ratings": [
+        {
+          "indicator_id": "rzetelnosc.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Rzetelność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "rzetelnosc.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Rzetelność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe",
+      "name": "Wykorzystywanie wiedzy i doskonalenie zawodowe",
+      "kind": "first_eval_element",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Wykorzystywanie wiedzy i doskonalenie zawodowe” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Wykorzystywanie wiedzy i doskonalenie zawodowe” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "organizacja_pracy_i_orientacja_na_osiaganie_celow",
+      "name": "Organizacja pracy i orientacja na osiąganie celów",
+      "kind": "first_eval_element",
+      "indicator_ratings": [
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Organizacja pracy i orientacja na osiąganie celów” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Organizacja pracy i orientacja na osiąganie celów” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 4.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "name": "Komunikacja",
+      "kind": "first_eval_element",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "wspolpraca",
+      "name": "Współpraca",
+      "kind": "first_eval_element",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wspolpraca.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 2,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 2,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 3,
+        "level": 2,
+        "level_label": "poniżej oczekiwań",
+        "average": 2.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 3,
+      "override_note": null
+    }
+  ],
+  "average": 5.0,
+  "result": "pozytywna",
+  "justification": null,
+  "development_conclusions": "Rozwijać umiejętność współpracy międzywydziałowej: udział w projekcie zespołowym i szkolenie z komunikacji."
+}

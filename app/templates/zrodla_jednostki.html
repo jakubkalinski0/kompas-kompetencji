@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} – źródła – Kompas Kompetencji{% endblock %}
+{% block body %}
+<main class="page">
+  <p><a href="/zrodla">↢ Źródła bazy wiedzy</a></p>
+  <h1>{{ title }}</h1>
+  {% if faq %}
+  <ol class="cites" style="font-size:13.5px">
+    {% for f in faq %}
+    <li><details><summary>{{ f.question }}</summary><div class="fragment">{{ f.answer }}</div>
+      <small class="muted">Źródła: {% for s in f.sources %}{{ s.unit }} ({{ s.source_id }}){% if not loop.last %}, {% endif %}{% endfor %}</small></details></li>
+    {% endfor %}
+  </ol>
+  {% else %}
+  <p class="muted">{{ units|length }} jednostek. Identyfikator w nawiasie to ten sam, którym asystent oznacza cytat.</p>
+  <ol class="cites" style="font-size:13.5px">
+    {% for u in units %}
+    <li><details><summary>{{ u.unit }} <small class="muted">[{{ u.id }}]</small></summary>
+      <div class="fragment">{{ u.text }}</div><small class="muted">{{ u.citation }}</small></details></li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+</main>
+{% endblock %}

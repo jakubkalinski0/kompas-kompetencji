@@ -1,0 +1,67 @@
+{
+  "_info": "Przypisy dosłownie z DOCX wzorów arkuszy (word/footnotes.xml). Generowane przez extract_form_texts.py.",
+  "forms": {
+    "periodic_b": {
+      "source_file": "Ocena okresowa w służbie cywilnej/Arkusz oceny B (2).docx",
+      "sha256": "47c2b62b81c49c62f03218dc7a1b5bacc0e21ab7d0c9c1437f56f4e52e1245c3",
+      "footnotes": {
+        "1": "Arkusz służy do sporządzenia oceny okresowej urzędnika służby cywilnej lub pracownika służby cywilnej, zatrudnionego na stanowisku, na którym praca polega na bezpośrednim kierowaniu pracownikami.",
+        "2": "Należy wskazać pełną nazwę stanowiska pracy wraz z jego rozszerzeniem określającym, do jakich spraw jest to stanowisko (jeżeli zostało to określone w opisie stanowiska pracy).",
+        "3": "Należy wpisać nazwy wybranych kryteriów, korzystając z załącznika nr 1 do rozporządzenia Prezesa Rady Ministrów z dnia 4 kwietnia 2016 r. w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+        "4": "W trakcie rozmowy omawiane są: 1) główne obowiązki wynikające z opisu stanowiska pracy zajmowanego przez ocenianego, 2) kryteria obowiązkowe i kryteria dodatkowe, jeżeli są wybierane przez oceniającego, 3) oczekiwania oceniającego co do sposobu spełniania kryteriów oceny przez ocenianego, 4) cele do osiągnięcia w okresie, w którym oceniany podlega ocenie, jeżeli ich określenie jest uzasadnione ze względu na charakter obowiązków wynikających z opisu stanowiska pracy zajmowanego przez ocenianego, a także sposób realizacji wyznaczonych celów.",
+        "5": "W trakcie rozmowy oceniającej omawia się: 1) główne obowiązki wykonywane przez ocenianego w okresie, w którym podlegał ocenie, oraz sposób ich realizacji, z uwzględnieniem spełniania przez ocenianego ustalonych kryteriów oceny, 2) sposób realizowania przez ocenianego celów do osiągnięcia w okresie, w którym oceniany podlegał ocenie, jeżeli cele te zostały wyznaczone, 3) kierunki dalszego rozwoju zawodowego i potrzeby ocenianego w zakresie podnoszenia kwalifikacji i doskonalenia umiejętności.",
+        "6": "Data „od” oznacza datę zapoznania ocenianego z kryteriami oceny – z części I arkusza oceny.",
+        "7": "Data „do” oznacza datę sporządzenia oceny na piśmie. Jeżeli ocena okresowa jest sporządzana w związku z zastosowaniem art. 81 ust. 6 ustawy z dnia 21 listopada 2008 r. o służbie cywilnej (Dz. U. z 2014 r. poz. 1111, z późn. zm.) i nie została sporządzona przed zmianą stanowiska pracy, należy w tym polu wpisać ostatni dzień pracy na zajmowanym stanowisku pracy.",
+        "8": "Należy wstawić znak „X” w odpowiednie pole.",
+        "9": "Należy wpisać nazwy wybranych kryteriów, korzystając z załącznika nr 1 do rozporządzenia Prezesa Rady Ministrów z dnia 4 kwietnia 2016 r. w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+        "10": "POZYTYWNA – w przypadku ustalenia ogólnego poziomu spełniania kryteriów oceny na poziomie „znacznie powyżej oczekiwań”, „powyżej oczekiwań” albo „na poziomie oczekiwań”, pod warunkiem nieuzyskania przez ocenianego żadnej z ocen cząstkowych na poziomie „znacznie poniżej oczekiwań”.",
+        "11": "NEGATYWNA – w przypadku ustalenia ogólnego poziomu spełniania kryteriów oceny na poziomie „poniżej oczekiwań” albo „znacznie poniżej oczekiwań”, a także w przypadku uzyskania przez ocenianego co najmniej jednej oceny cząstkowej na poziomie „znacznie poniżej oczekiwań”.",
+        "12": "Uzasadnienie jest obligatoryjne w przypadku otrzymania przez ocenianego negatywnej oceny okresowej. W przypadku przyznania oceny pozytywnej uzasadnienie jest fakultatywne. Sporządzenie uzasadnienia oceny może polegać na ogólnym omówieniu oceny lub na szczegółowym odniesieniu się do wszystkich ocen cząstkowych albo tylko do niektórych z nich.",
+        "13": "Uwzględniając sporządzoną ocenę, realizowane i przyszłe zadania oraz oczekiwania ocenianego, należy określić kierunki rozwoju zawodowego ocenianego, biorąc pod uwagę obszary wiedzy i umiejętności wymagające doskonalenia, oraz zaproponować optymalne formy i metody ich realizacji.",
+        "14": "Należy wpisać „pozytywna” lub „negatywna”.",
+        "15": "Należy wpisać, na jakim poziomie była przyznana poprzednia ocena okresowa (np. „na poziomie oczekiwań”).",
+        "16": "Należy wstawić znak „X” w odpowiednie pole.",
+        "17": "W urzędzie, w którym przepisy nie przewidują tworzenia stanowiska dyrektora generalnego urzędu, sprzeciw składa się do kierownika tego urzędu.",
+        "18": "Części III nie drukuje się i nie dołącza do arkusza oceny okresowej, w przypadku ocenianego będącego pracownikiem służby cywilnej oraz w razie nieskładania wniosku o przyznanie urzędnikowi służby cywilnej kolejnego stopnia służbowego."
+      }
+    },
+    "periodic_c": {
+      "source_file": "Ocena okresowa w służbie cywilnej/Arkusz oceny C (2).docx",
+      "sha256": "4845015f886a56c8715006a5b803e77c6d628eab9aa4989763214c170ba662f0",
+      "footnotes": {
+        "1": "Arkusz służy do sporządzenia oceny okresowej urzędnika służby cywilnej lub pracownika służby cywilnej, zatrudnionego na stanowisku, które nie jest:\n– stanowiskiem kierownika urzędu, będącym stanowiskiem pracy w służbie cywilnej, ani\n– stanowiskiem, na którym praca polega na bezpośrednim kierowaniu pracownikami.",
+        "2": "Należy wskazać pełną nazwę stanowiska pracy wraz z jego rozszerzeniem określającym, do jakich spraw jest to stanowisko (jeżeli zostało to określone w opisie stanowiska pracy).",
+        "3": "Należy wpisać nazwy wybranych kryteriów, korzystając z załącznika nr 1 do rozporządzenia Prezesa Rady Ministrów z dnia 4 kwietnia 2016 r. w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+        "4": "W trakcie rozmowy omawiane są: 1) główne obowiązki wynikające z opisu stanowiska pracy zajmowanego przez ocenianego, 2) kryteria obowiązkowe i kryteria dodatkowe, jeżeli są wybierane przez oceniającego, 3) oczekiwania oceniającego co do sposobu spełniania kryteriów oceny przez ocenianego, 4) cele do osiągnięcia w okresie, w którym oceniany podlega ocenie, jeżeli ich określenie jest uzasadnione ze względu na charakter obowiązków wynikających z opisu stanowiska pracy zajmowanego przez ocenianego, a także sposób realizacji wyznaczonych celów.",
+        "5": "W trakcie rozmowy oceniającej omawia się: 1) główne obowiązki wykonywane przez ocenianego w okresie, w którym podlegał ocenie, oraz sposób ich realizacji, z uwzględnieniem spełniania przez ocenianego ustalonych kryteriów oceny, 2) sposób realizowania przez ocenianego celów do osiągnięcia w okresie, w którym oceniany podlegał ocenie, jeżeli cele te zostały wyznaczone, 3) kierunki dalszego rozwoju zawodowego i potrzeby ocenianego w zakresie podnoszenia kwalifikacji i doskonalenia umiejętności.",
+        "6": "Data „od” oznacza datę zapoznania ocenianego z kryteriami oceny – z części I arkusza oceny.",
+        "7": "Data „do” oznacza datę sporządzenia oceny na piśmie. Jeżeli ocena okresowa jest sporządzana w związku z zastosowaniem art. 81 ust. 6 ustawy z dnia 21 listopada 2008 r. o służbie cywilnej (Dz. U. z 2014 r. poz. 1111, z późn. zm.) i nie została sporządzona przed zmianą stanowiska pracy, należy w tym polu wpisać ostatni dzień pracy na zajmowanym stanowisku pracy.",
+        "8": "Należy wstawić znak „X” w odpowiednie pole.",
+        "9": "Należy wpisać nazwy wybranych kryteriów, korzystając z załącznika nr 1 do rozporządzenia Prezesa Rady Ministrów z dnia 4 kwietnia 2016 r. w sprawie warunków i sposobu przeprowadzania ocen okresowych urzędników służby cywilnej i pracowników służby cywilnej.",
+        "10": "POZYTYWNA – w przypadku ustalenia ogólnego poziomu spełniania kryteriów oceny na poziomie „znacznie powyżej oczekiwań”, „powyżej oczekiwań” albo „na poziomie oczekiwań”, pod warunkiem nieuzyskania przez ocenianego żadnej z ocen cząstkowych na poziomie „znacznie poniżej oczekiwań”.",
+        "11": "NEGATYWNA – w przypadku ustalenia ogólnego poziomu spełniania kryteriów oceny na poziomie „poniżej oczekiwań” albo „znacznie poniżej oczekiwań”, a także w przypadku uzyskania przez ocenianego co najmniej jednej oceny cząstkowej na poziomie „znacznie poniżej oczekiwań”.",
+        "12": "Uzasadnienie jest obligatoryjne w przypadku otrzymania przez ocenianego negatywnej oceny okresowej. W przypadku przyznania oceny pozytywnej uzasadnienie jest fakultatywne. Sporządzenie uzasadnienia oceny może polegać na ogólnym omówieniu oceny lub na szczegółowym odniesieniu się do wszystkich ocen cząstkowych albo tylko do niektórych z nich.",
+        "13": "Uwzględniając sporządzoną ocenę, realizowane i przyszłe zadania oraz oczekiwania ocenianego, należy określić kierunki rozwoju zawodowego ocenianego, biorąc pod uwagę obszary wiedzy i umiejętności wymagające doskonalenia, oraz zaproponować optymalne formy i metody ich realizacji.",
+        "14": "Należy wpisać „pozytywna” lub „negatywna”.",
+        "15": "Należy wpisać, na jakim poziomie była przyznana poprzednia ocena okresowa (np. „na poziomie oczekiwań”).",
+        "16": "Należy wstawić znak „X” w odpowiednie pole.",
+        "17": "W urzędzie, w którym przepisy nie przewidują tworzenia stanowiska dyrektora generalnego urzędu, sprzeciw składa się do kierownika tego urzędu.",
+        "18": "Części III nie drukuje się i nie dołącza do arkusza oceny okresowej w przypadku ocenianego będącego pracownikiem służby cywilnej oraz w razie nieskładania wniosku o przyznanie urzędnikowi służby cywilnej kolejnego stopnia służbowego."
+      }
+    },
+    "first_eval": {
+      "source_file": "Pierwsza ocena w służbie cywilnej/Arkusz pierwszej oceny (2).docx",
+      "sha256": "12a6f89a8bb8b667e2e20b6efd504259c6cc061b36460b8d9b87fed50a5b1721",
+      "footnotes": {
+        "1": "W przypadku ocenianego zatrudnionego w celu zastępstwa nieobecnego członka korpusu służby cywilnej – data ustalenia przez strony stosunku pracy, że oceniany będzie podlegać pierwszej ocenie.",
+        "2": "W trakcie rozmowy oceniającej omawiane są:\n– postawa ocenianego, jego zaangażowanie i postępy w pracy, relacje ze współpracownikami oraz terminowość wykonywania zadań, oceniane za pomocą elementów oceny,\n– wynik egzaminu ze służby przygotowawczej, jeżeli oceniany był obowiązany do przystąpienia do tego egzaminu,\n– sprawozdanie sporządzone przez ocenianego.\nMożna również omówić kierunki dalszego rozwoju zawodowego i potrzeby ocenianego.",
+        "3": "Opisy elementów oceny są określone w załączniku nr 1 do rozporządzenia Prezesa Rady Ministrów z dnia 23 lipca 2015 r. w sprawie szczegółowych warunków i sposobu dokonywania pierwszej oceny w służbie cywilnej (Dz. U. poz. 1144).",
+        "4": "Ocena łączna jest średnią arytmetyczną ze wszystkich ocen cząstkowych.",
+        "5": "Nie dotyczy ocenianego będącego:\n– absolwentem Krajowej Szkoły Administracji Publicznej, który nie złożył wniosku o mianowanie w służbie cywilnej,\n– pracownikiem służby cywilnej zatrudnionym w celu zastępstwa nieobecnego członka korpusu służby cywilnej, podlegającym pierwszej ocenie,\n– pracownikiem służby cywilnej zatrudnionym na wyższym stanowisku w służbie cywilnej.",
+        "6": "Pozytywną pierwszą ocenę należy przyznać ocenianemu, który łącznie spełnił następujące warunki:\n– zaliczył egzamin ze służby przygotowawczej, chyba że nie dotyczył go obowiązek przystąpienia do tego egzaminu,\n– złożył sprawozdanie w wyznaczonym terminie,\n– uzyskał nie więcej niż jedną ocenę cząstkową w wysokości 3 punktów za postawę ocenianego, jego zaangażowanie i postępy w pracy, relacje ze współpracownikami oraz terminowość wykonywania zadań,\n– uzyskał ocenę łączną nie niższą niż 5 punktów za postawę ocenianego, jego zaangażowanie i postępy w pracy, relacje ze współpracownikami oraz terminowość wykonywania zadań.",
+        "7": "W przypadku przyznania negatywnej pierwszej oceny uzasadnienie przyznanej oceny jest obowiązkowe, a w przypadku przyznania pozytywnej pierwszej oceny – fakultatywne. Uzasadnienie przyznanej oceny może polegać na ogólnym omówieniu oceny lub na szczegółowym odniesieniu się do wszystkich ocen cząstkowych albo tylko do niektórych z nich.",
+        "8": "Wnioski dotyczące rozwoju zawodowego ocenianego sporządza się fakultatywnie – tylko w przypadku przyznania pozytywnej pierwszej oceny. Określa się m.in. zakres wiedzy, która powinna być poszerzona, zakres umiejętności, które wymagają doskonalenia, oraz proponowane formy rozwoju zawodowego ocenianego."
+      }
+    }
+  }
+}

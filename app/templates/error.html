@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_ui.html" import bar %}
+{% block title %}{{ code }} – Kompas Kompetencji{% endblock %}
+{% block body %}
+<main class="page error-page">
+  <div class="art art-error" data-art="lost" data-cx="0.5" data-cy="0.5" data-r="0.44" data-seed="{{ code }}"></div>
+  <section class="win error-win" aria-labelledby="err-title">
+    {{ bar('Komunikat', aside='kod ' ~ code) }}
+    <div class="win-body">
+      <p class="error-code">{{ code }}</p>
+      <h1 id="err-title">{% if code == 403 %}Brak dostępu{% elif code == 404 %}Nie znaleziono{% elif code == 422 %}Nie da się wykonać tej czynności{% else %}Coś poszło nie tak{% endif %}</h1>
+      <p class="lead">{{ detail }}</p>
+      <p><a class="btn secondary" href="/">Wróć na stronę główną</a></p>
+    </div>
+  </section>
+</main>
+{% endblock %}

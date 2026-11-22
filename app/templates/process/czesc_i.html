@@ -1,0 +1,27 @@
+{% extends "process/_layout.html" %}
+{% block part %}Część I arkusza{% endblock %}
+{% block work %}
+<h1>Ustalenie kryteriów i terminów</h1>
+<p class="lead">Data zapoznania z kryteriami otwiera okres oceny (data „od” w Części II – przypis 6 arkusza).</p>
+
+{% if hints %}
+<h2>Terminy wyliczone z poprzedniej oceny ({{ proc.employee.previous_evaluation_date|d }})</h2>
+<table class="register" style="max-width:52em">
+  <thead><tr><th>Czynność</th><th class="col-due">Do kiedy</th><th>Podstawa</th></tr></thead>
+  <tbody>
+  {% for h in hints %}<tr><td><strong>{{ h.label }}</strong>{% if h.note %}<br><small>{{ h.note }}</small>{% endif %}</td><td class="cell-due">{{ h.due|d }}</td><td class="cell-basis">{{ h.basis }}</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<form method="post" action="/procesy/{{ proc.id }}/czesc-i" style="margin-top:18px">
+  <label class="field"><span>Data rozmowy i zapoznania ocenianego z kryteriami</span>
+    <input type="date" name="meeting" value="{{ defaults.meeting }}" required></label>
+  <label class="field"><span>Termin sporządzenia oceny</span>
+    <input type="date" name="deadline" value="{{ defaults.deadline }}" required></label>
+  <label class="field"><span>Cele i oczekiwania z rozmowy (opcjonalnie; poza arkuszem)</span>
+    <textarea name="goals">{{ defaults.goals }}</textarea></label>
+  {% if hints %}<p class="muted">Daty wstępnie wypełnione z tabeli – skoryguj do faktycznych.</p>{% endif %}
+  <div class="form-actions"><button class="btn go" type="submit">Zapisz Część I i przejdź do wskaźników</button></div>
+</form>
+{% endblock %}

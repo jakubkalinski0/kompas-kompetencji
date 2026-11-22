@@ -1,0 +1,2 @@
+# Dane wdrożeniowe muszą być bajtowo identyczne z wynikiem build_data.py (LF) na każdym systemie
+deploy/processed/** text eol=lf

@@ -1,0 +1,39 @@
+# Render Blueprint – Kompas Kompetencji (darmowa instancja, region UE).
+# Klucz Groq NIE jest w repozytorium: LLM_API_KEY ma sync: false, wartość wpisuje się w panelu Render.
+services:
+  - type: web
+    name: kompas-kompetencji
+    runtime: python
+    plan: free
+    region: frankfurt
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    # jeden proces: limity zapytań LLM i baza SQLite są w obrębie instancji
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.1
+      - key: LLM_PROVIDER
+        value: openai_compat
+      - key: LLM_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_CACHE
+        value: "1"
+      # gotowe odpowiedzi na pytania demo w repo (scripts/warm_demo_cache.py); nowe dopisują się do nietrwałego dysku
+      - key: LLM_CACHE_DIR
+        value: deploy/llm_cache
+      - key: LLM_TIMEOUT
+        value: "45"
+      - key: KOMPAS_EMBEDDINGS
+        value: "0"
+      - key: KOMPAS_LLM_PER_MIN
+        value: "4"
+      - key: KOMPAS_LLM_PER_SESSION_HOUR
+        value: "30"
+      - key: SESSION_SECRET
+        generateValue: true

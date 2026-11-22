@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ proc.employee.full_name }} – {{ 'pierwsza ocena' if proc.kind == 'first' else 'ocena okresowa' }} – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">{{ 'Pierwsza ocena' if proc.kind == 'first' else 'Ocena okresowa' }} · {{ proc.id }}</span>{% endblock %}
+{% block navsteps %}{# skrót kroków w pasku – pokazuje się po przewinięciu pełnego paska kroków #}
+{% set ns = namespace(cur='') %}
+<nav class="nav-steps" aria-label="Kroki oceny – skrót">
+  {% for key, label in steps %}{% set st = steps_state[key] %}{% if key == active %}{% set ns.cur = label %}{% endif %}
+    {% if st == 'locked' or (proc.demo and key != 'podsumowanie') %}<span class="ns locked" title="{{ loop.index|roman }}. {{ label }} – niedostępny"></span>
+    {% else %}<a class="ns {{ st }}{% if key == active %} active{% endif %}" href="{{ step_url(proc, key) }}" title="{{ loop.index|roman }}. {{ label }}"{% if key == active %} aria-current="step"{% endif %}><span class="vh">Krok {{ loop.index|roman }}: {{ label }}</span></a>{% endif %}
+  {% endfor %}
+  <span class="ns-label">{{ step_no|roman }}/{{ steps|length|roman }} · {{ ns.cur }}</span>
+</nav>
+{% endblock %}
+{% block body %}
+{% set first = proc.kind == 'first' %}
+<nav class="stepnav" aria-label="Kroki oceny">
+  {% for key, label in steps %}
+    {% set st = steps_state[key] %}
+    {% if st == 'locked' or (proc.demo and key != 'podsumowanie') %}<span class="locked"><span class="no">{{ loop.index|roman }}</span>{{ label }}</span>
+    {% else %}<a href="{{ step_url(proc, key) }}" class="{{ st }}{% if key == active %} active{% endif %}"{% if key == active %} aria-current="step"{% endif %}><span class="no">{{ loop.index|roman }}</span>{{ label }}</a>{% endif %}
+  {% endfor %}
+  <a class="back" href="/pulpit">↢ Wszystkie oceny</a>
+</nav>
+<section class="docket{% if active == 'wskazniki' %} compact{% endif %}" aria-label="Karta sprawy">
+  <div>
+    <p class="docket-label">Karta sprawy</p>
+    <p class="title">{{ proc.employee.full_name }}</p>
+    <p class="sub">{{ proc.employee.position }}{% if proc.employee.unit %} · {{ proc.employee.unit }}{% endif %}</p>
+  </div>
+  <dl>
+    <dt>Sygnatura</dt><dd>{{ proc.id }}{% if proc.demo %} · przykład demo{% endif %}</dd>
+    <dt>Arkusz</dt><dd>{{ FORM_LABELS[doc.form] if doc else 'do wyboru' }}</dd>
+    <dt>Status</dt><dd>{{ STATUS_LABELS[proc.kind].get(proc.status, proc.status) }}</dd>
+    {% if ev is defined and ev.result %}
+    <dt>Wynik</dt><dd><span class="res-tag {{ 'pos' if ev.result == 'pozytywna' else 'neg' }}">{{ ev.result }}</span></dd>
+    {% endif %}
+    {% if next_deadline %}
+    <dt>Najbliższy termin</dt>
+    <dd>{% if next_deadline.flag == 'po_terminie' %}<span class="flag late">termin minął</span>{% elif next_deadline.flag == 'zbliza_sie' %}<span class="flag soon">zbliża się</span>{% endif %}
+        {% if next_deadline.due %}do {{ next_deadline.due|d }}{% else %}{{ next_deadline.window.from|d }} – {{ next_deadline.window.to|d }}{% endif %} · {{ next_deadline.label }}</dd>
+    {% endif %}
+  </dl>
+  <span class="docket-pixels" aria-hidden="true"></span>
+</section>
+<div class="workspace{% if first %} path-first{% endif %}">
+  <main class="work">
+    <section class="sheet">
+      <div class="sheet-margin">
+        <div class="sheet-no">{{ step_no|roman }}</div>
+        <p class="part-label sheet-part">{% block part %}{% endblock %}</p>
+        {% if step_basis %}<p class="sheet-note">{{ step_basis }}</p>{% endif %}
+      </div>
+      <div class="sheet-main">
+        {% include "_flash.html" %}
+        {% block work %}{% endblock %}
+      </div>
+    </section>
+  </main>
+  {% include "partials/_assistant.html" %}
+</div>
+{% endblock %}

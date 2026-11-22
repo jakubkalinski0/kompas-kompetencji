@@ -1,0 +1,910 @@
+{
+ "summary": {
+  "n_in_scope": 29,
+  "n_out_of_scope": 7,
+  "hit@1": 0.724,
+  "hit@3": 0.793,
+  "hit@5": 0.966,
+  "all@5": 0.897,
+  "faq_false_matches": 0,
+  "refusal_recall_out_of_scope": "3/7",
+  "false_refusals_in_scope": "0/29",
+  "thresholds_used": {
+   "coverage_min": 0.2,
+   "dense_min": 0.74
+  },
+  "calibration_best": {
+   "coverage_min": 0.4,
+   "dense_min": 0.78,
+   "balanced_accuracy": 0.825,
+   "refusals_correct": "6/7",
+   "answered_in_scope": "23/29"
+  },
+  "signals_in_scope": {
+   "coverage_min": 0.23,
+   "dense_top_min": 0
+  },
+  "signals_out_of_scope": {
+   "coverage_max": 0.457,
+   "dense_top_max": 0
+  },
+  "latency_p50_s": 0.005,
+  "latency_p95_s": 0.026,
+  "hit@5_first": 0.929,
+  "hit@5_periodic": 1.0
+ },
+ "rows": [
+  {
+   "id": "h_first_01",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.653,
+    "dense_top": null,
+    "bm25_top": 20.724
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.007,
+   "top5": [
+    "rozp2015:par3 (§ 3)",
+    "rozp2015:par4 (§ 4)",
+    "ustawa_sc:art37 (art. 37)",
+    "rozp2016:par10 (§ 10)",
+    "ustawa_sc:art20 (art. 20)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_02",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.419,
+    "dense_top": null,
+    "bm25_top": 18.179
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par4 (§ 4)",
+    "ustawa_sc:art123 (art. 123)",
+    "ustawa_sc:art22 (art. 22)",
+    "rozp2015:par8 (§ 8)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_03",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.266,
+    "dense_top": null,
+    "bm25_top": 12.195
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par6 (§ 6)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par8 (§ 8)",
+    "ustawa_sc:art41 (art. 41)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_04",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.424,
+    "dense_top": null,
+    "bm25_top": 10.974
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.03,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "ustawa_sc:art38 (art. 38)",
+    "ustawa_sc:art45 (art. 45)",
+    "rozp2015:par6 (§ 6)",
+    "ustawa_sc:art120 (art. 120)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_05",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.631,
+    "dense_top": null,
+    "bm25_top": 12.942
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2016:par4 (§ 4)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par2 (§ 2)",
+    "ustawa_sc:art43 (art. 43)",
+    "rozp2015:par10 (§ 10)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": true,
+   "all@5": false
+  },
+  {
+   "id": "h_first_06",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.54,
+    "dense_top": null,
+    "bm25_top": 18.601
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.006,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par10 (§ 10)",
+    "ustawa_sc:art48 (art. 48)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par3 (§ 3)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_07",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.399,
+    "dense_top": null,
+    "bm25_top": 13.965
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2015:par8 (§ 8)",
+    "rozp2015:par5 (§ 5)",
+    "rozp2016:par2 (§ 2)",
+    "rozp2015:par10 (§ 10)",
+    "rozp2015:par9 (§ 9)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_08",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.23,
+    "dense_top": null,
+    "bm25_top": 8.902
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2015:par2 (§ 2)",
+    "ustawa_sc:art38 (art. 38)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par1 (§ 1)",
+    "rozp2015:par5 (§ 5)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": false,
+   "all@5": false
+  },
+  {
+   "id": "h_first_09",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.507,
+    "dense_top": null,
+    "bm25_top": 12.48
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2015:par11 (§ 11)",
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par12 (§ 12)",
+    "rozp2015:par4 (§ 4)",
+    "poradnik_okresowa_2016:6_2_2 (rozdz. 6.2.2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_10",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.673,
+    "dense_top": null,
+    "bm25_top": 13.214
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "ustawa_sc:art38 (art. 38)",
+    "rozp2015:par1 (§ 1)",
+    "ustawa_sc:art35 (art. 35)",
+    "rozp2015:par2 (§ 2)",
+    "rozp2016:par1 (§ 1)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_11",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.477,
+    "dense_top": null,
+    "bm25_top": 19.743
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.026,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "ustawa_sc:art35 (art. 35)",
+    "ustawa_sc:art38 (art. 38)",
+    "ustawa_sc:art81 (art. 81)",
+    "rozp2015:par6 (§ 6)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_12",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.685,
+    "dense_top": null,
+    "bm25_top": 11.813
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "poradnik_pierwsza_2016:1 (rozdz. 1)",
+    "ustawa_sc:art17 (art. 17)",
+    "model_kompetencji:rzetelnosc (kompetencja: Rzetelność)",
+    "rozp2015:par2 (§ 2)",
+    "poradnik_pierwsza_2016:6_5-6_5_1 (rozdz. 6.5–6.5.1)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_13",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.646,
+    "dense_top": null,
+    "bm25_top": 12.941
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par8 (§ 8)",
+    "rozp2015:par3 (§ 3)",
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par11:ust5 (§ 11 ust. 5)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_14",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.497,
+    "dense_top": null,
+    "bm25_top": 19.864
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.006,
+   "top5": [
+    "rozp2015:par10 (§ 10)",
+    "rozp2015:par5 (§ 5)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par7 (§ 7)",
+    "rozp2015:par2 (§ 2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_01",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.482,
+    "dense_top": null,
+    "bm25_top": 12.837
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2016:par9 (§ 9)",
+    "ustawa_sc:art81 (art. 81)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "ustawa_sc:art36 (art. 36)",
+    "ustawa_sc:art97a (art. 97a)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_02",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.386,
+    "dense_top": null,
+    "bm25_top": 16.988
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "ustawa_sc:art81 (art. 81)",
+    "rozp2016:par9 (§ 9)",
+    "rozp2016:par10 (§ 10)",
+    "rozp2016:par3 (§ 3)",
+    "rozp2015:par10 (§ 10)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_03",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.595,
+    "dense_top": null,
+    "bm25_top": 13.741
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "ustawa_sc:art204 (art. 204)",
+    "ustawa_sc:art38 (art. 38)",
+    "ustawa_sc:art81 (art. 81)",
+    "rozp2016:par9 (§ 9)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_04",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.417,
+    "dense_top": null,
+    "bm25_top": 13.862
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.037,
+   "top5": [
+    "ustawa_sc:art81 (art. 81)",
+    "ustawa_sc:art97a (art. 97a)",
+    "ustawa_sc:art89 (art. 89)",
+    "rozp2016:par11:ust5 (§ 11 ust. 5)",
+    "ustawa_sc:art36 (art. 36)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_05",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.595,
+    "dense_top": null,
+    "bm25_top": 11.441
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "ustawa_sc:art81 (art. 81)",
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par5 (§ 5)",
+    "rozp2015:par8 (§ 8)",
+    "rozp2016:par8 (§ 8)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_06",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.572,
+    "dense_top": null,
+    "bm25_top": 21.736
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par10 (§ 10)",
+    "rozp2015:par7 (§ 7)",
+    "ustawa_sc:art43 (art. 43)",
+    "poradnik_okresowa_2016:6_2_5_2-6_2_5_3 (rozdz. 6.2.5.2–6.2.5.3)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": false
+  },
+  {
+   "id": "h_periodic_07",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.452,
+    "dense_top": null,
+    "bm25_top": 20.394
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par7 (§ 7)",
+    "rozp2015:par10 (§ 10)",
+    "ustawa_sc:art43 (art. 43)",
+    "ustawa_sc:art48 (art. 48)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_08",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.299,
+    "dense_top": null,
+    "bm25_top": 16.787
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2016:par6 (§ 6)",
+    "rozp2015:par11 (§ 11)",
+    "rozp2016:par12 (§ 12)",
+    "rozp2015:par4 (§ 4)",
+    "poradnik_okresowa_2016:6_2_2 (rozdz. 6.2.2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_09",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 1.0,
+    "dense_top": null,
+    "bm25_top": 19.582
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par13 (§ 13)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par3 (§ 3)",
+    "rozp2016:par9 (§ 9)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_10",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.864,
+    "dense_top": null,
+    "bm25_top": 13.302
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.009,
+   "top5": [
+    "ustawa_sc:art83 (art. 83)",
+    "ustawa_sc:art69 (art. 69)",
+    "ustawa_sc:art73 (art. 73)",
+    "ustawa_sc:art97a (art. 97a)",
+    "ustawa_sc:art131 (art. 131)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_11",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.378,
+    "dense_top": null,
+    "bm25_top": 9.807
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.019,
+   "top5": [
+    "ustawa_sc:art83 (art. 83)",
+    "ustawa_sc:art115 (art. 115)",
+    "ustawa_sc:art48 (art. 48)",
+    "ustawa_sc:art100 (art. 100)",
+    "ustawa_sc:art95 (art. 95)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_12",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.4,
+    "dense_top": null,
+    "bm25_top": 15.913
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "ustawa_sc:art89 (art. 89)",
+    "ustawa_sc:art198 (art. 198)",
+    "ustawa_sc:art51 (art. 51)",
+    "ustawa_sc:art23d (art. 23d)",
+    "rozp2016:par11:ust5 (§ 11 ust. 5)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_13",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.583,
+    "dense_top": null,
+    "bm25_top": 17.308
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.008,
+   "top5": [
+    "ustawa_sc:art81 (art. 81)",
+    "ustawa_sc:art62 (art. 62)",
+    "rozp2016:par9 (§ 9)",
+    "ustawa_sc:art29a:v2 (art. 29a (wersja 2 z 2 w tekście jednolitym))",
+    "ustawa_sc:art29a:v1 (art. 29a (wersja 1 z 2 w tekście jednolitym))"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_14",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.875,
+    "dense_top": null,
+    "bm25_top": 7.891
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "rozp2016:par2 (§ 2)",
+    "rozp2016:par5 (§ 5)",
+    "ustawa_sc:art206 (art. 206)",
+    "ustawa_sc:art80 (art. 80)",
+    "rozp2016:par4 (§ 4)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_15",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.652,
+    "dense_top": null,
+    "bm25_top": 37.26
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.007,
+   "top5": [
+    "ustawa_sc:art89 (art. 89)",
+    "ustawa_sc:art198 (art. 198)",
+    "ustawa_sc:art51 (art. 51)",
+    "rozp2016:par11:ust5 (§ 11 ust. 5)",
+    "ustawa_sc:art114 (art. 114)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_out_01",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.457,
+    "dense_top": null,
+    "bm25_top": 7.103
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.005,
+   "top5": [
+    "ustawa_sc:art45 (art. 45)",
+    "ustawa_sc:art101 (art. 101)",
+    "ustawa_sc:art120 (art. 120)",
+    "ustawa_sc:art71 (art. 71)",
+    "ustawa_sc:art103 (art. 103)"
+   ]
+  },
+  {
+   "id": "h_out_02",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.36,
+    "dense_top": null,
+    "bm25_top": 5.947
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "ustawa_sc:art28a (art. 28a)",
+    "ustawa_sc:art25 (art. 25)",
+    "ustawa_sc:art203 (art. 203)",
+    "ustawa_sc:art7 (art. 7)",
+    "ustawa_sc:art105 (art. 105)"
+   ]
+  },
+  {
+   "id": "h_out_03",
+   "process": "periodic",
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.169,
+    "dense_top": null,
+    "bm25_top": 6.876
+   },
+   "refuse": true,
+   "decision_rule": true,
+   "latency_s": 0.012,
+   "top5": [
+    "ustawa_sc:art63 (art. 63)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "ustawa_sc:art62 (art. 62)",
+    "rozp2015:par9 (§ 9)",
+    "ustawa_sc:art43 (art. 43)"
+   ]
+  },
+  {
+   "id": "h_out_04",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.382,
+    "dense_top": null,
+    "bm25_top": 12.221
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.007,
+   "top5": [
+    "ustawa_sc:art86 (art. 86)",
+    "ustawa_sc:art197 (art. 197)",
+    "ustawa_sc:art15a (art. 15a)",
+    "ustawa_sc:art97a (art. 97a)",
+    "ustawa_sc:art95 (art. 95)"
+   ]
+  },
+  {
+   "id": "h_out_05",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.103,
+    "dense_top": null,
+    "bm25_top": 4.271
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 0.007,
+   "top5": [
+    "ustawa_sc:art62 (art. 62)",
+    "ustawa_sc:art52 (art. 52)",
+    "ustawa_sc:art25 (art. 25)",
+    "ustawa_sc:art116 (art. 116)",
+    "ustawa_sc:art114 (art. 114)"
+   ]
+  },
+  {
+   "id": "h_out_06",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.233,
+    "dense_top": null,
+    "bm25_top": 11.358
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "ustawa_sc:art27a (art. 27a)",
+    "ustawa_sc:art1 (art. 1)",
+    "ustawa_sc:art33:v1 (art. 33 (wersja 1 z 2 w tekście jednolitym))",
+    "ustawa_sc:art30 (art. 30)",
+    "ustawa_sc:art5 (art. 5)"
+   ]
+  },
+  {
+   "id": "h_out_07",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.117,
+    "dense_top": null,
+    "bm25_top": 3.197
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 0.004,
+   "top5": [
+    "ustawa_sc:art209 (art. 209)",
+    "ustawa_sc:art23c (art. 23c)",
+    "ustawa_sc:art2 (art. 2)",
+    "ustawa_sc:art206 (art. 206)",
+    "ustawa_sc:art15 (art. 15)"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,181 @@
+{
+  "config_version": "1.0",
+  "description": "Parametry silnika oceny Kompas Kompetencji. Każda reguła ma pole source (paragraf/przypis + plik w materiałach Partnera: MAT = materialy/ w repo rozwiązania). Pewność: [✔] sprawdzone w tekście źródła 2026-11-21, [~] interpretacja projektowa, [?] do potwierdzenia z mentorem MC.",
+  "source_files": {
+    "rozp2016": "MAT/Ocena okresowa w służbie cywilnej/Rozporządzenie o ocenach okresowych z 2016 r. (3).pdf (Dz. U. 2016 poz. 470)",
+    "rozp2015": "MAT/Pierwsza ocena w służbie cywilnej/Rozporządzenie o pierwszej ocenie z 2015 r. (1).pdf (Dz. U. 2015 poz. 1144)",
+    "arkusz_b": "MAT/Ocena okresowa w służbie cywilnej/Arkusz oceny B (2).docx",
+    "arkusz_c": "MAT/Ocena okresowa w służbie cywilnej/Arkusz oceny C (2).docx",
+    "arkusz_first": "MAT/Pierwsza ocena w służbie cywilnej/Arkusz pierwszej oceny (2).docx",
+    "ustawa_sc": ".claude/skills/kompas-dane-i-zrodla/assets/ustawa_sc/ustawa_o_sluzbie_cywilnej.txt (t.j. Dz. U. 2026 poz. 590)",
+    "model": "MAT/Model_kompetencji.xlsx (nagłówek wiersza 3 arkuszy kompetencji)"
+  },
+  "model_levels": [
+    {"level": 1, "key": "znacznie_ponizej", "label": "Znacznie poniżej oczekiwań", "periodic_points": 1},
+    {"level": 2, "key": "ponizej", "label": "Poniżej oczekiwań", "periodic_points": 3},
+    {"level": 3, "key": "na_poziomie", "label": "Na poziomie oczekiwań", "periodic_points": 5},
+    {"level": 4, "key": "powyzej", "label": "Powyżej oczekiwań", "periodic_points": 7},
+    {"level": 5, "key": "znacznie_powyzej", "label": "Znacznie powyżej oczekiwań", "periodic_points": 9}
+  ],
+  "scales": {
+    "periodic": {
+      "points": [1, 3, 5, 7, 9],
+      "labels": {"1": "znacznie poniżej oczekiwań", "3": "poniżej oczekiwań", "5": "na poziomie oczekiwań", "7": "powyżej oczekiwań", "9": "znacznie powyżej oczekiwań"},
+      "source": "[✔] § 11 ust. 1 pkt 1 lit. a–e rozp2016; Arkusz B i C, Część II (OCENA CZĄSTKOWA)"
+    },
+    "first_eval": {
+      "points": [3, 5, 7],
+      "labels": {"3": "poniżej oczekiwań", "5": "na poziomie oczekiwań", "7": "powyżej oczekiwań"},
+      "source": "[✔] § 9 ust. 1 pkt 1–3 rozp2015; Arkusz pierwszej oceny, Część IV (3/5/7 punktów)"
+    }
+  },
+  "overall_level_thresholds": {
+    "description": "Średnia → poziom. Przedział (min, max]; dla poziomu 1 domknięty z obu stron [1, 2].",
+    "bands": [
+      {"level": 1, "key": "znacznie_ponizej", "label": "znacznie poniżej oczekiwań", "min": 1, "min_inclusive": true, "max": 2, "max_inclusive": true, "range_label": "od 1 punktu do 2 punktów", "points": 1},
+      {"level": 2, "key": "ponizej", "label": "poniżej oczekiwań", "min": 2, "min_inclusive": false, "max": 4, "max_inclusive": true, "range_label": "powyżej 2 punktów do 4 punktów", "points": 3},
+      {"level": 3, "key": "na_poziomie", "label": "na poziomie oczekiwań", "min": 4, "min_inclusive": false, "max": 6, "max_inclusive": true, "range_label": "powyżej 4 punktów do 6 punktów", "points": 5},
+      {"level": 4, "key": "powyzej", "label": "powyżej oczekiwań", "min": 6, "min_inclusive": false, "max": 8, "max_inclusive": true, "range_label": "powyżej 6 punktów do 8 punktów", "points": 7},
+      {"level": 5, "key": "znacznie_powyzej", "label": "znacznie powyżej oczekiwań", "min": 8, "min_inclusive": false, "max": 9, "max_inclusive": true, "range_label": "powyżej 8 punktów do 9 punktów", "points": 9}
+    ],
+    "source": "[✔] § 11 ust. 1 pkt 2 lit. a–e rozp2016; Arkusz B i C, Część II, tabela PRZYZNANIE OCENY"
+  },
+  "suggestion": {
+    "indicator_points_formula": "2L-1",
+    "indicator_points_source": "[~] Interpretacja projektowa: opisy poziomów wskaźnika w Model_kompetencji.xlsx mają te same etykiety co skala § 11 ust. 1 pkt 1 rozp2016 (znacznie poniżej … znacznie powyżej oczekiwań), więc poziom L wskaźnika = 2L−1 pkt. Rozporządzenie punktuje kryteria, nie wskaźniki.",
+    "method": "mean",
+    "allowed_methods": ["mean", "median"],
+    "method_source": "[~] Średnia jak w § 11 ust. 1 pkt 2 rozp2016 (tam: średnia ocen cząstkowych). Reguła agregacji wskaźników NIE jest w przepisach – pytanie 2 do mentorów MC w README pakietu.",
+    "aggregate_to_level": "overall_level_thresholds",
+    "exclude_no_basis": true,
+    "exclude_no_basis_source": "[✔] Model_kompetencji.xlsx, arkusz 'Model kompetencji', instrukcja w wierszach 4–6: przy braku okazji do obserwacji odnotuj 'brak podstaw do oceny' (por. research/03_materialy_i_dane.md)",
+    "min_rated_fraction_warning": 0.5,
+    "min_rated_fraction_source": "[~] Decyzja projektowa: ostrzeżenie, gdy oceniono mniej niż połowę wskaźników kryterium.",
+    "decimal_places": 2,
+    "decimal_separator": ","
+  },
+  "first_eval_mapping": {
+    "status": "do potwierdzenia z mentorem MC",
+    "description": "Sugerowany poziom 1–5 (z tych samych progów co ocena okresowa) → punkty skali pierwszej oceny 3/5/7.",
+    "default": {"1": 3, "2": 3, "3": 5, "4": 7, "5": 7},
+    "source": "[?] Wariant domyślny z promptu zadania. Rozp2015 § 9 ust. 1 ma tylko 3 stopnie (poniżej / na poziomie / powyżej oczekiwań), model ma 5 – przepisy nie rozstrzygają mapowania. DO WERYFIKACJI: pytanie do mentora MC."
+  },
+  "criteria_catalog": [
+    {"id": "komunikacja", "name": "Komunikacja", "annex1_no": 1},
+    {"id": "kreatywnosc", "name": "Kreatywność", "annex1_no": 2},
+    {"id": "negocjowanie", "name": "Negocjowanie", "annex1_no": 3},
+    {"id": "organizacja_pracy_i_orientacja_na_osiaganie_celow", "name": "Organizacja pracy i orientacja na osiąganie celów", "annex1_no": 4},
+    {"id": "orientacja_na_klienta_interesanta", "name": "Orientacja na klienta/interesanta", "annex1_no": 5},
+    {"id": "podejmowanie_decyzji_i_odpowiedzialnosc", "name": "Podejmowanie decyzji i odpowiedzialność", "annex1_no": 6},
+    {"id": "radzenie_sobie_w_sytuacjach_kryzysowych", "name": "Radzenie sobie w sytuacjach kryzysowych", "annex1_no": 7},
+    {"id": "rzetelnosc", "name": "Rzetelność", "annex1_no": 8},
+    {"id": "myslenie_analityczne", "name": "Myślenie analityczne", "annex1_no": 9},
+    {"id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe", "name": "Wykorzystywanie wiedzy i doskonalenie zawodowe", "annex1_no": 10},
+    {"id": "wspolpraca", "name": "Współpraca", "annex1_no": 11},
+    {"id": "wystapienia_publiczne", "name": "Wystąpienia publiczne", "annex1_no": 12},
+    {"id": "zarzadzanie_ludzmi", "name": "Zarządzanie ludźmi", "annex1_no": 13},
+    {"id": "zarzadzanie_strategiczne", "name": "Zarządzanie strategiczne", "annex1_no": 14}
+  ],
+  "criteria_catalog_source": "[✔] Załącznik nr 1 do rozp2016 (Wykaz kryteriów oceny, 14 pozycji)",
+  "forms": {
+    "periodic_b": {
+      "process": "periodic",
+      "label": "Arkusz B – ocena okresowa (stanowisko z bezpośrednim kierowaniem pracownikami)",
+      "annex": "załącznik nr 3 do rozp2016",
+      "applies_to": "stanowisko, na którym praca polega na bezpośrednim kierowaniu pracownikami, inne niż kierownik urzędu",
+      "applies_to_source": "[✔] § 3 ust. 3 rozp2016; przypis 1 Arkusza B",
+      "scale": "periodic",
+      "mandatory_criteria": ["zarzadzanie_ludzmi", "podejmowanie_decyzji_i_odpowiedzialnosc", "organizacja_pracy_i_orientacja_na_osiaganie_celow", "wspolpraca", "komunikacja"],
+      "mandatory_criteria_source": "[✔] § 4 ust. 2 rozp2016; Arkusz B, Część I i II (kolejność jak w arkuszu)",
+      "max_additional_criteria": 3,
+      "max_additional_criteria_source": "[✔] § 5 ust. 2 rozp2016; Arkusz B, Część I 'Kryteria dodatkowe wybrane przez oceniającego (nie więcej niż 3)', przypis 3",
+      "criterion_kinds": ["mandatory", "additional"],
+      "has_overall_level": true,
+      "has_part3": true,
+      "has_objection_notice": true,
+      "has_previous_evaluation": true
+    },
+    "periodic_c": {
+      "process": "periodic",
+      "label": "Arkusz C – ocena okresowa (pozostałe stanowiska)",
+      "annex": "załącznik nr 4 do rozp2016",
+      "applies_to": "stanowisko inne niż kierownik urzędu i inne niż stanowisko z bezpośrednim kierowaniem pracownikami",
+      "applies_to_source": "[✔] § 3 ust. 4 rozp2016; przypis 1 Arkusza C",
+      "scale": "periodic",
+      "mandatory_criteria": ["wykorzystywanie_wiedzy_i_doskonalenie_zawodowe", "rzetelnosc", "organizacja_pracy_i_orientacja_na_osiaganie_celow", "wspolpraca", "komunikacja"],
+      "mandatory_criteria_source": "[✔] § 4 ust. 3 rozp2016; Arkusz C, Część I i II",
+      "max_additional_criteria": 3,
+      "max_additional_criteria_source": "[✔] § 5 ust. 2 rozp2016; Arkusz C, Część I, przypis 3",
+      "criterion_kinds": ["mandatory", "additional"],
+      "has_overall_level": true,
+      "has_part3": true,
+      "has_objection_notice": true,
+      "has_previous_evaluation": true
+    },
+    "first_eval": {
+      "process": "first",
+      "label": "Arkusz pierwszej oceny w służbie cywilnej",
+      "annex": "załącznik nr 2 do rozp2015",
+      "applies_to": "pracownik SC podlegający pierwszej ocenie (art. 38 ustawy)",
+      "applies_to_source": "[✔] § 1–2 rozp2015; art. 38 ust. 1–2 ustawy_sc",
+      "scale": "first_eval",
+      "mandatory_criteria": ["rzetelnosc", "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe", "organizacja_pracy_i_orientacja_na_osiaganie_celow", "komunikacja", "wspolpraca"],
+      "mandatory_criteria_source": "[✔] § 2 pkt 1 lit. a–e rozp2015; Arkusz pierwszej oceny, Część IV (kolejność jak w arkuszu)",
+      "max_additional_criteria": 0,
+      "max_additional_criteria_source": "[✔] Rozp2015 nie przewiduje kryteriów dodatkowych – zamknięta lista 5 elementów (§ 2 pkt 1)",
+      "criterion_kinds": ["first_eval_element"],
+      "has_overall_level": false,
+      "has_part3": false,
+      "has_objection_notice": false,
+      "has_previous_evaluation": false,
+      "positive_conditions": {
+        "exam_passed_or_exempt": true,
+        "report_submitted_on_time": true,
+        "max_count_of_lowest_points": 1,
+        "lowest_points": 3,
+        "min_total_average": 5,
+        "source": "[✔] § 10 ust. 1 pkt 1–4 i ust. 2–3 rozp2015; przypisy 5 i 6 Arkusza pierwszej oceny"
+      },
+      "exam_exemptions": {
+        "ksap_bez_wniosku_o_mianowanie": "absolwent Krajowej Szkoły Administracji Publicznej, który nie złożył wniosku o mianowanie w służbie cywilnej",
+        "zastepstwo": "pracownik służby cywilnej zatrudniony w celu zastępstwa nieobecnego członka korpusu służby cywilnej, podlegający pierwszej ocenie",
+        "wyzsze_stanowisko": "pracownik służby cywilnej zatrudniony na wyższym stanowisku w służbie cywilnej",
+        "source": "[✔] § 10 ust. 3 pkt 1–3 rozp2015; przypis 5 Arkusza pierwszej oceny"
+      }
+    }
+  },
+  "rules": [
+    {"id": "P-SCALE", "process": "periodic", "rule": "Ocena cząstkowa: 1/3/5/7/9 pkt.", "source": "[✔] § 11 ust. 1 pkt 1 rozp2016"},
+    {"id": "P-AVG", "process": "periodic", "rule": "Ogólny poziom = średnia arytmetyczna ocen cząstkowych (wszystkich kryteriów obowiązkowych i dodatkowych), przeliczona progami.", "source": "[✔] § 11 ust. 1 pkt 2 rozp2016; Arkusz B/C Cz. II"},
+    {"id": "P-THRESHOLDS", "process": "periodic", "rule": "[1;2] znacznie poniżej, (2;4] poniżej, (4;6] na poziomie, (6;8] powyżej, (8;9] znacznie powyżej oczekiwań.", "source": "[✔] § 11 ust. 1 pkt 2 lit. a–e rozp2016"},
+    {"id": "P-POSITIVE", "process": "periodic", "rule": "Pozytywna: poziom ogólny ≥ na poziomie oczekiwań ORAZ żadna ocena cząstkowa nie jest 'znacznie poniżej oczekiwań' (1 pkt).", "source": "[✔] § 11 ust. 1 pkt 3 rozp2016; przypis 10 Arkusza B/C"},
+    {"id": "P-NEGATIVE", "process": "periodic", "rule": "Negatywna: poziom ogólny poniżej / znacznie poniżej oczekiwań ALBO co najmniej jedna ocena cząstkowa 1 pkt.", "source": "[✔] § 11 ust. 1 pkt 4 rozp2016; przypis 11 Arkusza B/C"},
+    {"id": "P-JUSTIFICATION", "process": "periodic", "rule": "Uzasadnienie obowiązkowe przy ocenie negatywnej, fakultatywne przy pozytywnej.", "source": "[✔] § 11 ust. 3–4 rozp2016; przypis 12 Arkusza B/C"},
+    {"id": "P-IPRZ", "process": "periodic", "rule": "Wnioski dotyczące IPRZ wpisuje się do arkusza (przy każdej ocenie).", "source": "[✔] § 11 ust. 1 pkt 5 rozp2016; art. 81 ust. 5 ustawy_sc; przypis 13 Arkusza B/C"},
+    {"id": "P-MANDATORY", "process": "periodic", "rule": "Wszystkie kryteria obowiązkowe właściwe dla arkusza muszą być ocenione.", "source": "[✔] § 4 ust. 2–3 i § 11 ust. 1 pkt 1 rozp2016"},
+    {"id": "P-MAX-ADDITIONAL", "process": "periodic", "rule": "Najwyżej 3 kryteria dodatkowe z załącznika nr 1, inne niż obowiązkowe.", "source": "[✔] § 5 ust. 2 rozp2016; przypis 3 Arkusza B/C"},
+    {"id": "P-PERIOD-FROM", "process": "periodic", "rule": "Data 'od' = data zapoznania ocenianego z kryteriami oceny (Część I).", "source": "[✔] przypis 6 Arkusza B/C"},
+    {"id": "P-PERIOD-TO", "process": "periodic", "rule": "Data 'do' = data sporządzenia oceny; przy art. 81 ust. 6 ustawy, gdy ocena nie została sporządzona przed zmianą stanowiska – ostatni dzień pracy na stanowisku.", "source": "[✔] przypis 7 Arkusza B/C; art. 81 ust. 6 ustawy_sc"},
+    {"id": "P-PART3", "process": "periodic", "rule": "Część III nie drukuje się i nie dołącza, gdy oceniany jest pracownikiem SC albo gdy wniosek o kolejny stopień nie jest składany.", "source": "[✔] przypis 18 Arkusza B/C"},
+    {"id": "P-PART3-POSITIVE", "process": "periodic", "rule": "Wniosek o kolejny stopień (Część III) można sporządzić tylko przy ocenie POZYTYWNEJ urzędnika SC.", "source": "[✔] § 11 ust. 5 rozp2016; art. 89 ust. 1 ustawy_sc; treść Części III Arkusza B/C ('W związku z uzyskaniem … pozytywnej oceny okresowej')"},
+    {"id": "P-PART3-FLAG", "process": "periodic", "rule": "Pole 'Czy dołączono wniosek o kolejny stopień': TAK / NIE / NIE DOTYCZY (pracownik SC).", "source": "[✔] Arkusz B/C Cz. II, przypis 16"},
+    {"id": "P-PREVIOUS", "process": "periodic", "rule": "Dane poprzedniej oceny okresowej wypełnia się dla urzędnika SC (ocena, poziom, data).", "source": "[~] Arkusz B/C Cz. II nagłówek 'DANE DOTYCZĄCE POPRZEDNIEJ OCENY OKRESOWEJ URZĘDNIKA SŁUŻBY CYWILNEJ', przypisy 14–15"},
+    {"id": "P-OBJECTION", "process": "periodic", "rule": "Pouczenie: sprzeciw do dyrektora generalnego urzędu w 7 dni od zapoznania się z oceną (w urzędzie bez DG – do kierownika urzędu).", "source": "[✔] art. 83 ust. 1 ustawy_sc; Arkusz B/C 'Pouczenie', przypis 17"},
+    {"id": "F-SCALE", "process": "first", "rule": "Ocena cząstkowa elementu: 3/5/7 pkt.", "source": "[✔] § 9 ust. 1 rozp2015"},
+    {"id": "F-TOTAL", "process": "first", "rule": "Ocena łączna = średnia arytmetyczna ze wszystkich (5) ocen cząstkowych.", "source": "[✔] § 7 pkt 3 rozp2015; przypis 4 Arkusza pierwszej oceny"},
+    {"id": "F-EXAM", "process": "first", "rule": "Warunek: zaliczony egzamin ze służby przygotowawczej, chyba że zachodzi jeden z 3 wyjątków (pole TAK / NIE / NIE DOTYCZY).", "source": "[✔] § 10 ust. 1 pkt 1 i ust. 3 rozp2015; przypisy 5–6 Arkusza pierwszej oceny"},
+    {"id": "F-REPORT", "process": "first", "rule": "Warunek: sprawozdanie złożone w wyznaczonym terminie.", "source": "[✔] § 10 ust. 1 pkt 2 rozp2015; przypis 6"},
+    {"id": "F-MAX-ONE-LOWEST", "process": "first", "rule": "Warunek: nie więcej niż jedna ocena cząstkowa 3 pkt.", "source": "[✔] § 10 ust. 1 pkt 3 rozp2015; przypis 6"},
+    {"id": "F-MIN-TOTAL", "process": "first", "rule": "Warunek: ocena łączna nie niższa niż 5 pkt.", "source": "[✔] § 10 ust. 1 pkt 4 rozp2015; przypis 6"},
+    {"id": "F-NEGATIVE", "process": "first", "rule": "Negatywna przy niespełnieniu któregokolwiek warunku (warunki łączne).", "source": "[✔] § 10 ust. 2 rozp2015; przypis 6 ('łącznie spełnił')"},
+    {"id": "F-JUSTIFICATION", "process": "first", "rule": "Uzasadnienie obowiązkowe przy negatywnej, fakultatywne przy pozytywnej.", "source": "[✔] § 10 ust. 4–5 rozp2015; przypis 7"},
+    {"id": "F-DEV-ONLY-POSITIVE", "process": "first", "rule": "Wnioski dotyczące rozwoju zawodowego – fakultatywne i tylko przy pozytywnej; sporządzane w porozumieniu z kierującym komórką.", "source": "[✔] § 10 ust. 6 rozp2015; przypis 8"},
+    {"id": "F-UNIT-HEAD", "process": "first", "rule": "Pierwszej oceny dokonuje bezpośredni przełożony w porozumieniu z kierującym komórką; kierujący może uczestniczyć w rozmowie i podpisuje potwierdzenie dokonania oceny.", "source": "[✔] art. 38 ust. 2 ustawy_sc; § 8 ust. 2 rozp2015; Arkusz pierwszej oceny – 'Potwierdzenie dokonania pierwszej oceny'"},
+    {"id": "S-INDICATOR-POINTS", "process": "both", "rule": "Poziom wskaźnika L (1–5) → 2L−1 pkt.", "source": "[~] interpretacja: etykiety poziomów modelu = skala § 11 ust. 1 pkt 1 rozp2016"},
+    {"id": "S-NO-BASIS", "process": "both", "rule": "'Brak podstaw do oceny' wyłączony ze średniej; wszystkie wskaźniki bez podstaw → brak sugestii.", "source": "[✔] Model_kompetencji.xlsx, instrukcja (wiersze 4–6 arkusza 'Model kompetencji'); [~] brak sugestii – decyzja projektowa"},
+    {"id": "S-AGGREGATE", "process": "both", "rule": "Średnia (albo mediana – config) punktów wskaźników → poziom progami P-THRESHOLDS → punkty.", "source": "[~] analogia do § 11 ust. 1 pkt 2 rozp2016; reguła do potwierdzenia z mentorem MC"},
+    {"id": "S-HALF-WARNING", "process": "both", "rule": "Ostrzeżenie, gdy oceniono mniej niż połowę wskaźników kryterium.", "source": "[~] decyzja projektowa"},
+    {"id": "S-FIRST-MAPPING", "process": "first", "rule": "Poziom 1–5 → 3/5/7 pkt wg first_eval_mapping.", "source": "[?] do potwierdzenia z mentorem MC"},
+    {"id": "S-HUMAN-DECIDES", "process": "both", "rule": "Silnik nie ustawia final_points; każda różnica sugestia→decyzja trafia do audit_log.", "source": "[✔] pełna treść zadania pkt 2, 3 i 5 ('ostateczny poziom oceny zawsze wybiera przełożony')"}
+  ]
+}

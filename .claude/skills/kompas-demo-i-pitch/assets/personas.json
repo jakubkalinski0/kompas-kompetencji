@@ -1,0 +1,58 @@
+{
+  "_opis": "Fikcyjne persony do demo i testów Kompasu Kompetencji. Imiona i nazwiska są celowo umowne (Przykładowa, Testowy, Fikcyjna, Nowak-Demo), żeby nie przypominały prawdziwych osób. Stanowiska odpowiadają trzem OSP z materiałów MC, ale osoby i daty są zmyślone. Te same persony występują w przykładach silnika (kompas-model-i-silnik-oceny/assets/examples/) i w PDF-ach testowych.",
+  "oceniajacy": [
+    {"id": "marek", "full_name": "Marek Kierownik-Demo", "position": "dyrektor departamentu (bezpośredni przełożony w scenariuszu)", "role": "przelozony"},
+    {"id": "barbara", "full_name": "Barbara Komórka-Demo", "position": "kierująca komórką organizacyjną", "role": "kierujacy_komorka"}
+  ],
+  "hr": [
+    {"id": "zofia", "full_name": "Zofia Kadrowa-Demo", "position": "specjalistka ds. kadr, Biuro Dyrektora Generalnego", "role": "hr_admin"}
+  ],
+  "oceniani": [
+    {
+      "id": "anna",
+      "full_name": "Anna Przykładowa",
+      "position": "naczelniczka wydziału",
+      "osp": "OSP naczelnika wydziału (materiały MC)",
+      "corps_status": "urzednik_sc",
+      "process": "periodic",
+      "expected_form": "periodic_b",
+      "previous_evaluation_date": "2024-11-29",
+      "scenario": "Ocena okresowa pozytywna; przełożony składa wniosek o kolejny stopień służbowy, więc drukuje się Część III."
+    },
+    {
+      "id": "jan",
+      "full_name": "Jan Testowy",
+      "position": "radca",
+      "osp": "OSP radcy (materiały MC)",
+      "corps_status": "pracownik_sc",
+      "process": "periodic",
+      "expected_form": "periodic_c",
+      "previous_evaluation_date": "2024-12-16",
+      "scenario": "Ocena okresowa pozytywna pracownika służby cywilnej; Części III się nie drukuje."
+    },
+    {
+      "id": "ewa",
+      "full_name": "Ewa Fikcyjna",
+      "position": "starsza specjalistka, Departament Cyberbezpieczeństwa",
+      "osp": "OSP starszego specjalisty (materiały MC)",
+      "corps_status": "pracownik_sc",
+      "process": "periodic",
+      "expected_form": "periodic_c",
+      "previous_evaluation_date": "2025-01-20",
+      "scenario": "Główna persona demo: upload OSP, propozycja arkusza C, kryterium dodatkowe z „Kompetencji miękkich”, karty wskaźników, decyzja inna niż sugestia. Wariant testowy: jedna ocena cząstkowa „znacznie poniżej oczekiwań” → ocena negatywna i obowiązkowe uzasadnienie."
+    },
+    {
+      "id": "piotr",
+      "full_name": "Piotr Nowak-Demo",
+      "position": "specjalista (nowo zatrudniony, pierwsza umowa w służbie cywilnej)",
+      "osp": null,
+      "corps_status": "pracownik_sc",
+      "process": "first",
+      "expected_form": "first_eval",
+      "employment_start": "2026-03-02",
+      "contract_end": "2027-03-01",
+      "exam": "nie_dotyczy",
+      "scenario": "Pierwsza ocena pozytywna z egzaminem „nie dotyczy” (jeden z wyjątków z rozporządzenia z 2015 r.); wariant testowy negatywny: dwie najniższe oceny cząstkowe."
+    }
+  ]
+}

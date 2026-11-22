@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Panel HR – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">Panel HR · Biuro Dyrektora Generalnego</span>{% endblock %}
+{% block body %}
+{% set late = rows|selectattr('next')|map(attribute='next')|selectattr('flag', 'equalto', 'po_terminie')|list %}
+{% set soon = rows|selectattr('next')|map(attribute='next')|selectattr('flag', 'equalto', 'zbliza_sie')|list %}
+<section class="band">
+  <div class="art art-band" data-art="compass" data-cx="0.6" data-cy="0.98" data-r="0.92" data-seed="23" data-keep-left="0.12"></div>
+  <div class="band-inner">
+    <div>
+      <p class="part-label">Panel HR · Biuro Dyrektora Generalnego</p>
+      <h1>Oceny w urzędzie</h1>
+      <p>Statusy, terminy z podstawą prawną i przypomnienia. Rola HR nie widzi wskaźników, notatek S-D-R ani rozmów z asystentem.</p>
+    </div>
+    <dl class="counters">
+      <div><dt>Oceny</dt><dd>{{ rows|length }}</dd></div>
+      <div{% if late %} class="alert"{% endif %}><dt>Po terminie</dt><dd>{{ late|length }}</dd></div>
+      <div><dt>Zbliża się (14 dni)</dt><dd>{{ soon|length }}</dd></div>
+    </dl>
+  </div>
+</section>
+<main class="page wide">
+  {% include "_flash.html" %}
+  <table class="register">
+    <thead><tr><th>Oceniany</th><th>Rodzaj / arkusz</th><th>Status</th><th class="col-due">Najbliższa czynność (podstawa)</th><th>Oceniający</th><th>Wynik</th><th>Przypomnienia</th></tr></thead>
+    <tbody>
+    {% for r in rows %}
+      {% set n = r.next %}
+      <tr class="{% if n and n.flag == 'po_terminie' %}row-late{% elif n and n.flag == 'zbliza_sie' %}row-soon{% endif %}">
+        <td><strong>{{ r.employee.full_name }}</strong> <span class="mono cell-muted">{{ r.process_id }}</span><br><small>{{ r.employee.position }}{% if r.employee.unit %}, {{ r.employee.unit }}{% endif %}</small></td>
+        <td>{{ 'ocena okresowa' if r.type == 'periodic' else 'pierwsza ocena' }}{% if r.form %}<br><span class="tag {{ 'first' if r.type == 'first' else 'periodic' }}">{{ FORM_LABELS[r.form] }}</span>{% endif %}</td>
+        <td class="status">{{ r.status_label }}</td>
+        <td>{% if n %}
+            {% if n.flag == 'po_terminie' %}<span class="flag late">termin minął</span>{% elif n.flag == 'zbliza_sie' %}<span class="flag soon">zbliża się</span>{% endif %}
+            <strong>{{ n.label }}</strong><br><span class="due-badge">{% if n.due %}do {{ n.due|d }}{% else %}{{ n.window.from|d }} – {{ n.window.to|d }}{% endif %}</span>
+            {% if n.days_left is not none %}<small>({% if n.days_left < 0 %}{{ n.days_left|abs|plural('dzień', 'dni', 'dni') }} po terminie{% elif n.days_left == 0 %}dziś{% else %}jeszcze {{ n.days_left|plural('dzień', 'dni', 'dni') }}{% endif %})</small>{% endif %}
+            <br><small class="muted">{{ n.basis }}</small>
+          {% else %}<small class="muted">brak otwartych czynności</small>{% endif %}</td>
+        <td class="cell-basis">{{ r.evaluator.full_name }}{% if r.unit_head and r.unit_head.full_name %}<br><small>kierujący komórką: {{ r.unit_head.full_name }}</small>{% endif %}</td>
+        <td class="{% if r.result == 'pozytywna' %}cell-res-pos{% elif r.result == 'negatywna' %}cell-res-neg{% endif %}">{% if r.result == 'pozytywna' %}<span class="res-tag pos">pozytywna</span>{% elif r.result == 'negatywna' %}<span class="res-tag neg">negatywna</span>{% else %}<span class="muted">—</span>{% endif %}</td>
+        <td>{% if r.reminders %}<small>{{ r.reminders|length }} · ostatnie {{ r.reminders[-1].ts|dt }}</small><br>{% endif %}
+          {% if n %}<form method="post" action="/hr/procesy/{{ r.process_id }}/przypomnienie"><button class="btn small secondary" type="submit">Wyślij przypomnienie</button></form>{% endif %}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="7" class="muted">Brak ocen w urzędzie.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted" style="margin-top:14px">Flaga „zbliża się” oznacza termin ≤ 14 dni. W prototypie przypomnienia trafiają na pulpit przełożonego (bez e-maila).</p>
+  <p><a class="btn secondary go" href="/zrodla#wlasne">Baza wiedzy asystenta – dodaj dokumenty urzędu</a></p>
+</main>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "process/_layout.html" %}
+{% block part %}Część I arkusza – kryteria{% endblock %}
+{% block work %}
+<h1>Kryteria oceny – {{ FORM_LABELS[doc.form] }}</h1>
+<p class="lead">Kryteria obowiązkowe wynikają z arkusza. Kryteria dodatkowe (0–3) dobierz z zał. nr 1 rozp. 2016.</p>
+
+<h2>Kryteria obowiązkowe</h2>
+<p class="basis">{{ basis }}</p>
+<div class="criteria-list">
+  {% for c in mandatory %}
+  <div class="crit-row">
+    <span class="mark" aria-hidden="true">✓</span>
+    <div><strong>{{ c.name }}</strong> <small class="muted">({{ competencies[c.id].indicators|length|plural('wskaźnik', 'wskaźniki', 'wskaźników') }} w modelu MC)</small></div>
+  </div>
+  {% endfor %}
+</div>
+
+<form method="post" action="/procesy/{{ proc.id }}/kryteria" data-max-additional="3">
+  <h2>Kryteria dodatkowe <small class="muted">wybrano <span id="additional-count" class="counter">{{ options|selectattr('checked')|list|length }} z 3</span></small></h2>
+  <p class="basis">Maks. 3 kryteria dodatkowe, inne niż obowiązkowe (§ 5 ust. 2 rozp. 2016, przypis 3; związek z OSP – § 2 ust. 2).</p>
+  <div class="criteria-list">
+    {% for o in options %}
+    <label class="crit-row{% if o.candidate %} is-candidate{% endif %}">
+      <input type="checkbox" name="additional" value="{{ o.id }}" {% if o.checked %}checked{% endif %}>
+      <div><strong>{{ o.name }}</strong>
+        {% if o.candidate %}<span class="cand-note">propozycja z OSP</span><br><small>{{ o.candidate.reason }}</small>{% endif %}
+        <details><summary>Wskaźniki i opis kryterium</summary>
+          {% if o.indicators %}<ul>{% for t in o.indicators %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+          {% if o.description %}<p class="basis">Załącznik nr 1: {{ o.description|join(' ') }}</p>{% endif %}
+        </details>
+      </div>
+    </label>
+    {% endfor %}
+  </div>
+  {% if proc.osp and proc.osp.parsed %}
+  <h2>Propozycje AI z zadań stanowiska <small class="muted">opcjonalnie</small></h2>
+  <p class="lead">Model proponuje kryteria wyłącznie z dosłownym cytatem zadania z OSP (dane osobowe maskowane przed wysłaniem).</p>
+  {% if proc.osp_ai %}{% with ai = proc.osp_ai %}{% include "partials/_osp_ai.html" %}{% endwith %}
+  {% else %}
+  <div id="osp-ai-slot"><button type="button" class="btn secondary" hx-post="/procesy/{{ proc.id }}/kryteria/ai" hx-target="#osp-ai-slot"
+       hx-swap="outerHTML" hx-disabled-elt="this">Zaproponuj kryteria z zadań (AI)</button>
+    <span class="htmx-indicator">Model czyta zadania…</span></div>
+  {% endif %}
+  {% endif %}
+  <div class="form-actions">
+    <button class="btn go" type="submit">Zatwierdź kryteria</button>
+    <span class="muted">Wpis do Części I po rozmowie z ocenianym (§ 5 ust. 1–3).</span>
+  </div>
+</form>
+{% endblock %}

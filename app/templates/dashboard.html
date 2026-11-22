@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% from "_ui.html" import bar %}
+{% block title %}Pulpit przełożonego – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">Pulpit przełożonego</span>{% endblock %}
+{% block body %}
+{% set active = procs|rejectattr('demo')|list %}
+{% set late = next_deadline.values()|select|selectattr('flag', 'equalto', 'po_terminie')|list %}
+<section class="band">
+  <div class="art art-band" data-art="compass" data-cx="0.6" data-cy="0.98" data-r="0.92" data-seed="5" data-keep-left="0.12"></div>
+  <div class="band-inner">
+    <div>
+      <p class="part-label">Pulpit przełożonego</p>
+      <h1>Oceny, które prowadzisz</h1>
+      <p>Od opisu stanowiska do arkusza PDF. Kompas podpowiada poziom ze wzorem – decyzja należy do Ciebie.</p>
+    </div>
+    <dl class="counters">
+      <div><dt>Oceny w toku</dt><dd>{{ active|length }}</dd></div>
+      <div{% if late %} class="alert"{% endif %}><dt>Po terminie</dt><dd>{{ late|length }}</dd></div>
+      <div><dt>Przypomnienia od HR</dt><dd>{{ reminders|length }}</dd></div>
+    </dl>
+  </div>
+</section>
+<div class="workspace">
+  <main class="work">
+    {% include "_flash.html" %}
+    <section class="sheet">
+      <div><p class="sheet-note">Dwie ścieżki, jeden silnik oceny.</p></div>
+      <div class="sheet-main">
+        <section class="win" aria-labelledby="start-title">
+          {{ bar('Rozpocznij ocenę', tag='h2', id='start-title') }}
+          <div class="paths">
+            <section class="path">
+              <h3>Pierwsza ocena w służbie cywilnej</h3>
+              <p class="basis">rozp. PRM z 23.07.2015 (Dz. U. poz. 1144)</p>
+              <ol><li>Rozmowa wstępna i termin sprawozdania</li><li>5 elementów oceny (3/5/7 pkt)</li><li>Warunki § 10 rozp. 2015 i arkusz PDF</li></ol>
+              <a class="btn go" href="/procesy/nowy?sciezka=pierwsza">Rozpocznij pierwszą ocenę</a>
+            </section>
+            <section class="path">
+              <h3>Ocena okresowa w służbie cywilnej</h3>
+              <p class="basis">rozp. PRM z 4.04.2016 (Dz. U. poz. 470)</p>
+              <ol><li>OSP ↣ propozycja arkusza B albo C</li><li>Kryteria, Część I i wskaźniki MC</li><li>Decyzja przełożonego, wynik i PDF</li></ol>
+              <a class="btn go" href="/procesy/nowy">Rozpocznij ocenę okresową</a>
+            </section>
+          </div>
+        </section>
+        <section class="win assist-tiles" aria-labelledby="ai-title">
+          {{ bar('Asystent AI', tag='h2', id='ai-title', aside='w obu ścieżkach') }}
+          <div class="paths three">
+            <section class="path">
+              <h3>Asystent oceny zachowań</h3>
+              <p class="basis">model kompetencji MC · 49 wskaźników</p>
+              <p>Opisujesz własnymi słowami, co zaobserwowałeś u pracownika, a asystent proponuje poziom przy każdym wskaźniku: z cytatem opisu z modelu i fragmentem Twojego opisu. Zatwierdzasz Ty.</p>
+              <a class="btn go" href="{% if procs|rejectattr('demo')|selectattr('doc')|list %}/procesy/{{ (procs|rejectattr('demo')|selectattr('doc')|first).id }}/wskazniki{% else %}/procesy/nowy{% endif %}">{{ 'Oceń wskaźniki' if procs|rejectattr('demo')|selectattr('doc')|list else 'Rozpocznij ocenę' }}</a>
+            </section>
+            <section class="path">
+              <h3>Asystent formalny oceny</h3>
+              <p class="basis">ustawa · rozporządzenia · poradniki KPRM · model MC</p>
+              <p>Procedura, terminy, formularze i poprawność formalna. Pytasz własnymi słowami, możesz dopytywać, a każde zdanie odpowiedzi ma cytat przepisu.</p>
+              <a class="btn secondary go" href="/asystent">Zapytaj asystenta</a>
+            </section>
+            <section class="path">
+              <h3>Asystent rozmowy</h3>
+              <p class="basis">notatki S-D-R · dane zamaskowane</p>
+              <p>Rozmowa oceniająca, informacja zwrotna i plan rozwoju zawodowego: pytania na rozmowę, szkic uzasadnienia, wnioski do IPRZ.</p>
+              <a class="btn secondary go" href="/asystent#rozmowa">Przygotuj rozmowę</a>
+            </section>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    {% if reminders %}
+    <section class="sheet">
+      <div><p class="sheet-note">Komunikaty z panelu HR.</p></div>
+      <div class="sheet-main">
+        <h2>Przypomnienia od HR</h2>
+        <ol class="trail">
+          {% for r, p in reminders %}
+          <li><span class="when">{{ r.ts|dt }}</span><span>{% if r.flag == 'po_terminie' %}<span class="flag late">termin minął</span> {% elif r.flag == 'zbliza_sie' %}<span class="flag soon">zbliża się</span> {% endif %}
+            <strong>{{ r.subject }}</strong><br><small>{{ r.sender }} · termin: <span class="mono">{{ r.due|d }}</span> · <a href="/procesy/{{ p.id }}">przejdź do oceny</a></small></span></li>
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+    {% endif %}
+
+    <section class="sheet">
+      <div><p class="sheet-note">Twoje oceny i przykłady demo (podgląd).</p></div>
+      <div class="sheet-main">
+        <h2>Twoje oceny</h2>
+        {% if procs %}
+        <table class="register">
+          <thead><tr><th>Oceniany</th><th>Sygnatura / arkusz</th><th>Status</th><th class="col-due">Termin oceny</th><th>Ostatnia zmiana</th><th></th></tr></thead>
+          <tbody>
+          {% for p in procs %}
+            {% set d = p.doc or {} %}
+            {% set nd = next_deadline.get(p.id) %}
+            {% set res = results_by_id.get(p.id) %}
+            <tr class="{% if nd and nd.flag == 'po_terminie' %}row-late{% elif nd and nd.flag == 'zbliza_sie' %}row-soon{% endif %}">
+              <td><strong>{{ p.employee.full_name }}</strong><br><small>{{ p.employee.position }}</small></td>
+              <td><span class="mono" style="font-size:12.5px">{{ p.id }}</span><br>{% if d.form %}<span class="tag {{ 'first' if p.kind == 'first' else 'periodic' }}">{{ FORM_LABELS[d.form] }}</span>{% endif %}
+                  {% if p.demo %}<span class="tag demo">przykład demo</span>{% endif %}</td>
+              <td class="status">{{ STATUS_LABELS[p.kind].get(p.status, p.status) }}
+                {% if res %}<br><span class="res-tag {{ 'pos' if res == 'pozytywna' else 'neg' }}" style="margin-top:4px">{{ res }}</span>{% endif %}
+                {% if nd and nd.flag %}<br><span class="flag {{ 'late' if nd.flag == 'po_terminie' else 'soon' }}">{{ 'termin minął' if nd.flag == 'po_terminie' else 'zbliża się' }}</span> <small>{{ nd.label }}</small>{% endif %}</td>
+              <td class="cell-due">{{ (((d.first_eval_intro or {}).evaluation_window or {}).to if p.kind == 'first' else (d.part1 or {}).evaluation_deadline)|d }}</td>
+              <td class="mono cell-muted">{{ p.updated_at|dt }}</td>
+              <td class="row-go">{% if p.demo %}<a href="/procesy/{{ p.id }}/podsumowanie">Podgląd</a>
+                  {% else %}<a href="/procesy/{{ p.id }}">{{ 'Kontynuuj' if p.status != 'do_podpisu' else 'Otwórz' }}</a>{% endif %}
+                  {% if p.pdf_generated_at %} · <a href="/procesy/{{ p.id }}/arkusz.pdf">PDF</a>{% endif %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="muted">Brak ocen. Rozpocznij nową ocenę powyżej.</p>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+  {% include "partials/_assistant.html" %}
+</div>
+{% endblock %}

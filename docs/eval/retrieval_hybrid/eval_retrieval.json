@@ -1,0 +1,910 @@
+{
+ "summary": {
+  "n_in_scope": 29,
+  "n_out_of_scope": 7,
+  "hit@1": 0.586,
+  "hit@3": 0.931,
+  "hit@5": 0.931,
+  "all@5": 0.793,
+  "faq_false_matches": 0,
+  "refusal_recall_out_of_scope": "7/7",
+  "false_refusals_in_scope": "2/29",
+  "thresholds_used": {
+   "coverage_min": 0.2,
+   "dense_min": 0.74
+  },
+  "calibration_best": {
+   "coverage_min": 0.2,
+   "dense_min": 0.74,
+   "balanced_accuracy": 0.966,
+   "refusals_correct": "7/7",
+   "answered_in_scope": "27/29"
+  },
+  "signals_in_scope": {
+   "coverage_min": 0.193,
+   "dense_top_min": 0.737
+  },
+  "signals_out_of_scope": {
+   "coverage_max": 0.456,
+   "dense_top_max": 0.7691
+  },
+  "latency_p50_s": 2.723,
+  "latency_p95_s": 2.981,
+  "hit@5_first": 0.857,
+  "hit@5_periodic": 1.0
+ },
+ "rows": [
+  {
+   "id": "h_first_01",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.654,
+    "dense_top": 0.7686,
+    "bm25_top": 20.772
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.266,
+   "top5": [
+    "rozp2015:par3 (§ 3)",
+    "rozp2015:par4 (§ 4)",
+    "ustawa_sc:art37 (art. 37)",
+    "rozp2016:par10 (§ 10)",
+    "poradnik_pierwsza_2016:kiedy_zmienia_sie_termin_na_zlozenie_sprawozdania-4_2 (rozdz. Kiedy zmienia się termin na złożenie sprawozdania?–4.2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_02",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.434,
+    "dense_top": 0.737,
+    "bm25_top": 18.225
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.238,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par4 (§ 4)",
+    "ustawa_sc:art22 (art. 22)",
+    "poradnik_pierwsza_2016:kiedy_zmienia_sie_termin_na_zlozenie_sprawozdania-4_2 (rozdz. Kiedy zmienia się termin na złożenie sprawozdania?–4.2)",
+    "rozp2015:par8 (§ 8)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_03",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.267,
+    "dense_top": 0.7816,
+    "bm25_top": 12.255
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.3,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par6 (§ 6)",
+    "rozp2015:par3 (§ 3)",
+    "poradnik_pierwsza_2016:kiedy_zmienia_sie_termin_na_zlozenie_sprawozdania-4_2 (rozdz. Kiedy zmienia się termin na złożenie sprawozdania?–4.2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_04",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.193,
+    "dense_top": 0.7866,
+    "bm25_top": 8.766
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.558,
+   "top5": [
+    "rozp2015:par6 (§ 6)",
+    "rozp2015:par1 (§ 1)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par5 (§ 5)",
+    "poradnik_pierwsza_2016:6_3 (rozdz. 6.3)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_05",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.631,
+    "dense_top": 0.8031,
+    "bm25_top": 12.875
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.618,
+   "top5": [
+    "rozp2016:par4 (§ 4)",
+    "rozp2015:par10 (§ 10)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par9 (§ 9)",
+    "rozp2015:par2 (§ 2)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_06",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.482,
+    "dense_top": 0.7935,
+    "bm25_top": 18.634
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.572,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par10 (§ 10)",
+    "rozp2015:par4 (§ 4)",
+    "poradnik_pierwsza_2016:6_5_2-6_5_4 (rozdz. 6.5.2–6.5.4)",
+    "poradnik_pierwsza_2016:kiedy_zmienia_sie_termin_na_zlozenie_sprawozdania-4_2 (rozdz. Kiedy zmienia się termin na złożenie sprawozdania?–4.2)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_07",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.399,
+    "dense_top": 0.7791,
+    "bm25_top": 14.023
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.56,
+   "top5": [
+    "rozp2015:par8 (§ 8)",
+    "rozp2016:par2 (§ 2)",
+    "rozp2015:par5 (§ 5)",
+    "rozp2016:par5 (§ 5)",
+    "kprm_qa_oceny:13 (Q&A KPRM nr 13)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_08",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.231,
+    "dense_top": 0.769,
+    "bm25_top": 5.61
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.848,
+   "top5": [
+    "rozp2015:par6 (§ 6)",
+    "rozp2015:par2 (§ 2)",
+    "rozp2015:par4 (§ 4)",
+    "ustawa_sc:art38 (art. 38)",
+    "poradnik_pierwsza_2016:6_3 (rozdz. 6.3)"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": false,
+   "all@5": false
+  },
+  {
+   "id": "h_first_09",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.507,
+    "dense_top": 0.832,
+    "bm25_top": 12.511
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.278,
+   "top5": [
+    "rozp2015:par11 (§ 11)",
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par12 (§ 12)",
+    "rozp2015:par4 (§ 4)",
+    "first_eval:przypis5 (arkusz pierwszej oceny, przypis 5))"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_10",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.673,
+    "dense_top": 0.8124,
+    "bm25_top": 10.804
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.512,
+   "top5": [
+    "rozp2015:par1 (§ 1)",
+    "rozp2015:par10 (§ 10)",
+    "ustawa_sc:art38 (art. 38)",
+    "kprm_qa_oceny:29 (Q&A KPRM nr 29)",
+    "poradnik_pierwsza_2016:7-7_1 (rozdz. 7–7.1)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_11",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.405,
+    "dense_top": 0.7748,
+    "bm25_top": 19.815
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.32,
+   "top5": [
+    "rozp2015:par5 (§ 5)",
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par6 (§ 6)",
+    "kprm_qa_oceny:27 (Q&A KPRM nr 27)",
+    "poradnik_pierwsza_2016:kiedy_zmienia_sie_termin_na_zlozenie_sprawozdania-4_2 (rozdz. Kiedy zmienia się termin na złożenie sprawozdania?–4.2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": false
+  },
+  {
+   "id": "h_first_12",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.231,
+    "dense_top": 0.7594,
+    "bm25_top": 3.792
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.371,
+   "top5": [
+    "rozp2015:par1 (§ 1)",
+    "poradnik_okresowa_2016:6_2_4-6_2_5_1 (rozdz. 6.2.4–6.2.5.1)",
+    "rozp2016:par1 (§ 1)",
+    "poradnik_okresowa_2016:10:cz3 (rozdz. 10 (cz. 3))",
+    "poradnik_pierwsza_2016:8-zalacznik_nr_1:cz1 (rozdz. 8–Załącznik nr 1 (cz. 1))"
+   ],
+   "hit@1": false,
+   "hit@3": false,
+   "hit@5": false,
+   "all@5": false
+  },
+  {
+   "id": "h_first_13",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.647,
+    "dense_top": 0.8227,
+    "bm25_top": 12.98
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.809,
+   "top5": [
+    "rozp2015:par4 (§ 4)",
+    "rozp2015:par8 (§ 8)",
+    "rozp2015:par11 (§ 11)",
+    "poradnik_pierwsza_2016:6_5-6_5_1 (rozdz. 6.5–6.5.1)",
+    "rozp2015:par3 (§ 3)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_first_14",
+   "process": "first",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.529,
+    "dense_top": 0.8556,
+    "bm25_top": 19.909
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.666,
+   "top5": [
+    "rozp2015:par10 (§ 10)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par7 (§ 7)",
+    "rozp2015:par2 (§ 2)",
+    "rozp2015:par9 (§ 9)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_01",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.337,
+    "dense_top": 0.8225,
+    "bm25_top": 12.882
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.765,
+   "top5": [
+    "rozp2016:par9 (§ 9)",
+    "rozp2016:par5 (§ 5)",
+    "rozp2016:par2 (§ 2)",
+    "poradnik_okresowa_2016:6_2_2 (rozdz. 6.2.2)",
+    "ustawa_sc:art81 (art. 81)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_02",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.49,
+    "dense_top": 0.8033,
+    "bm25_top": 13.477
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.838,
+   "top5": [
+    "rozp2016:par10 (§ 10)",
+    "rozp2016:par9 (§ 9)",
+    "rozp2016:par3 (§ 3)",
+    "rozp2016:par5 (§ 5)",
+    "kprm_qa_oceny:9 (Q&A KPRM nr 9)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": false
+  },
+  {
+   "id": "h_periodic_03",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.622,
+    "dense_top": 0.817,
+    "bm25_top": 8.915
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.857,
+   "top5": [
+    "rozp2016:par9 (§ 9)",
+    "rozp2015:par5 (§ 5)",
+    "rozp2016:par2 (§ 2)",
+    "poradnik_okresowa_2016:6_2_4-6_2_5_1 (rozdz. 6.2.4–6.2.5.1)",
+    "poradnik_okresowa_2016:6_2_2 (rozdz. 6.2.2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_04",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.361,
+    "dense_top": 0.8021,
+    "bm25_top": 6.623
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.853,
+   "top5": [
+    "rozp2016:par9 (§ 9)",
+    "ustawa_sc:art81 (art. 81)",
+    "ustawa_sc:art97a (art. 97a)",
+    "rozp2016:par1 (§ 1)",
+    "ustawa_sc:art89 (art. 89)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_05",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.316,
+    "dense_top": 0.7876,
+    "bm25_top": 9.119
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.719,
+   "top5": [
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par5 (§ 5)",
+    "rozp2016:par8 (§ 8)",
+    "kprm_qa_oceny:12 (Q&A KPRM nr 12)",
+    "poradnik_okresowa_2016:5_2 (rozdz. 5.2)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": false
+  },
+  {
+   "id": "h_periodic_06",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.655,
+    "dense_top": 0.8228,
+    "bm25_top": 21.818
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.815,
+   "top5": [
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "poradnik_okresowa_2016:6_2_5_2-6_2_5_3 (rozdz. 6.2.5.2–6.2.5.3)",
+    "kprm_qa_oceny:22 (Q&A KPRM nr 22)",
+    "rozp2016:zal1:podejmowanie_decyzji_i_odpowiedzialnosc (zał. nr 1, kryterium 6)",
+    "rozp2015:par10 (§ 10)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": false
+  },
+  {
+   "id": "h_periodic_07",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.453,
+    "dense_top": 0.79,
+    "bm25_top": 20.459
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.951,
+   "top5": [
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2015:par10 (§ 10)",
+    "poradnik_okresowa_2016:6_2_5_2-6_2_5_3 (rozdz. 6.2.5.2–6.2.5.3)",
+    "poradnik_pierwsza_2016:6_5_2-6_5_4 (rozdz. 6.5.2–6.5.4)",
+    "poradnik_okresowa_2016:10:cz4 (rozdz. 10 (cz. 4))"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_08",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.3,
+    "dense_top": 0.7796,
+    "bm25_top": 16.866
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.672,
+   "top5": [
+    "rozp2016:par6 (§ 6)",
+    "rozp2015:par11 (§ 11)",
+    "rozp2016:par12 (§ 12)",
+    "poradnik_okresowa_2016:6_2_2 (rozdz. 6.2.2)",
+    "rozp2016:par2 (§ 2)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_09",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 1.0,
+    "dense_top": 0.8066,
+    "bm25_top": 19.672
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.811,
+   "top5": [
+    "rozp2016:par6 (§ 6)",
+    "rozp2016:par13 (§ 13)",
+    "rozp2016:par5 (§ 5)",
+    "rozp2016:par9 (§ 9)",
+    "rozp2015:par3 (§ 3)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_10",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.864,
+    "dense_top": 0.7609,
+    "bm25_top": 13.353
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.731,
+   "top5": [
+    "ustawa_sc:art83 (art. 83)",
+    "ustawa_sc:art69 (art. 69)",
+    "ustawa_sc:art73 (art. 73)",
+    "ustawa_sc:art97a (art. 97a)",
+    "kprm_qa_oceny:31 (Q&A KPRM nr 31)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_11",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.378,
+    "dense_top": 0.7739,
+    "bm25_top": 3.244
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.981,
+   "top5": [
+    "rozp2016:par10 (§ 10)",
+    "ustawa_sc:art83 (art. 83)",
+    "rozp2016:par1 (§ 1)",
+    "kprm_qa_oceny:31 (Q&A KPRM nr 31)",
+    "ustawa_sc:art115 (art. 115)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_12",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.466,
+    "dense_top": 0.7711,
+    "bm25_top": 15.932
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.723,
+   "top5": [
+    "ustawa_sc:art89 (art. 89)",
+    "rozp2016:par11:ust5 (§ 11 ust. 5)",
+    "ustawa_sc:art79 (art. 79)",
+    "ustawa_sc:art86 (art. 86)",
+    "poradnik_okresowa_2016:9 (rozdz. 9)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_13",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.583,
+    "dense_top": 0.8125,
+    "bm25_top": 11.766
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.608,
+   "top5": [
+    "rozp2016:par9 (§ 9)",
+    "rozp2015:par6 (§ 6)",
+    "ustawa_sc:art81 (art. 81)",
+    "kprm_qa_oceny:9 (Q&A KPRM nr 9)",
+    "rozp2016:par10 (§ 10)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_14",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.396,
+    "dense_top": 0.7978,
+    "bm25_top": 7.776
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.653,
+   "top5": [
+    "rozp2016:par5 (§ 5)",
+    "rozp2016:par2 (§ 2)",
+    "rozp2016:par4 (§ 4)",
+    "ustawa_sc:art82 (art. 82)",
+    "poradnik_okresowa_2016:6_2_2 (rozdz. 6.2.2)"
+   ],
+   "hit@1": false,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_periodic_15",
+   "process": "periodic",
+   "expect_refusal": false,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.653,
+    "dense_top": 0.8288,
+    "bm25_top": 37.368
+   },
+   "refuse": false,
+   "decision_rule": false,
+   "latency_s": 2.817,
+   "top5": [
+    "ustawa_sc:art89 (art. 89)",
+    "ustawa_sc:art86 (art. 86)",
+    "rozp2016:par11:ust5 (§ 11 ust. 5)",
+    "poradnik_okresowa_2016:9 (rozdz. 9)",
+    "ustawa_sc:art198 (art. 198)"
+   ],
+   "hit@1": true,
+   "hit@3": true,
+   "hit@5": true,
+   "all@5": true
+  },
+  {
+   "id": "h_out_01",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.456,
+    "dense_top": 0.7135,
+    "bm25_top": 7.034
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.891,
+   "top5": [
+    "ustawa_sc:art120 (art. 120)",
+    "ustawa_sc:art45 (art. 45)",
+    "ustawa_sc:art101 (art. 101)",
+    "ustawa_sc:art71 (art. 71)",
+    "ustawa_sc:art47 (art. 47)"
+   ]
+  },
+  {
+   "id": "h_out_02",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.361,
+    "dense_top": 0.7374,
+    "bm25_top": 0.399
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.669,
+   "top5": [
+    "rozp2016:par1 (§ 1)",
+    "ustawa_sc:art28a (art. 28a)",
+    "ustawa_sc:art203 (art. 203)",
+    "kprm_qa_oceny:10 (Q&A KPRM nr 10)",
+    "ustawa_sc:art25 (art. 25)"
+   ]
+  },
+  {
+   "id": "h_out_03",
+   "process": "periodic",
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.102,
+    "dense_top": 0.6915,
+    "bm25_top": 5.283
+   },
+   "refuse": true,
+   "decision_rule": true,
+   "latency_s": 3.204,
+   "top5": [
+    "rozp2015:par9 (§ 9)",
+    "rozp2016:par11:ust1 (§ 11 ust. 1)",
+    "rozp2016:zal1:komunikacja (zał. nr 1, kryterium 1)",
+    "rozp2015:par10 (§ 10)",
+    "rozp2015:zal1:komunikacja (zał. nr 1, element 4)"
+   ]
+  },
+  {
+   "id": "h_out_04",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.382,
+    "dense_top": 0.6773,
+    "bm25_top": 3.422
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.624,
+   "top5": [
+    "ustawa_sc:art79 (art. 79)",
+    "ustawa_sc:art86 (art. 86)",
+    "ustawa_sc:art197 (art. 197)",
+    "ustawa_sc:art15a (art. 15a)",
+    "ustawa_sc:art97a (art. 97a)"
+   ]
+  },
+  {
+   "id": "h_out_05",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.156,
+    "dense_top": 0.7691,
+    "bm25_top": 4.114
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.905,
+   "top5": [
+    "ustawa_sc:art25 (art. 25)",
+    "rozp2016:par1 (§ 1)",
+    "poradnik_pierwsza_2016:5-5_1 (rozdz. 5–5.1)",
+    "ustawa_sc:art73 (art. 73)",
+    "ustawa_sc:art62 (art. 62)"
+   ]
+  },
+  {
+   "id": "h_out_06",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.135,
+    "dense_top": 0.6992,
+    "bm25_top": 5.797
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 3.175,
+   "top5": [
+    "ustawa_sc:art33:v1 (art. 33 (wersja 1 z 2 w tekście jednolitym))",
+    "ustawa_sc:art30 (art. 30)",
+    "rozp2015:par5 (§ 5)",
+    "ustawa_sc:art27a (art. 27a)",
+    "ustawa_sc:art1 (art. 1)"
+   ]
+  },
+  {
+   "id": "h_out_07",
+   "process": null,
+   "expect_refusal": true,
+   "faq_match": false,
+   "signals": {
+    "coverage": 0.117,
+    "dense_top": 0.7242,
+    "bm25_top": 3.152
+   },
+   "refuse": true,
+   "decision_rule": false,
+   "latency_s": 2.958,
+   "top5": [
+    "ustawa_sc:art23c (art. 23c)",
+    "ustawa_sc:art209 (art. 209)",
+    "ustawa_sc:art118 (art. 118)",
+    "ustawa_sc:art14 (art. 14)",
+    "ustawa_sc:art102 (art. 102)"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{#- Pasek tytułowy okna (wzór: okna z kwadratem, tytułem i kreskowaniem). Okno = narzędzie, którego używasz;
+    treść dokumentu (rejestry, arkusz) zostaje na liniach. `tag` pozwala zrobić z tytułu nagłówek, `aside` – krótka
+    etykieta po prawej (licznik, sygnatura). -#}
+{% macro bar(title, tag='span', id=None, aside=None) -%}
+<div class="win-bar"><span class="win-box" aria-hidden="true"></span><{{ tag }} class="win-title"{% if id %} id="{{ id }}"{% endif %}>{{ title }}</{{ tag }}><span class="win-hatch" aria-hidden="true"></span>{% if aside %}<span class="win-aside">{{ aside }}</span><span class="win-hatch short" aria-hidden="true"></span>{% endif %}<span class="win-box" aria-hidden="true"></span></div>
+{%- endmacro %}

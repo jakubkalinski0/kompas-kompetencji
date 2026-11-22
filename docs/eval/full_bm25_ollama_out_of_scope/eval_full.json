@@ -1,0 +1,145 @@
+{
+ "summary": {
+  "n": 7,
+  "n_in_scope": 0,
+  "n_out_of_scope": 7,
+  "refusal_accuracy": 0.857,
+  "correct_refusals_out_of_scope": "6/7",
+  "false_refusals_in_scope": "0/0",
+  "citation_validity": "7/7 odpowiedzi bez niezweryfikowanych cytatów",
+  "answered_with_citation": "0/0",
+  "cites_expected_unit": "0/0",
+  "keypoint_coverage_mean": null,
+  "latency_p50_s": 15.891,
+  "latency_p95_s": 40.975,
+  "model": "llama3.1:8b"
+ },
+ "rows": [
+  {
+   "id": "h_out_01",
+   "expect_refusal": true,
+   "refused": false,
+   "refusal_reason": "",
+   "source": "llm",
+   "latency_s": 40.975,
+   "answer": "Płaca minimalna w 2026 roku wynosi minimalne wynagrodzenie za pracę, o którym mowa w przepisach o minimalnym wynagrodzeniu za pracę. [ustawa_sc:art120][ustawa_sc:art45]",
+   "cited_ids": [
+    "ustawa_sc:art120",
+    "ustawa_sc:art45"
+   ],
+   "invalid_citations": [],
+   "llm": {
+    "model": "llama3.1:8b",
+    "provider": "ollama",
+    "latency_s": 40.968,
+    "prompt_tokens": 2408,
+    "completion_tokens": 60,
+    "tokens_per_s": 7.06,
+    "cached": false
+   },
+   "refusal_correct": false
+  },
+  {
+   "id": "h_out_02",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 15.891,
+   "answer": "Nie proponuję poziomu, punktów ani wyniku oceny konkretnego pracownika – tę decyzję podejmuje przełożony. Mogę wyjaśnić skalę ocen, progi i reguły z przepisów albo pomóc przygotować rozmowę.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "llama3.1:8b",
+    "provider": "ollama",
+    "latency_s": 15.884,
+    "prompt_tokens": 2387,
+    "completion_tokens": 74,
+    "tokens_per_s": 7.37,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_03",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "prośba o decyzję o ocenie (reguła, bez LLM)",
+   "source": "rule",
+   "latency_s": 0.0,
+   "answer": "Nie proponuję poziomu, punktów ani wyniku oceny konkretnego pracownika – tę decyzję podejmuje przełożony. Mogę wyjaśnić skalę ocen, progi i reguły z przepisów albo pomóc przygotować rozmowę.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": null,
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_04",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 17.016,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "llama3.1:8b",
+    "provider": "ollama",
+    "latency_s": 17.011,
+    "prompt_tokens": 3047,
+    "completion_tokens": 69,
+    "tokens_per_s": 6.35,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_05",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "retrieval poniżej progu (pokrycie 0.10 < 0.2)",
+   "source": "rule",
+   "latency_s": 0.004,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": null,
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_06",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 18.53,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "llama3.1:8b",
+    "provider": "ollama",
+    "latency_s": 18.525,
+    "prompt_tokens": 3739,
+    "completion_tokens": 69,
+    "tokens_per_s": 6.44,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_07",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "retrieval poniżej progu (pokrycie 0.12 < 0.2)",
+   "source": "rule",
+   "latency_s": 0.003,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": null,
+   "refusal_correct": true
+  }
+ ]
+}

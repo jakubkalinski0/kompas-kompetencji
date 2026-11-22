@@ -1,0 +1,7 @@
+<div class="privacy-preview">
+  <p class="part-label">Co trafi do modelu – po zamaskowaniu danych</p>
+  {% if not preview.notes_count %}<p class="muted">W tej ocenie nie ma jeszcze notatek S-D-R – model dostanie tylko przepisy i opisy kompetencji.</p>{% endif %}
+  {% if preview.replacements %}<p class="muted">Zamiany: {% for r in preview.replacements %}{{ r.label }} ×{{ r.count }}{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endif %}
+  {% for w in preview.warnings %}<p class="msg msg-warning">{{ w }}</p>{% endfor %}
+  {% if preview.masked_text %}<div class="fragment">{{ preview.masked_text }}</div>{% endif %}
+</div>

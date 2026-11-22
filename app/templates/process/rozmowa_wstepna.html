@@ -1,0 +1,38 @@
+{% extends "process/_layout.html" %}
+{% block part %}Część ogólna arkusza – rozmowa wstępna{% endblock %}
+{% block work %}
+<h1>Rozmowa wstępna i terminy</h1>
+<p class="lead">Omów zasady oceny i wyznacz termin sprawozdania po 8 mies. od nawiązania stosunku pracy (§ 3 i § 4 ust. 1 rozp. 2015).</p>
+
+{% if calendar %}
+<table class="register" style="max-width:56em">
+  <thead><tr><th>Czynność</th><th class="col-due">Termin</th><th>Podstawa</th></tr></thead>
+  <tbody>
+  {% for e in calendar %}<tr>
+    <td><strong>{{ e.label }}</strong>{% if e.note %}<br><small>{{ e.note }}</small>{% endif %}</td>
+    <td class="cell-due">{% if e.due %}do {{ e.due|d }}{% else %}{{ e.window.from|d }} – {{ e.window.to|d }}{% endif %}</td>
+    <td class="cell-basis">{{ e.basis }}{% if e.certainty == '~' %}<br><span class="tag-note">interpretacja – do potwierdzenia</span>{% endif %}</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<form method="post" action="/procesy/{{ proc.id }}/rozmowa-wstepna" style="margin-top:18px">
+  <div style="display:flex; gap:18px; flex-wrap:wrap">
+    <label class="field"><span>Data nawiązania stosunku pracy</span><input type="date" name="employment_start" value="{{ defaults.employment_start }}" required></label>
+    <label class="field"><span>Koniec umowy (opcjonalnie)</span><input type="date" name="contract_end" value="{{ defaults.contract_end }}"></label>
+  </div>
+  <label class="field"><span>Data rozmowy wstępnej</span><input type="date" name="intro_interview_date" value="{{ defaults.intro }}" required></label>
+  <div style="display:flex; gap:18px; flex-wrap:wrap">
+    <label class="field"><span>Termin na sprawozdanie – od</span><input type="date" name="report_from" value="{{ defaults.report_from }}" required></label>
+    <label class="field"><span>– do</span><input type="date" name="report_to" value="{{ defaults.report_to }}" required></label>
+  </div>
+  <h2>Kierujący komórką organizacyjną</h2>
+  <p class="basis">Ocena w porozumieniu z kierującym komórką (art. 38 ust. 2 ustawy).</p>
+  <div style="display:flex; gap:18px; flex-wrap:wrap">
+    <label class="field"><span>Imię i nazwisko</span><input type="text" name="unit_head_name" value="{{ defaults.head_name }}" maxlength="120" required></label>
+    <label class="field"><span>Stanowisko</span><input type="text" name="unit_head_position" value="{{ defaults.head_position }}" maxlength="160"></label>
+  </div>
+  {% if calendar %}<p class="muted">Daty wstępnie wypełnione z tabeli – skoryguj do faktycznych.</p>{% endif %}
+  <div class="form-actions"><button class="btn go" type="submit">Zapisz i przejdź dalej</button></div>
+</form>
+{% endblock %}

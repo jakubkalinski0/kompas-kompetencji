@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% from "_ui.html" import bar %}
+{% block title %}Asystent AI – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">Asystent AI · formalny i rozmowy</span>{% endblock %}
+{% block body %}
+<section class="band">
+  <div class="art art-band" data-art="compass" data-cx="0.6" data-cy="0.98" data-r="0.92" data-seed="11" data-keep-left="0.12"></div>
+  <div class="band-inner">
+    <div>
+      <p class="part-label">Asystent AI</p>
+      <h1>Zapytaj o zasady, przełóż zachowania na poziomy, przygotuj rozmowę</h1>
+      <p>Asystent formalny odpowiada na podstawie przepisów, poradników KPRM i modelu kompetencji MC, a przy każdym zdaniu podaje źródło. Asystent oceny zachowań proponuje poziomy wskaźników z Twojego opisu. Asystent rozmowy pracuje na Twoich notatkach z oceny. Ostateczną ocenę zawsze wybierasz Ty.</p>
+    </div>
+    <dl class="counters">
+      <div><dt>Jednostki w bazie</dt><dd>{{ kb.total_units }}</dd></div>
+      <div><dt>Pytania i odpowiedzi</dt><dd>{{ kb.faq_count }}</dd></div>
+      <div><dt>Źródła urzędu</dt><dd>{{ kb.custom|length }}</dd></div>
+    </dl>
+  </div>
+</section>
+<main class="page wide assist-page">
+  {% include "_flash.html" %}
+
+  <section class="sheet">
+    <div>
+      <p class="sheet-note">Pytania o procedurę, terminy, formularze i model kompetencji. Możesz dopytywać – asystent bierze pod uwagę dwa poprzednie pytania rozmowy.</p>
+      <ol class="ai-steps" aria-label="Jak powstaje odpowiedź">
+        <li>Gotowa odpowiedź z zestawu pytań i odpowiedzi zespołu</li>
+        <li>Wyszukiwanie w {{ kb.total_units }} jednostkach redakcyjnych</li>
+        <li>Model {{ info.model }} pisze odpowiedź tylko z 5 znalezionych fragmentów</li>
+        <li>Kompas sprawdza, czy cytat pochodzi z tych fragmentów; bez podstawy – odmowa</li>
+      </ol>
+    </div>
+    <div class="sheet-main">
+      <section class="win chat-win" aria-labelledby="formal-title">
+        {{ bar('Asystent formalny oceny', tag='h2', id='formal-title', aside='z cytatem') }}
+        <div class="win-body">
+          <div id="chat-log" class="chat-log" aria-live="polite" data-persist="kk-assist-page">
+            <p class="chat-empty">Zadaj pytanie własnymi słowami albo wybierz jedno z listy poniżej. Kliknij numer w nawiasie, żeby zobaczyć fragment przepisu, na którym oparto zdanie.</p>
+          </div>
+          <form id="page-assist-form" class="assist-ask chat-form" hx-post="/asystent/formalny" hx-target="#chat-log" hx-swap="beforeend"
+                hx-include="#chat-log input[name=history]"
+                hx-on::after-request="if(event.detail.successful){ this.querySelector('textarea').value=''; }">
+            <input type="hidden" name="history_order" value="asc">
+            <label class="field chat-q"><span>Twoje pytanie</span>
+              <textarea name="question" maxlength="500" required data-submit-enter placeholder="np. Pracownik nie zgadza się z oceną – co dalej?"></textarea>
+            </label>
+            <div class="chat-controls">
+              <label class="field inline"><span>Dotyczy</span>
+                <select name="process">
+                  <option value="">obu ścieżek</option>
+                  <option value="periodic">oceny okresowej</option>
+                  <option value="first">pierwszej oceny</option>
+                </select>
+              </label>
+              <button class="btn" type="submit">Zapytaj</button>
+              <button class="btn link" type="button" data-assist-clear="chat-log" hidden>Nowa rozmowa</button>
+              <span class="htmx-indicator">Szukam w przepisach…</span>
+            </div>
+            <p class="meta">Enter wysyła, Shift+Enter – nowa linia. Nie wpisuj danych osobowych pracownika: do pytań o konkretną osobę służy asystent rozmowy.</p>
+          </form>
+        </div>
+      </section>
+
+      <div class="topic-grid" aria-label="Przykładowe pytania">
+        {% for name, questions in topics %}
+        <section class="topic">
+          <h3>{{ name }}</h3>
+          <div class="examples">
+            {% for q in questions %}<button type="button" data-question="{{ q }}" data-form="page-assist-form">{{ q }}</button>{% endfor %}
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" id="zachowania">
+    <div>
+      <p class="sheet-note">Od opisu zachowań do poziomów wskaźników. Propozycja AI ma linię przerywaną, Twój wybór – ciągłą; poziom kryterium liczy wzór, zatwierdzasz Ty.</p>
+    </div>
+    <div class="sheet-main">
+      <section class="win" aria-labelledby="bai-page-title">
+        {{ bar('Asystent oceny zachowań', tag='h2', id='bai-page-title', aside='w karcie wskaźników') }}
+        <div class="win-body">
+          <p>Opisujesz własnymi słowami, co pracownik zrobił w okresie oceny („raport oddała trzy dni przed terminem, sama znalazła błąd w danych…”). Asystent przy każdym wskaźniku kryterium wskazuje najbliższy opis poziomu z modelu kompetencji MC i cytuje fragment Twojego opisu, na którym się opiera. Propozycji bez takiego fragmentu Kompas nie pokaże. Jednym kliknięciem przenosisz propozycje do karty wskaźników i możesz zmienić każdą z nich.</p>
+          {% if conv_procs %}
+          <ul class="bai-procs">
+            {% for p in conv_procs %}<li><a class="btn secondary go" href="/procesy/{{ p.id }}/wskazniki">{{ p.employee.full_name }} – {{ 'pierwsza ocena' if p.kind == 'first' else 'ocena okresowa' }}</a></li>{% endfor %}
+          </ul>
+          {% else %}
+          <p><a class="btn go" href="/procesy/nowy">Rozpocznij ocenę okresową</a></p>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="sheet" id="rozmowa">
+    <div>
+      <p class="sheet-note">Rozmowa oceniająca, informacja zwrotna i plan rozwoju zawodowego. Asystent korzysta z notatek S-D-R z kart wskaźników; nazwiska i identyfikatory zamienia na znaczniki, zanim cokolwiek trafi do modelu.</p>
+    </div>
+    <div class="sheet-main">
+      <section class="win" aria-labelledby="conv-title">
+        {{ bar('Asystent rozmowy', tag='h2', id='conv-title', aside='dane zamaskowane') }}
+        <div class="win-body">
+          {% if conv_procs %}
+          <form id="conv-page-form" hx-post="/asystent/rozmowa" hx-target="#conv-page-answers" hx-swap="afterbegin">
+            <div class="chat-controls">
+              <label class="field inline grow"><span>Ocena</span>
+                <select name="pid">
+                  {% for p in conv_procs %}
+                  <option value="{{ p.id }}"{% if conv_proc and p.id == conv_proc.id %} selected{% endif %}>{{ p.employee.full_name }} – {{ 'pierwsza ocena' if p.kind == 'first' else 'ocena okresowa' }} ({{ p.id }})</option>
+                  {% endfor %}
+                </select>
+              </label>
+            </div>
+            <label class="field"><span>Wskazówka (opcjonalnie)</span>
+              <textarea name="question" maxlength="500" placeholder="np. skup się na terminowości raportów i współpracy z zespołem"></textarea></label>
+            <div class="conv-actions">
+              <button class="btn small" type="submit" name="action" value="questions">Pytania na rozmowę</button>
+              <button class="btn small secondary" type="submit" name="action" value="feedback">Informacja zwrotna (S-D-R)</button>
+              <button class="btn small secondary" type="submit" name="action" value="justification">Szkic uzasadnienia</button>
+              <button class="btn small secondary" type="submit" name="action" value="development">Wnioski rozwojowe / IPRZ</button>
+              <span class="htmx-indicator">Przygotowuję…</span>
+            </div>
+          </form>
+          <div id="conv-page-answers" aria-live="polite"></div>
+          <p class="meta">Pytania z odpowiedzi trafiają do karty przygotowania do rozmowy (PDF w kroku oceny). Tekst jest roboczy: nie zawiera propozycji poziomu ani punktów.</p>
+          {% else %}
+          <p>Asystent rozmowy pracuje na kryteriach i notatkach z arkusza oceny. Rozpocznij ocenę i wybierz arkusz – ocena pojawi się tutaj.</p>
+          <p><a class="btn go" href="/procesy/nowy">Rozpocznij ocenę okresową</a> <a class="btn secondary go" href="/procesy/nowy?sciezka=pierwsza">Rozpocznij pierwszą ocenę</a></p>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div><p class="sheet-note">Na czym opiera się asystent formalny.</p></div>
+    <div class="sheet-main">
+      <h2>Baza wiedzy</h2>
+      <table class="register">
+        <thead><tr><th>Źródło</th><th class="col-due num">Jednostki</th></tr></thead>
+        <tbody>
+          {% for s in kb.partner + kb.public %}
+          <tr><td>{{ s.short_title }}</td><td class="cell-due num">{{ s.units }}</td></tr>
+          {% endfor %}
+          {% for s in kb.custom %}
+          <tr><td><span class="tag">źródło urzędu</span> {{ s.title }}</td><td class="cell-due num">{{ s.units }}</td></tr>
+          {% endfor %}
+          <tr><td>Zestaw pytań i odpowiedzi zespołu</td><td class="cell-due num">{{ kb.faq_count }}</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Dokumenty urzędu (zarządzenia, wytyczne kadr) dodaje administrator w roli HR na stronie <a href="/zrodla">Źródła</a>; asystent cytuje je tak samo jak przepisy.</p>
+    </div>
+  </section>
+</main>
+{% endblock %}

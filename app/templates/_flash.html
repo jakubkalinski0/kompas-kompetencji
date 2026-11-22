@@ -1,0 +1,2 @@
+{% for m in flash or [] %}<p class="flash {{ m.kind }}" role="{{ 'alert' if m.kind == 'error' else 'status' }}">{{ m.text }}</p>{% endfor %}
+{% if error %}<p class="flash error" role="alert">{{ error }}</p>{% endif %}

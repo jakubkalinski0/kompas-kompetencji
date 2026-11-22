@@ -1,0 +1,581 @@
+{
+ "title": "Zestaw ewaluacyjny Asystenta formalnego (holdout) – Kompas Kompetencji",
+ "description": "Pytania NIEOBECNE w faq_kb.json: inne fakty, przypadki brzegowe i scenariusze z przepisów (pierwsza i okresowa ocena po równo) oraz pytania spoza zakresu wymagające odmowy. Opracowane przez zespół 2026-11-21 na podstawie tekstu rozporządzeń z 2015 i 2016 r. i ustawy o służbie cywilnej (t.j. Dz. U. 2026 poz. 590). Nie dodawać tych pytań do bazy wiedzy ani do FAQ – rozłączność sprawdza test pytest.",
+ "version": "2026-11-21",
+ "fields": {
+  "expected_units": "jednostki, z których da się udzielić odpowiedzi; trafienie = chunk o tym source_id i jednostce (lub jej części/całości) w top-k",
+  "key_points": "punkty, które musi zawierać poprawna odpowiedź (heurystyka słów kluczowych w run_eval.py)",
+  "expect_refusal": "true = asystent ma odmówić (brak podstaw w bazie albo prośba o decyzję o ocenie)"
+ },
+ "items": [
+  {
+   "id": "h_first_01",
+   "process": "first",
+   "type": "edge_case",
+   "question": "Nowa osoba została zatrudniona na zastępstwo i ma podlegać pierwszej ocenie. Od kiedy liczę 21 dni na rozmowę wstępną?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 3"
+    }
+   ],
+   "key_points": [
+    "od dnia ustalenia przez strony stosunku pracy",
+    "będzie podlegać pierwszej ocenie",
+    "21 dni"
+   ]
+  },
+  {
+   "id": "h_first_02",
+   "process": "first",
+   "type": "edge_case",
+   "question": "Pracownik był na zwolnieniu lekarskim przez pięć tygodni przed terminem sprawozdania. Czy mogę wyznaczyć mu nowy termin?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 5 ust. 1"
+    }
+   ],
+   "key_points": [
+    "nowy termin",
+    "usprawiedliwionej nieobecności",
+    "przedłużając o okres tej nieobecności"
+   ]
+  },
+  {
+   "id": "h_first_03",
+   "process": "first",
+   "type": "fact",
+   "question": "Do kiedy najpóźniej może przypaść przesunięty termin sprawozdania nowego pracownika?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 5 ust. 3"
+    }
+   ],
+   "key_points": [
+    "nie później niż miesiąc przed zakończeniem stosunku pracy"
+   ]
+  },
+  {
+   "id": "h_first_04",
+   "process": "first",
+   "type": "fact",
+   "question": "Jak długi okres pracy musi minimalnie obejmować sprawozdanie składane przed pierwszą oceną?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 6 ust. 1"
+    }
+   ],
+   "key_points": [
+    "nie krótszy niż 7 miesięcy"
+   ]
+  },
+  {
+   "id": "h_first_05",
+   "process": "first",
+   "type": "scenario",
+   "question": "Pracownik dostał po 3 punkty z rzetelności i z komunikacji, a jego średnia to 5,4. Jaka będzie pierwsza ocena?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 10"
+    },
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 9"
+    }
+   ],
+   "key_points": [
+    "negatywna",
+    "nie więcej niż jedna ocena cząstkowa 3 punktów"
+   ]
+  },
+  {
+   "id": "h_first_06",
+   "process": "first",
+   "type": "scenario",
+   "question": "Nowy pracownik nie oddał sprawozdania w wyznaczonym terminie, ale ze wszystkich elementów ma 5 albo 7 punktów. Czy może dostać pozytywną pierwszą ocenę?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 10"
+    }
+   ],
+   "key_points": [
+    "nie",
+    "negatywna",
+    "złożenie sprawozdania w wyznaczonym terminie"
+   ]
+  },
+  {
+   "id": "h_first_07",
+   "process": "first",
+   "type": "fact",
+   "question": "Kto oprócz bezpośredniego przełożonego może brać udział w rozmowie oceniającej nowego pracownika?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 8 ust. 2"
+    }
+   ],
+   "key_points": [
+    "kierujący komórką organizacyjną"
+   ]
+  },
+  {
+   "id": "h_first_08",
+   "process": "first",
+   "type": "fact",
+   "question": "Pracownik oddał wczoraj sprawozdanie. Jak szybko powinienem z nim porozmawiać o wynikach jego pracy?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 8 ust. 1"
+    }
+   ],
+   "key_points": [
+    "niezwłocznie po złożeniu sprawozdania",
+    "albo po upływie terminu"
+   ]
+  },
+  {
+   "id": "h_first_09",
+   "process": "first",
+   "type": "fact",
+   "question": "Co dzieje się z oryginałem arkusza pierwszej oceny po zapoznaniu pracownika z oceną?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 11 ust. 2"
+    }
+   ],
+   "key_points": [
+    "akt osobowych",
+    "ze sprawozdaniem",
+    "kopię arkusza przekazuje się ocenianemu"
+   ]
+  },
+  {
+   "id": "h_first_10",
+   "process": "first",
+   "type": "fact",
+   "question": "Pierwsza ocena wyszła negatywna. Co dalej z umową pracownika – kto i o co wnioskuje?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 38 ust. 3"
+    }
+   ],
+   "key_points": [
+    "kierujący komórką organizacyjną",
+    "dyrektora generalnego",
+    "niezawieranie umowy o pracę na czas nieokreślony",
+    "rozwiązanie umowy o pracę na czas określony"
+   ]
+  },
+  {
+   "id": "h_first_11",
+   "process": "first",
+   "type": "edge_case",
+   "question": "Nowa pracownica choruje od czterech miesięcy. Czy jej umowę na czas określony można przedłużyć i co wtedy z terminem sprawozdania?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 35 ust. 4"
+    },
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 5 ust. 2"
+    }
+   ],
+   "key_points": [
+    "dłużej niż 3 miesiące",
+    "dyrektor generalny",
+    "na wniosek pracownika",
+    "nowy termin na złożenie sprawozdania"
+   ]
+  },
+  {
+   "id": "h_first_12",
+   "process": "first",
+   "type": "fact",
+   "question": "Po czym poznać, że nowy pracownik spełnia oczekiwania w zakresie rzetelności?",
+   "expected_units": [
+    {
+     "source_id": "model_kompetencji",
+     "unit": "kompetencja: Rzetelność"
+    }
+   ],
+   "key_points": [
+    "zgodnie z obowiązującymi standardami",
+    "jakość rezultatów",
+    "dotrzymywanie zobowiązań",
+    "w wyznaczonym czasie"
+   ]
+  },
+  {
+   "id": "h_first_13",
+   "process": "first",
+   "type": "fact",
+   "question": "Jakie części arkusza pierwszej oceny dostaje oceniany po rozmowie wstępnej?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 4"
+    }
+   ],
+   "key_points": [
+    "kopię części I i II arkusza"
+   ]
+  },
+  {
+   "id": "h_first_14",
+   "process": "first",
+   "type": "scenario",
+   "question": "Nowy pracownik ma oceny cząstkowe 7, 5, 5, 3 i 5 punktów, zaliczył egzamin i oddał sprawozdanie w terminie. Ile wynosi ocena łączna i jaka jest pierwsza ocena?",
+   "expected_units": [
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 7"
+    },
+    {
+     "source_id": "rozp2015",
+     "unit": "§ 10"
+    }
+   ],
+   "key_points": [
+    "średnia arytmetyczna",
+    "5 punktów",
+    "pozytywna"
+   ]
+  },
+  {
+   "id": "h_periodic_01",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "Pracownik zmienił stanowisko cztery miesiące po ustaleniu kryteriów i jego obowiązki istotnie się zmieniły. Co z kryteriami oceny okresowej?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 9"
+    }
+   ],
+   "key_points": [
+    "w terminie 30 dni od zmiany stanowiska",
+    "ponownie",
+    "termin sporządzenia oceny nie ulega zmianie"
+   ]
+  },
+  {
+   "id": "h_periodic_02",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "Oceniany przechodzi na stanowisko z zupełnie innym zakresem obowiązków, a od ostatniej oceny minęło 10 miesięcy. Kiedy mam sporządzić ocenę?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 81 ust. 6"
+    },
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 9"
+    }
+   ],
+   "key_points": [
+    "więcej niż 6 miesięcy",
+    "nie wcześniej niż 7 dni przed zmianą",
+    "nie później niż 30 dni od tej zmiany"
+   ]
+  },
+  {
+   "id": "h_periodic_03",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "W trakcie okresu oceny zmienił się bezpośredni przełożony. Na podstawie jakich kryteriów nowy przełożony oceni pracownika?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 9"
+    }
+   ],
+   "key_points": [
+    "na podstawie wybranych wcześniej kryteriów"
+   ]
+  },
+  {
+   "id": "h_periodic_04",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "Od ostatniej oceny okresowej minęły cztery miesiące, a pracownik prosi o przesunięcie terminu kolejnej oceny. Czy mogę zmienić termin na jego wniosek?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 81 ust. 8"
+    }
+   ],
+   "key_points": [
+    "wniosku o zmianę terminu",
+    "więcej niż 6 miesięcy",
+    "nie"
+   ]
+  },
+  {
+   "id": "h_periodic_05",
+   "process": "periodic",
+   "type": "fact",
+   "question": "W jakich sytuacjach oceniający może zmienić termin oceny okresowej i jak informuje o tym ocenianego?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 81 ust. 8"
+    },
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 8"
+    }
+   ],
+   "key_points": [
+    "zmiany na stanowisku oceniającego",
+    "nieobecności",
+    "wniosku o zmianę terminu",
+    "zawiadamia pisemnie"
+   ]
+  },
+  {
+   "id": "h_periodic_06",
+   "process": "periodic",
+   "type": "scenario",
+   "question": "Średnia z ocen cząstkowych wynosi 6,2, ale z jednego kryterium pracownik ma 1 punkt. Jaka będzie ocena okresowa i czy muszę pisać uzasadnienie?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 11 ust. 1"
+    },
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 11 ust. 3"
+    }
+   ],
+   "key_points": [
+    "negatywna",
+    "znacznie poniżej oczekiwań",
+    "uzasadnienie",
+    "obowiązkowe"
+   ]
+  },
+  {
+   "id": "h_periodic_07",
+   "process": "periodic",
+   "type": "scenario",
+   "question": "Średnia ocen cząstkowych wyszła dokładnie 4,0 punktu. Na jakim poziomie jest pracownik i czy ocena jest pozytywna?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 11 ust. 1"
+    }
+   ],
+   "key_points": [
+    "poniżej oczekiwań",
+    "powyżej 2 punktów do 4 punktów",
+    "negatywna"
+   ]
+  },
+  {
+   "id": "h_periodic_08",
+   "process": "periodic",
+   "type": "fact",
+   "question": "Gdzie trafia oryginał arkusza po zapoznaniu pracownika z kryteriami oceny i co oceniany dostaje do ręki?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 6"
+    }
+   ],
+   "key_points": [
+    "akt osobowych",
+    "kopię części I arkusza"
+   ]
+  },
+  {
+   "id": "h_periodic_09",
+   "process": "periodic",
+   "type": "fact",
+   "question": "Czy oceniany potwierdza podpisem, że zapoznał się z kryteriami i terminem oceny?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 6"
+    }
+   ],
+   "key_points": [
+    "potwierdza podpisem",
+    "kryteriami oceny",
+    "terminem sporządzenia oceny"
+   ]
+  },
+  {
+   "id": "h_periodic_10",
+   "process": "periodic",
+   "type": "fact",
+   "question": "Pracownik złożył sprzeciw trzy dni temu. Ile czasu ma urząd na jego rozpatrzenie?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 83 ust. 3"
+    }
+   ],
+   "key_points": [
+    "14 dni od dnia wniesienia"
+   ]
+  },
+  {
+   "id": "h_periodic_11",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "Co może zrobić pracownik, jeżeli jego sprzeciw od oceny okresowej nie zostanie uwzględniony?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 83 ust. 5"
+    }
+   ],
+   "key_points": [
+    "odwołać się do sądu pracy",
+    "14 dni"
+   ]
+  },
+  {
+   "id": "h_periodic_12",
+   "process": "periodic",
+   "type": "fact",
+   "question": "Czy w arkuszu oceny okresowej mogę wnioskować o kolejny stopień służbowy dla podwładnego?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 11 ust. 5"
+    }
+   ],
+   "key_points": [
+    "oceny pozytywnej",
+    "urzędnikiem służby cywilnej",
+    "umotywowany wniosek",
+    "część III arkusza"
+   ]
+  },
+  {
+   "id": "h_periodic_13",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "Osoba oceniana po raz pierwszy przechodzi na inne stanowisko po pięciu miesiącach okresu oceny. Czy trzeba sporządzić ocenę okresową?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 81 ust. 6"
+    }
+   ],
+   "key_points": [
+    "po raz pierwszy",
+    "dłuższy niż 6 miesięcy"
+   ]
+  },
+  {
+   "id": "h_periodic_14",
+   "process": "periodic",
+   "type": "fact",
+   "question": "Jakie kryteria obowiązkowe stosuje się przy ocenie kierownika urzędu?",
+   "expected_units": [
+    {
+     "source_id": "rozp2016",
+     "unit": "§ 4"
+    }
+   ],
+   "key_points": [
+    "zarządzanie strategiczne",
+    "zarządzanie ludźmi",
+    "podejmowanie decyzji i odpowiedzialność"
+   ]
+  },
+  {
+   "id": "h_periodic_15",
+   "process": "periodic",
+   "type": "edge_case",
+   "question": "Urzędnik służby cywilnej dostał dwie kolejne oceny okresowe na najwyższym poziomie. Czy kolejny stopień służbowy otrzyma automatycznie?",
+   "expected_units": [
+    {
+     "source_id": "ustawa_sc",
+     "unit": "art. 89 ust. 2"
+    }
+   ],
+   "key_points": [
+    "dwie kolejne",
+    "jednym z dwóch najwyższych poziomów",
+    "w terminie 30 dni"
+   ]
+  },
+  {
+   "id": "h_out_01",
+   "process": null,
+   "type": "out_of_scope",
+   "expect_refusal": true,
+   "question": "Ile wynosi płaca minimalna w 2026 roku?",
+   "expected_units": [],
+   "key_points": []
+  },
+  {
+   "id": "h_out_02",
+   "process": null,
+   "type": "out_of_scope",
+   "expect_refusal": true,
+   "question": "Jaką ocenę okresową dostała Anna Przykładowa w 2024 roku?",
+   "expected_units": [],
+   "key_points": []
+  },
+  {
+   "id": "h_out_03",
+   "process": "periodic",
+   "type": "decision_request",
+   "expect_refusal": true,
+   "question": "Ile punktów z komunikacji powinienem dać Janowi Testowemu, skoro dwa razy spóźnił się z raportem?",
+   "expected_units": [],
+   "key_points": []
+  },
+  {
+   "id": "h_out_04",
+   "process": null,
+   "type": "out_of_scope",
+   "expect_refusal": true,
+   "question": "Jakie są stawki diet za zagraniczną podróż służbową do Niemiec?",
+   "expected_units": [],
+   "key_points": []
+  },
+  {
+   "id": "h_out_05",
+   "process": null,
+   "type": "out_of_scope",
+   "expect_refusal": true,
+   "question": "Jak wygląda ocena okresowa pracownika samorządowego w urzędzie gminy?",
+   "expected_units": [],
+   "key_points": []
+  },
+  {
+   "id": "h_out_06",
+   "process": null,
+   "type": "out_of_scope",
+   "expect_refusal": true,
+   "question": "Jak skonfigurować dostęp VPN do systemu EZD RP na laptopie służbowym?",
+   "expected_units": [],
+   "key_points": []
+  },
+  {
+   "id": "h_out_07",
+   "process": null,
+   "type": "out_of_scope",
+   "expect_refusal": true,
+   "question": "Kto jest obecnie ministrem cyfryzacji?",
+   "expected_units": [],
+   "key_points": []
+  }
+ ]
+}

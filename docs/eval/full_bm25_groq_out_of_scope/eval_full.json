@@ -1,0 +1,158 @@
+{
+ "summary": {
+  "n": 7,
+  "n_in_scope": 0,
+  "n_out_of_scope": 7,
+  "refusal_accuracy": 1.0,
+  "correct_refusals_out_of_scope": "7/7",
+  "false_refusals_in_scope": "0/0",
+  "citation_validity": "7/7 odpowiedzi bez niezweryfikowanych cytatów",
+  "answered_with_citation": "0/0",
+  "cites_expected_unit": "0/0",
+  "keypoint_coverage_mean": null,
+  "latency_p50_s": 1.312,
+  "latency_p95_s": 8.247,
+  "model": "openai/gpt-oss-120b"
+ },
+ "rows": [
+  {
+   "id": "h_out_01",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 2.682,
+   "answer": "Nie znalazłem informacji o wysokości minimalnego wynagrodzenia w 2026 roku w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "openai_compat",
+    "latency_s": 2.671,
+    "prompt_tokens": 2444,
+    "completion_tokens": 111,
+    "tokens_per_s": 41.55,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_02",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 8.247,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "openai_compat",
+    "latency_s": 8.242,
+    "prompt_tokens": 2440,
+    "completion_tokens": 88,
+    "tokens_per_s": 10.68,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_03",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "prośba o decyzję o ocenie (reguła, bez LLM)",
+   "source": "rule",
+   "latency_s": 0.0,
+   "answer": "Nie proponuję poziomu, punktów ani wyniku oceny konkretnego pracownika – tę decyzję podejmuje przełożony. Mogę wyjaśnić skalę ocen, progi i reguły z przepisów albo pomóc przygotować rozmowę.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": null,
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_04",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 1.312,
+   "answer": "Nie znalazłem informacji w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM) o stawkach diet za zagraniczną podróż służbową do Niemiec. Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "openai_compat",
+    "latency_s": 1.307,
+    "prompt_tokens": 3031,
+    "completion_tokens": 103,
+    "tokens_per_s": 78.78,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_05",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 1.472,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "openai_compat",
+    "latency_s": 1.467,
+    "prompt_tokens": 3413,
+    "completion_tokens": 92,
+    "tokens_per_s": 62.71,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_06",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 0.989,
+   "answer": "Nie znalazłem informacji w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "openai_compat",
+    "latency_s": 0.984,
+    "prompt_tokens": 3580,
+    "completion_tokens": 85,
+    "tokens_per_s": 86.39,
+    "cached": false
+   },
+   "refusal_correct": true
+  },
+  {
+   "id": "h_out_07",
+   "expect_refusal": true,
+   "refused": true,
+   "refusal_reason": "LLM: brak podstaw w źródłach",
+   "source": "llm",
+   "latency_s": 1.105,
+   "answer": "Nie znalazłem odpowiedzi w bazie wiedzy Kompasu (ustawa, rozporządzenia, poradniki i Q&A KPRM, model kompetencji). Nie zgaduję – sprawdź to w komórce kadr albo u radcy prawnego urzędu.",
+   "cited_ids": [],
+   "invalid_citations": [],
+   "llm": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "openai_compat",
+    "latency_s": 1.098,
+    "prompt_tokens": 3006,
+    "completion_tokens": 92,
+    "tokens_per_s": 83.76,
+    "cached": false
+   },
+   "refusal_correct": true
+  }
+ ]
+}

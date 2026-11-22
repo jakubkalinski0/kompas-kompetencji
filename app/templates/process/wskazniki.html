@@ -1,0 +1,56 @@
+{% extends "process/_layout.html" %}
+{% from "_ui.html" import bar %}
+{% block part %}{% if proc.kind == 'first' %}Elementy oceny{% else %}Część II arkusza{% endif %}{% endblock %}
+{% block work %}
+<h1>{{ crit.name }}</h1>
+<nav class="crit-tabs" aria-label="Kryteria">
+  {% for c in doc.criteria %}
+  <a href="/procesy/{{ proc.id }}/wskazniki/{{ c.id }}" class="{% if c.id == crit.id %}current{% endif %}"{% if c.id == crit.id %} aria-current="page"{% endif %}>
+    {{ c.name }}{% if c.kind == 'additional' %} <small>(dod.)</small>{% endif %}<span class="pts">{{ c.final_points ~ ' pkt' if c.final_points is not none else '·' }}</span></a>
+  {% endfor %}
+</nav>
+<p class="lead">Opisz, co zaobserwowałeś – asystent dopasuje to do opisów zachowań – albo zaznacz opis przy każdym wskaźniku sam. „Brak podstaw do oceny”, gdy nie było okazji zaobserwować zachowania.</p>
+{% if proc.kind == 'first' %}<p class="basis">Skala pierwszej oceny: 3, 5 i 7 pkt (§ 9 ust. 1 rozp. 2015). Przeliczenie poziomów 1–5 (1–2 ↣ 3 pkt, 3 ↣ 5 pkt, 4–5 ↣ 7 pkt) – wariant do potwierdzenia z MC.</p>{% endif %}
+
+<section class="win behavior-ai" aria-labelledby="bai-title">
+  {{ bar('Asystent oceny zachowań', tag='h2', id='bai-title', aside='propozycja AI · decyzja Twoja') }}
+  <div class="win-body">
+    <form hx-post="/procesy/{{ proc.id }}/wskazniki/{{ crit.id }}/ai" hx-target="#behavior-ai-out" hx-swap="innerHTML">
+      <label class="field"><span>Co zaobserwowałeś u pracownika w okresie oceny? ({{ crit.name }})</span>
+        <textarea name="note" maxlength="3000" required placeholder="Opisz własnymi słowami konkretne sytuacje: co pracownik zrobił i jaki był rezultat. Np. „Raport kwartalny oddała trzy dni przed terminem. Sama zauważyła błąd w danych z innego wydziału i zaproponowała dodatkową kontrolę, którą wdrożyliśmy w zespole.”"></textarea></label>
+      <button class="btn" type="submit">Dopasuj do opisów zachowań</button>
+      <span class="htmx-indicator">Porównuję z opisami poziomów…</span>
+    </form>
+    <p class="meta">Asystent przy każdym wskaźniku wskazuje najbliższy opis poziomu i cytuje fragment Twojego opisu, na którym się opiera. Sam nic nie zaznacza: propozycje przyjmujesz albo zmieniasz Ty, a poziom kryterium liczy Kompas poziomu ze wzoru. Imiona i nazwiska są maskowane przed wysłaniem do modelu.</p>
+    <div id="behavior-ai-out" aria-live="polite"></div>
+  </div>
+</section>
+
+<form id="ratings" hx-post="/procesy/{{ proc.id }}/wskazniki/{{ crit.id }}/oceny" hx-trigger="change" hx-target="#compass" hx-swap="outerHTML">
+  {% set ratings = {} %}{% for r in crit.indicator_ratings %}{% set _ = ratings.update({r.indicator_id: r}) %}{% endfor %}
+  {% for ind in comp.indicators %}
+  {% set r = ratings.get(ind.id, {}) %}
+  <fieldset class="indicator{% if r.no_basis %} is-nobasis{% endif %}" id="ind-{{ ind.id|replace('.', '-') }}">
+    <legend>{{ loop.index }}. {{ ind.text }}</legend>
+    <input type="hidden" name="ai::{{ ind.id }}" value="{{ r.ai_proposed_level or '' }}">
+    <div class="levels" role="radiogroup" aria-label="Opis zachowania">
+      {% for lv in LEVELS %}
+      <label class="level{% if r.ai_proposed_level == lv.level %} ai-pick{% endif %}">
+        <input type="radio" name="lvl::{{ ind.id }}" value="{{ lv.level }}" {% if r.level == lv.level %}checked{% endif %}>
+        <span class="lvl-name">{{ lv.label }}{% if r.ai_proposed_level == lv.level %}<small class="ai-note">propozycja AI</small>{% endif %}</span>
+        <span>{{ ind.levels[lv.level|string] }}</span>
+      </label>
+      {% endfor %}
+    </div>
+    <div class="ind-tools">
+      <label><input type="checkbox" name="nb::{{ ind.id }}" value="1" data-nobasis {% if r.no_basis %}checked{% endif %}> Brak podstaw do oceny</label>
+      <details {% if r.sdr_note %}open{% endif %}><summary>Przykład S-D-R (sytuacja – działanie – rezultat)</summary>
+        <textarea name="sdr::{{ ind.id }}" maxlength="2000" placeholder="S: … D: … R: …">{{ r.sdr_note or '' }}</textarea>
+        <span class="private-note">Notatka robocza – nie trafia do arkusza PDF ani do HR.</span>
+      </details>
+    </div>
+  </fieldset>
+  {% endfor %}
+</form>
+{% include "partials/_compass.html" %}
+{% endblock %}

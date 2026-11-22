@@ -1,0 +1,18 @@
+<article class="answer{% if res.refused %} refused{% endif %}">
+  <p class="q">{{ label }}</p>
+  <div class="a">{{ html }}</div>
+  {% if res.citations %}
+  <ol class="cites">
+    {% for c in res.citations %}
+    <li id="c-{{ uid }}-{{ loop.index }}"><details><summary>{{ c.citation }}</summary><div class="fragment">{{ c.fragment }}{% if c.fragment|length >= 300 %}…{% endif %}</div></details></li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+  {% if questions %}<p class="meta">{{ questions|length|plural('pytanie trafiło', 'pytania trafiły', 'pytań trafiło') }} do karty przygotowania do rozmowy.</p>{% endif %}
+  {% if res.preview %}<details><summary class="meta">Co wysłano do modelu</summary>{% with preview = res.preview %}{% include "partials/_privacy.html" %}{% endwith %}</details>{% endif %}
+  <p class="meta">
+    {% if res.refused %}Odmowa: {{ res.refusal_reason }}.{% if res.detail %} <small class="muted" title="{{ res.detail[:300] }}">(szczegół techniczny)</small>{% endif %}
+    {% elif res.llm %}Model {{ res.llm.model }}{% if res.llm.cached %} (z pamięci podręcznej){% endif %}, {{ ('%.1f'|format(res.latency_s))|replace('.', ',') }} s. Tekst do edycji – nie zawiera propozycji ocen.{% endif %}
+    {% if res.filtered_sentences %} Usunięto zdania z propozycją poziomu lub punktów: {{ res.filtered_sentences }}.{% endif %}
+  </p>
+</article>

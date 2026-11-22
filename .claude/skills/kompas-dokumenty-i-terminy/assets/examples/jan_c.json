@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.0",
+  "office_name": "Urząd Demo (dane fikcyjne)",
+  "place": "Warszawa",
+  "case_id": "demo-jan-c",
+  "form": "periodic_c",
+  "employee": {
+    "full_name": "Jan Testowy",
+    "position": "Radca",
+    "unit": "Departament Prawny Demo",
+    "corps_status": "pracownik_sc"
+  },
+  "evaluator": {
+    "full_name": "Marek Kierownik-Demo",
+    "position": "Dyrektor departamentu",
+    "unit": "Departament Demo"
+  },
+  "part1": {
+    "criteria_meeting_date": "2024-12-02",
+    "evaluation_deadline": "2026-12-01"
+  },
+  "interview_date": "2026-11-16",
+  "period": {
+    "from": "2024-12-02",
+    "to": "2026-11-19"
+  },
+  "criteria": [
+    {
+      "id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe",
+      "name": "Wykorzystywanie wiedzy i doskonalenie zawodowe",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Wykorzystywanie wiedzy i doskonalenie zawodowe” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Wykorzystywanie wiedzy i doskonalenie zawodowe” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "rzetelnosc",
+      "name": "Rzetelność",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "rzetelnosc.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Rzetelność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "rzetelnosc.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Rzetelność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 4.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "organizacja_pracy_i_orientacja_na_osiaganie_celow",
+      "name": "Organizacja pracy i orientacja na osiąganie celów",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Organizacja pracy i orientacja na osiąganie celów” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Organizacja pracy i orientacja na osiąganie celów” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "wspolpraca",
+      "name": "Współpraca",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wspolpraca.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Współpraca” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "name": "Komunikacja",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 5,
+        "level": 3,
+        "level_label": "na poziomie oczekiwań",
+        "average": 3.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 5,
+      "override_note": null
+    },
+    {
+      "id": "myslenie_analityczne",
+      "name": "Myślenie analityczne",
+      "kind": "additional",
+      "indicator_ratings": [
+        {
+          "indicator_id": "myslenie_analityczne.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Myślenie analityczne” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "myslenie_analityczne.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Myślenie analityczne” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 4.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": 7,
+      "override_note": null
+    }
+  ],
+  "average": 5.67,
+  "result": "pozytywna",
+  "justification": null,
+  "development_conclusions": "Pogłębienie wiedzy z prawa zamówień publicznych (kurs e-learningowy).",
+  "previous_evaluation": {
+    "result": null,
+    "level_label": null,
+    "date": null
+  },
+  "part3_requested": false,
+  "part3": null
+}

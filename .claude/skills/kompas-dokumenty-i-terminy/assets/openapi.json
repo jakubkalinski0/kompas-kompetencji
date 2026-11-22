@@ -1,0 +1,228 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Kompas Kompetencji – API (propozycja kontraktu)",
+    "version": "0.1.0",
+    "description": "PROPOZYCJA KONTRAKTU przygotowana przed hackathonem. Endpointy aplikacji są projektem do implementacji (np. FastAPI serwuje ten opis pod /docs). Sekcja 'integracje' (EZD RP, system kadrowy np. QNT) to wyłącznie nasz kontrakt adaptera: realnego API EZD RP ani QNT nie wywołujemy i jego kształtu nie potwierdziliśmy. EZD RP publikuje dokumentację API v2 w Swaggerze (https://integrator-api.demo.ezdrp.gov.pl/swagger/index.html) i udostępnia Piaskownicę API na wniosek (https://www.gov.pl/web/ezd-rp/piaskownica-api) – stan z wyników wyszukiwania 2026-11-21, nieotwierane [~]. Publicznej dokumentacji API QNT nie znaleźliśmy [?]. Pole x-roles przy operacji = role z assets/rbac.json uprawnione do wywołania."
+  },
+  "servers": [{"url": "http://localhost:8000", "description": "lokalny prototyp"}],
+  "security": [{"bearerAuth": []}],
+  "tags": [
+    {"name": "procesy", "description": "Procesy oceny (ocena okresowa B/C, pierwsza ocena)"},
+    {"name": "ocena", "description": "Ocena wskaźników, sugestia (deterministyczna) i decyzja przełożonego"},
+    {"name": "dokumenty", "description": "Arkusz PDF i karta przygotowania do rozmowy"},
+    {"name": "hr", "description": "Terminy, statusy, przypomnienia (panel HR)"},
+    {"name": "asystent", "description": "Asystent formalny i asystent rozmowy (kontrakt)"},
+    {"name": "integracje", "description": "PROPOZYCJA: eksport do EZD RP, import z systemu kadrowego (np. QNT) – do potwierdzenia"}
+  ],
+  "paths": {
+    "/api/v1/auth/demo-login": {
+      "post": {
+        "tags": ["procesy"], "operationId": "demoLogin", "security": [],
+        "summary": "Logowanie 1-click na konto demo (tylko środowisko demonstracyjne)",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["role"],
+          "properties": {"role": {"type": "string", "enum": ["przelozony", "kierujacy_komorka", "hr_admin", "pracownik"]}}}}}},
+        "responses": {"200": {"description": "Token sesji", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Token"}}}},
+                      "403": {"$ref": "#/components/responses/Forbidden"}},
+        "x-roles": []
+      }
+    },
+    "/api/v1/processes": {
+      "get": {
+        "tags": ["procesy"], "operationId": "listProcesses", "summary": "Lista procesów w zakresie roli (HR: wszystkie, widok z białej listy pól)",
+        "parameters": [{"name": "status", "in": "query", "schema": {"$ref": "#/components/schemas/Status"}},
+                       {"name": "flag", "in": "query", "schema": {"type": "string", "enum": ["zbliza_sie", "po_terminie"]}}],
+        "responses": {"200": {"description": "Procesy", "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/ProcessSummary"}}}}}},
+        "x-roles": ["przelozony", "kierujacy_komorka", "hr_admin"]
+      },
+      "post": {
+        "tags": ["procesy"], "operationId": "createProcess", "summary": "Rozpoczęcie procesu oceny",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProcessCreate"}}}},
+        "responses": {"201": {"description": "Utworzono", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProcessSummary"}}}},
+                      "422": {"$ref": "#/components/responses/ValidationError"}},
+        "x-roles": ["przelozony"]
+      }
+    },
+    "/api/v1/processes/{processId}": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}],
+      "get": {
+        "tags": ["procesy"], "operationId": "getProcess", "summary": "Dokument oceny (kontrakt C3) – widok filtrowany wg roli",
+        "responses": {"200": {"description": "Dokument", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/EvaluationDocument"}}}},
+                      "403": {"$ref": "#/components/responses/Forbidden"}, "404": {"$ref": "#/components/responses/NotFound"}},
+        "x-roles": ["przelozony", "kierujacy_komorka", "hr_admin", "pracownik"]
+      }
+    },
+    "/api/v1/processes/{processId}/status": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}],
+      "patch": {
+        "tags": ["hr"], "operationId": "changeStatus", "summary": "Zmiana statusu (dozwolone przejścia: scripts/deadlines.py TRANSITIONS)",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["to"], "properties": {"to": {"$ref": "#/components/schemas/Status"}}}}}},
+        "responses": {"200": {"description": "Zmieniono", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProcessSummary"}}}},
+                      "409": {"description": "Niedozwolone przejście statusu", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}}},
+        "x-roles": ["przelozony", "kierujacy_komorka"]
+      }
+    },
+    "/api/v1/processes/{processId}/deadlines": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}],
+      "get": {
+        "tags": ["hr"], "operationId": "getDeadlines", "summary": "Kalendarz czynności z podstawą prawną i flagami",
+        "parameters": [{"name": "today", "in": "query", "schema": {"type": "string", "format": "date"}}],
+        "responses": {"200": {"description": "Kalendarz", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Calendar"}}}}},
+        "x-roles": ["przelozony", "kierujacy_komorka", "hr_admin"]
+      }
+    },
+    "/api/v1/processes/{processId}/criteria/{criterionId}/indicators/{indicatorId}": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}, {"$ref": "#/components/parameters/criterionId"}, {"$ref": "#/components/parameters/indicatorId"}],
+      "put": {
+        "tags": ["ocena"], "operationId": "rateIndicator", "summary": "Wybór opisu zachowania (poziom 1–5) albo 'brak podstaw do oceny' + notatka S-D-R",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/IndicatorRating"}}}},
+        "responses": {"200": {"description": "Zapisano; zwraca przeliczoną sugestię", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Suggestion"}}}}},
+        "x-roles": ["przelozony"]
+      }
+    },
+    "/api/v1/processes/{processId}/criteria/{criterionId}/suggestion": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}, {"$ref": "#/components/parameters/criterionId"}],
+      "get": {
+        "tags": ["ocena"], "operationId": "getSuggestion", "summary": "Sugerowany poziom kryterium (deterministycznie, z jawnym wzorem; nie LLM)",
+        "responses": {"200": {"description": "Sugestia", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Suggestion"}}}}},
+        "x-roles": ["przelozony", "kierujacy_komorka"]
+      }
+    },
+    "/api/v1/processes/{processId}/criteria/{criterionId}/decision": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}, {"$ref": "#/components/parameters/criterionId"}],
+      "post": {
+        "tags": ["ocena"], "operationId": "decideCriterion", "summary": "Ostateczna ocena cząstkowa – zawsze decyzja przełożonego; odejście od sugestii trafia do audit_log",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Decision"}}}},
+        "responses": {"200": {"description": "Zapisano", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AuditEntry"}}}},
+                      "422": {"$ref": "#/components/responses/ValidationError"}},
+        "x-roles": ["przelozony"]
+      }
+    },
+    "/api/v1/processes/{processId}/pdf": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}],
+      "get": {
+        "tags": ["dokumenty"], "operationId": "getPdf", "summary": "Arkusz PDF wg wzoru albo robocza karta przygotowania do rozmowy",
+        "parameters": [{"name": "kind", "in": "query", "schema": {"type": "string", "enum": ["arkusz", "karta"], "default": "arkusz"}}],
+        "responses": {"200": {"description": "PDF", "content": {"application/pdf": {"schema": {"type": "string", "format": "binary"}}}},
+                      "403": {"$ref": "#/components/responses/Forbidden"}, "422": {"$ref": "#/components/responses/ValidationError"}},
+        "x-roles": ["przelozony", "kierujacy_komorka", "hr_admin", "pracownik"],
+        "x-notes": "kind=karta tylko dla roli przelozony (notatki S-D-R). HR i pracownik: tylko arkusz po statusie 'zakonczona'."
+      }
+    },
+    "/api/v1/reminders": {
+      "get": {
+        "tags": ["hr"], "operationId": "listReminders", "summary": "Log przypomnień (JSON lines → lista)",
+        "responses": {"200": {"description": "Log", "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Reminder"}}}}}},
+        "x-roles": ["hr_admin"]
+      },
+      "post": {
+        "tags": ["hr"], "operationId": "sendReminders", "summary": "Wyślij przypomnienia dla procesów z flagą (w prototypie: mock – tylko log + treść e-maila)",
+        "requestBody": {"content": {"application/json": {"schema": {"type": "object", "properties": {
+          "process_ids": {"type": "array", "items": {"type": "string"}}, "warn_days": {"type": "integer", "default": 14}}}}}},
+        "responses": {"200": {"description": "Zapisane przypomnienia", "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/Reminder"}}}}}},
+        "x-roles": ["hr_admin"]
+      }
+    },
+    "/api/v1/assistant/formal": {
+      "post": {
+        "tags": ["asystent"], "operationId": "askFormal", "summary": "Asystent formalny: odpowiedź wyłącznie z bazy wiedzy z cytatami albo jawna odmowa",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["question"], "properties": {
+          "question": {"type": "string", "maxLength": 2000}, "process_id": {"type": "string"}, "step": {"type": "string"}}}}}},
+        "responses": {"200": {"description": "Odpowiedź", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AssistantAnswer"}}}}},
+        "x-roles": ["przelozony", "kierujacy_komorka", "hr_admin"]
+      }
+    },
+    "/api/v1/assistant/interview": {
+      "post": {
+        "tags": ["asystent"], "operationId": "interviewAction", "summary": "Asystent rozmowy: akcje kontekstowe; kontekst maskowany (Pracownik A) przed wysłaniem do LLM; historia widoczna tylko dla przełożonego",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["process_id", "action"], "properties": {
+          "process_id": {"type": "string"},
+          "action": {"type": "string", "enum": ["pytania_do_rozmowy", "feedback_sdr", "szkic_uzasadnienia", "propozycje_rozwojowe"]},
+          "message": {"type": "string", "maxLength": 4000}}}}}},
+        "responses": {"200": {"description": "Propozycja (do edycji przez przełożonego)", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AssistantAnswer"}}}}},
+        "x-roles": ["przelozony"]
+      }
+    },
+    "/api/v1/integrations/ezd/export/{processId}": {
+      "parameters": [{"$ref": "#/components/parameters/processId"}],
+      "post": {
+        "tags": ["integracje"], "operationId": "exportToEzd", "summary": "PROPOZYCJA: pakiet oceny do EZD RP (metadane + PDF) – adapter do potwierdzenia z API EZD RP v2",
+        "responses": {"202": {"description": "Pakiet przygotowany (w prototypie: zapis pliku, bez wywołania EZD)", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/EzdPackage"}}}},
+                      "409": {"description": "Proces nie jest zakończony", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}}},
+        "x-roles": ["hr_admin"], "x-status": "proposal-unverified"
+      }
+    },
+    "/api/v1/integrations/hr/import": {
+      "post": {
+        "tags": ["integracje"], "operationId": "importFromHrSystem", "summary": "PROPOZYCJA: import danych pracownika i stanowiska z systemu kadrowego (np. QNT) – format do potwierdzenia",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/HrEmployeeRecord"}}}}},
+        "responses": {"200": {"description": "Wynik importu", "content": {"application/json": {"schema": {"type": "object", "properties": {
+          "imported": {"type": "integer"}, "skipped": {"type": "integer"}, "warnings": {"type": "array", "items": {"type": "string"}}}}}}}},
+        "x-roles": ["hr_admin"], "x-status": "proposal-unverified"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {"bearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "JWT", "description": "Docelowo SSO urzędu (OIDC/SAML) – do ustalenia z MC"}},
+    "parameters": {
+      "processId": {"name": "processId", "in": "path", "required": true, "schema": {"type": "string"}},
+      "criterionId": {"name": "criterionId", "in": "path", "required": true, "schema": {"type": "string", "examples": ["komunikacja"]}},
+      "indicatorId": {"name": "indicatorId", "in": "path", "required": true, "schema": {"type": "string", "examples": ["komunikacja.1"]}}
+    },
+    "responses": {
+      "Forbidden": {"description": "Brak uprawnień dla roli", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}},
+      "NotFound": {"description": "Nie znaleziono", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}},
+      "ValidationError": {"description": "Błąd walidacji reguł (np. brak uzasadnienia oceny negatywnej)", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}}
+    },
+    "schemas": {
+      "Error": {"type": "object", "required": ["code", "message"], "properties": {"code": {"type": "string"}, "message": {"type": "string"}, "basis": {"type": "string"}}},
+      "Token": {"type": "object", "properties": {"access_token": {"type": "string"}, "role": {"type": "string"}, "expires_in": {"type": "integer"}}},
+      "Status": {"type": "string", "enum": ["nie_rozpoczeta", "kryteria_ustalone", "w_trakcie", "do_podpisu", "zakonczona", "sprzeciw"]},
+      "ProcessCreate": {"type": "object", "required": ["type", "employee_id"], "properties": {
+        "type": {"type": "string", "enum": ["periodic", "first"]}, "form": {"type": "string", "enum": ["periodic_b", "periodic_c", "first_eval"]},
+        "employee_id": {"type": "string"}, "osp_file_id": {"type": "string"}}},
+      "ProcessSummary": {"type": "object", "properties": {
+        "process_id": {"type": "string"}, "type": {"type": "string"}, "form": {"type": "string"}, "status": {"$ref": "#/components/schemas/Status"},
+        "employee": {"type": "object", "properties": {"full_name": {"type": "string"}, "unit": {"type": "string"}, "position": {"type": "string"}}},
+        "evaluator": {"type": "object", "properties": {"full_name": {"type": "string"}}},
+        "flags": {"type": "array", "items": {"type": "string"}}}},
+      "EvaluationDocument": {"type": "object", "description": "Kontrakt C3 – pełny JSON Schema: .claude/skills/kompas-model-i-silnik-oceny/assets/evaluation_schema.json",
+        "x-schema-file": "kompas-model-i-silnik-oceny/assets/evaluation_schema.json"},
+      "IndicatorRating": {"type": "object", "properties": {"level": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "no_basis": {"type": "boolean"}, "sdr_note": {"type": ["string", "null"], "maxLength": 1000, "description": "Notatka robocza – nigdy w arkuszu PDF ani w widoku HR"}}},
+      "Suggestion": {"type": "object", "properties": {"points": {"type": ["integer", "null"]}, "level": {"type": ["integer", "null"]},
+        "level_label": {"type": ["string", "null"]}, "average": {"type": ["number", "null"]}, "formula": {"type": "string"}}},
+      "Decision": {"type": "object", "required": ["final_points"], "properties": {"final_points": {"type": "integer", "enum": [1, 3, 5, 7, 9]},
+        "override_note": {"type": ["string", "null"]}}},
+      "AuditEntry": {"type": "object", "properties": {"at": {"type": "string", "format": "date-time"}, "by": {"type": "string"},
+        "what": {"type": "string"}, "suggested": {"type": ["integer", "null"]}, "final": {"type": ["integer", "null"]}}},
+      "CalendarEvent": {"type": "object", "properties": {"task": {"type": "string"}, "label": {"type": "string"},
+        "due": {"type": ["string", "null"], "format": "date"},
+        "window": {"type": ["object", "null"], "properties": {"from": {"type": "string", "format": "date"}, "to": {"type": "string", "format": "date"}}},
+        "basis": {"type": "string"}, "certainty": {"type": "string", "enum": ["✔", "~", "?"]}, "done_on": {"type": ["string", "null"]},
+        "flag": {"type": ["string", "null"], "enum": ["zbliza_sie", "po_terminie", null]}, "days_left": {"type": ["integer", "null"]}}},
+      "Calendar": {"type": "object", "properties": {"process_id": {"type": "string"}, "type": {"type": "string"}, "status": {"$ref": "#/components/schemas/Status"},
+        "events": {"type": "array", "items": {"$ref": "#/components/schemas/CalendarEvent"}}, "flags": {"type": "array", "items": {"type": "string"}}}},
+      "Reminder": {"type": "object", "required": ["ts", "sender", "recipient", "process_id", "task"], "properties": {
+        "ts": {"type": "string", "format": "date-time"}, "sender": {"type": "string"}, "recipient": {"type": "string"},
+        "recipient_email": {"type": "string"}, "process_id": {"type": "string"}, "task": {"type": "string"}, "due": {"type": "string"},
+        "flag": {"type": "string"}, "channel": {"type": "string", "enum": ["mock-email", "email", "ezd"]}, "delivered": {"type": "boolean"},
+        "subject": {"type": "string"}, "body": {"type": "string"}}},
+      "Citation": {"type": "object", "properties": {"chunk_id": {"type": "string"}, "citation": {"type": "string"}, "quote": {"type": "string"}}},
+      "AssistantAnswer": {"type": "object", "properties": {"answer": {"type": "string"}, "refused": {"type": "boolean"},
+        "citations": {"type": "array", "items": {"$ref": "#/components/schemas/Citation"}}, "masked_context_preview": {"type": "string"}}},
+      "EzdPackage": {"type": "object", "description": "PROPOZYCJA – mapowanie na metody API EZD RP v2 do ustalenia (Swagger NASK).", "properties": {
+        "metadata": {"type": "object", "properties": {"title": {"type": "string"}, "document_type": {"type": "string", "examples": ["arkusz oceny okresowej"]},
+          "jrwa": {"type": "string", "description": "symbol JRWA teczki akt osobowych – do ustalenia z MC"}, "employee_ref": {"type": "string"},
+          "process_id": {"type": "string"}, "form": {"type": "string"}, "result": {"type": "string"}, "date": {"type": "string", "format": "date"},
+          "sha256": {"type": "string"}}},
+        "files": {"type": "array", "items": {"type": "object", "properties": {"name": {"type": "string"}, "media_type": {"type": "string", "const": "application/pdf"}, "size": {"type": "integer"}}}}}},
+      "HrEmployeeRecord": {"type": "object", "description": "PROPOZYCJA – pola z systemu kadrowego (np. QNT); format eksportu QNT nieznany [?].", "required": ["employee_ref", "full_name"], "properties": {
+        "employee_ref": {"type": "string"}, "full_name": {"type": "string"}, "unit": {"type": "string"}, "position": {"type": "string"},
+        "position_symbol": {"type": "string"}, "corps_status": {"type": "string", "enum": ["urzednik_sc", "pracownik_sc"]},
+        "employment_start": {"type": "string", "format": "date"}, "contract_type": {"type": "string", "enum": ["nieokreslony", "okreslony_pierwsza_umowa", "zastepstwo"]},
+        "contract_end": {"type": ["string", "null"], "format": "date"}, "supervisor_ref": {"type": "string"},
+        "last_evaluation": {"type": ["object", "null"], "properties": {"date": {"type": "string", "format": "date"}, "result": {"type": "string"}}}}}
+    }
+  }
+}

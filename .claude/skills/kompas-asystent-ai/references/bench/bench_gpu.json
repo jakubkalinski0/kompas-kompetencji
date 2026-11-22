@@ -1,0 +1,87 @@
+{
+ "cpu_only": false,
+ "models": {
+  "llama3.1:8b": {
+   "cold_start_s": 26.719,
+   "load_duration_s": 21.2,
+   "latency_median_s": 6.09,
+   "latency_max_s": 16.204,
+   "tokens_per_s_median": 10.89,
+   "rows": [
+    {
+     "q": "W jakim terminie przełożony przeprowadza rozmowę wstępną z nowym pracownikiem?",
+     "latency_s": 5.718,
+     "prompt_tokens": 745,
+     "completion_tokens": 34,
+     "tokens_per_s": 9.59,
+     "answer": "W terminie 21 dni od dnia nawiązania z ocenianym stosunku pracy. [rozp2015:par3]"
+    },
+    {
+     "q": "Ile kryteriów dodatkowych mogę wybrać w ocenie okresowej?",
+     "latency_s": 5.407,
+     "prompt_tokens": 434,
+     "completion_tokens": 34,
+     "tokens_per_s": 12.69,
+     "answer": "Oceniający może wybrać nie więcej niż 3 kryteria dodatkowe. [rozp2016:par5:ust2]"
+    },
+    {
+     "q": "Kiedy ocena okresowa jest negatywna?",
+     "latency_s": 16.204,
+     "prompt_tokens": 933,
+     "completion_tokens": 120,
+     "tokens_per_s": 9.46,
+     "answer": "Ocena okresowa jest negatywna w przypadku ustalenia ogólnego poziomu spełniania kryteriów oceny na poziomie poniżej oczekiwań albo znacznie poniżej oczekiwań, a także w przypadku uzyskania przez ocenianego co najmniej jednej oceny cząstkowej na poziomie znacznie poniżej oczekiwań [rozp2016:par11:ust1:par4]."
+    },
+    {
+     "q": "Ile dni ma pracownik na sprzeciw od oceny okresowej i do kogo go wnosi?",
+     "latency_s": 6.469,
+     "prompt_tokens": 392,
+     "completion_tokens": 44,
+     "tokens_per_s": 12.19,
+     "answer": "Pracownik ma 7 dni na sprzeciw od oceny okresowej i wnosi go do dyrektora generalnego urzędu. [ustawa_sc:art83:ust1]"
+    }
+   ]
+  },
+  "qwen2.5:14b": {
+   "cold_start_s": 67.897,
+   "load_duration_s": 56.44,
+   "latency_median_s": 23.85,
+   "latency_max_s": 62.738,
+   "tokens_per_s_median": 2.95,
+   "rows": [
+    {
+     "q": "W jakim terminie przełożony przeprowadza rozmowę wstępną z nowym pracownikiem?",
+     "latency_s": 21.273,
+     "prompt_tokens": 726,
+     "completion_tokens": 55,
+     "tokens_per_s": 2.96,
+     "answer": "Przełożony przeprowadza rozmowę wstępną z nowym pracownikiem w terminie 21 dni od dnia nawiązania stosunku pracy [rozp2015:par3]."
+    },
+    {
+     "q": "Ile kryteriów dodatkowych mogę wybrać w ocenie okresowej?",
+     "latency_s": 25.032,
+     "prompt_tokens": 430,
+     "completion_tokens": 60,
+     "tokens_per_s": 2.94,
+     "answer": "Możesz wybrać nie więcej niż 3 kryteria dodatkowe, które są najistotniejsze ze względu na charakter obowiązków wynikających z opisu stanowiska pracy [rozp2016:par5:ust2]."
+    },
+    {
+     "q": "Kiedy ocena okresowa jest negatywna?",
+     "latency_s": 62.738,
+     "prompt_tokens": 934,
+     "completion_tokens": 155,
+     "tokens_per_s": 2.73,
+     "answer": "Ocena okresowa jest negatywna, gdy ogólny poziom spełniania kryteriów oceny jest na poziomie poniżej oczekiwań lub znacznie poniżej oczekiwań, lub gdy oceniany otrzymał co najmniej jedną ocenę cząstkową na poziomie znacznie poniżej oczekiwań [rozp2016:par11:ust1]. W przypadku przyznania oceny negatywnej, oceniano musi sporządzić uzasadnienie tej oceny [rozp2016:par11:ust3]."
+    },
+    {
+     "q": "Ile dni ma pracownik na sprzeciw od oceny okresowej i do kogo go wnosi?",
+     "latency_s": 22.662,
+     "prompt_tokens": 400,
+     "completion_tokens": 54,
+     "tokens_per_s": 3.02,
+     "answer": "Pracownik ma 7 dni od dnia zapoznania się z oceną do przedstawienia sprzeciwu, który wnosi do dyrektora generalnego urzędu [ustawa_sc:art83:ust1]."
+    }
+   ]
+  }
+ }
+}

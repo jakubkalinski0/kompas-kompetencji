@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Nowa pierwsza ocena' if kind == 'first' else 'Nowa ocena okresowa' }} – Kompas Kompetencji{% endblock %}
+{% block body %}
+{% set first = kind == 'first' %}
+<div class="workspace" style="grid-template-columns: minmax(0,1fr) 350px">
+  <main class="work">
+    {% include "_flash.html" %}
+    <p class="part-label">{{ 'Pierwsza ocena w służbie cywilnej' if first else 'Ocena okresowa w służbie cywilnej' }}</p>
+    <h1>Kogo oceniasz?</h1>
+    {% if first %}
+    <p class="lead">Pierwsze zatrudnienie w SC na umowę 12 mies. (art. 35 ust. 3, art. 37 ustawy). Ocena w porozumieniu z kierującym komórką (art. 38 ust. 2).</p>
+    {% else %}
+    <p class="lead">Wybierz osobę demo albo wpisz dane fikcyjne.</p>
+    {% endif %}
+    <form method="post" action="/procesy">
+      <input type="hidden" name="kind" value="{{ kind }}">
+      <div class="option-rows">
+        {% for e in employees %}
+        <label class="option-row" style="grid-template-columns: 24px 1fr">
+          <input type="radio" name="employee_id" value="{{ e.persona_id }}" {% if e.persona_id in ('ewa', 'piotr') %}checked{% endif %}>
+          <span><strong>{{ e.full_name }}</strong> – {{ e.position }}{% if e.unit %}, {{ e.unit }}{% endif %}<br>
+            {% if first %}<small>nawiązanie stosunku pracy: {{ e.employment_start|d }} · koniec umowy: {{ e.contract_end|d }}</small>
+            {% else %}<small>{{ 'urzędnik służby cywilnej' if e.corps_status == 'urzednik_sc' else 'pracownik służby cywilnej' }}
+            · poprzednia ocena: {{ e.previous_evaluation_date|d }}</small>{% endif %}</span>
+        </label>
+        {% endfor %}
+        <label class="option-row" style="grid-template-columns: 24px 1fr; align-items: start">
+          <input type="radio" name="employee_id" value="nowy" {% if not employees %}checked{% endif %}>
+          <span><strong>Inna osoba (dane fikcyjne)</strong>
+            <span style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin-top: 8px">
+              <label class="field"><span>Imię i nazwisko</span><input type="text" name="new_full_name" maxlength="120" placeholder="np. Tomasz Przykład-Demo"></label>
+              <label class="field"><span>Stanowisko</span><input type="text" name="new_position" maxlength="160" placeholder="np. główny specjalista"></label>
+              <label class="field"><span>Komórka organizacyjna</span><input type="text" name="new_unit" maxlength="160"></label>
+              {% if first %}
+              <label class="field"><span>Data nawiązania stosunku pracy</span><input type="date" name="new_employment_start"></label>
+              <label class="field"><span>Koniec umowy (opcjonalnie; domyślnie 12 mies.)</span><input type="date" name="new_contract_end"></label>
+              {% else %}
+              <label class="field"><span>Data poprzedniej oceny (opcjonalnie)</span><input type="date" name="new_previous_date"></label>
+              <label class="field"><span>Status w korpusie</span>
+                <select name="new_corps_status"><option value="pracownik_sc">pracownik służby cywilnej</option><option value="urzednik_sc">urzędnik służby cywilnej</option></select></label>
+              {% endif %}
+            </span>
+          </span>
+        </label>
+      </div>
+      <div class="form-actions">
+        <button class="btn go" type="submit">{{ 'Rozpocznij pierwszą ocenę' if first else 'Rozpocznij ocenę okresową' }}</button>
+        <a href="/pulpit">Anuluj</a>
+      </div>
+    </form>
+  </main>
+  {% include "partials/_assistant.html" %}
+</div>
+{% endblock %}

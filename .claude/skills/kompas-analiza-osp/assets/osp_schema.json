@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kompas-analiza-osp/osp_schema.json",
+  "title": "Wynik parse_osp_docx() – opis stanowiska pracy (OSP) bez danych osobowych",
+  "type": "object",
+  "required": ["schema_version", "source", "part1", "acknowledgement", "part2", "part3", "warnings"],
+  "$defs": {
+    "nstr": {"type": ["string", "null"]},
+    "option": {
+      "type": "object",
+      "required": ["label", "checked"],
+      "properties": {"label": {"type": "string"}, "checked": {"type": "boolean"}}
+    },
+    "options": {
+      "type": "object",
+      "required": ["options", "selected"],
+      "properties": {
+        "options": {"type": "array", "items": {"$ref": "#/$defs/option"}},
+        "selected": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "pair": {
+      "type": ["object", "null"],
+      "description": "Wymagania niezbędne / dodatkowe z tabeli kompetencji OSP",
+      "properties": {"required": {"$ref": "#/$defs/nstr"}, "additional": {"$ref": "#/$defs/nstr"}}
+    },
+    "task": {
+      "type": "object",
+      "required": ["no", "text"],
+      "properties": {"no": {"type": ["integer", "null"]}, "text": {"type": "string"}}
+    },
+    "soft": {
+      "type": "object",
+      "required": ["raw", "items", "ids", "unmatched"],
+      "properties": {
+        "raw": {"type": "string"},
+        "requirement": {"enum": ["required", "additional"]},
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text", "id", "name", "match"],
+            "properties": {
+              "text": {"type": "string"},
+              "id": {"type": "string", "description": "id kryterium wg kontraktu C1 (np. myslenie_analityczne)"},
+              "name": {"type": "string"},
+              "match": {"enum": ["exact", "contains", "alias", "fuzzy"]}
+            }
+          }
+        },
+        "ids": {"type": "array", "items": {"type": "string"}},
+        "unmatched": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "source": {
+      "type": "object",
+      "required": ["file", "sha256", "template_title"],
+      "properties": {
+        "file": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "template_title": {"$ref": "#/$defs/nstr"}
+      }
+    },
+    "part1": {
+      "type": "object",
+      "required": ["office", "org_unit", "org_subunits", "org_unit_path", "position_name", "position_specialization",
+                   "position_symbol", "supervisor_indirect", "supervisor_direct", "other_fields"],
+      "properties": {
+        "office": {"$ref": "#/$defs/nstr"},
+        "org_unit": {"$ref": "#/$defs/nstr"},
+        "org_subunits": {"type": "array", "items": {"type": "string"}},
+        "org_unit_path": {"$ref": "#/$defs/nstr"},
+        "position_name": {"$ref": "#/$defs/nstr"},
+        "position_specialization": {"$ref": "#/$defs/nstr", "description": "„Stanowisko do spraw” (opcjonalne) – do przypisu 2 arkusza"},
+        "position_symbol": {"$ref": "#/$defs/nstr"},
+        "supervisor_indirect": {"$ref": "#/$defs/nstr"},
+        "supervisor_direct": {"$ref": "#/$defs/nstr"},
+        "other_fields": {"type": "object"}
+      }
+    },
+    "acknowledgement": {
+      "type": "object",
+      "required": ["present", "entries"],
+      "properties": {
+        "present": {"type": "boolean"},
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["position_symbol", "employee", "acceptance"],
+            "properties": {
+              "position_symbol": {"$ref": "#/$defs/nstr"},
+              "employee": {"enum": ["[osoba]", null]},
+              "acceptance": {"$ref": "#/$defs/nstr", "description": "znacznik typu /elektroniczna akceptacja/ albo [podpis/data]"}
+            }
+          }
+        }
+      }
+    },
+    "part2": {
+      "type": "object",
+      "required": ["purpose", "subordinates", "tasks", "authorizations", "complexity_creativity", "independence_initiative",
+                   "planning_horizon", "external_contacts", "hindering_factors", "required_competencies"],
+      "properties": {
+        "purpose": {"$ref": "#/$defs/nstr"},
+        "subordinates": {
+          "type": "object",
+          "required": ["options", "selected_codes", "selected_code", "status", "wording_manages_or_coordinates", "raw"],
+          "properties": {
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["code", "label", "checked"],
+                "properties": {
+                  "code": {"enum": ["none", "up_to_4", "5_to_9", "above_9", "manages_managers", "other"]},
+                  "label": {"type": "string"},
+                  "checked": {"type": "boolean"}
+                }
+              }
+            },
+            "selected_codes": {"type": "array", "items": {"type": "string"}},
+            "selected_code": {"type": ["string", "null"]},
+            "status": {"enum": ["ok", "none_selected", "multiple_selected", "not_found"]},
+            "wording_manages_or_coordinates": {"type": "boolean"},
+            "raw": {"type": "string", "description": "tekst z zachowanymi znakami ☒/☐"}
+          }
+        },
+        "tasks": {
+          "type": "object",
+          "required": ["dominant", "other", "unclassified"],
+          "properties": {
+            "dominant": {"type": "array", "items": {"$ref": "#/$defs/task"}},
+            "other": {"type": "array", "items": {"$ref": "#/$defs/task"}},
+            "unclassified": {"type": "array", "items": {"$ref": "#/$defs/task"}}
+          }
+        },
+        "authorizations": {"$ref": "#/$defs/options"},
+        "complexity_creativity": {
+          "type": "object", "required": ["description", "examples"],
+          "properties": {"description": {"$ref": "#/$defs/nstr"}, "examples": {"$ref": "#/$defs/nstr"}}
+        },
+        "independence_initiative": {
+          "type": "object", "required": ["description", "examples"],
+          "properties": {"description": {"$ref": "#/$defs/nstr"}, "examples": {"$ref": "#/$defs/nstr"}}
+        },
+        "planning_horizon": {"$ref": "#/$defs/options"},
+        "external_contacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["frequency", "checked", "description"],
+            "properties": {"frequency": {"type": "string"}, "checked": {"type": "boolean"}, "description": {"$ref": "#/$defs/nstr"}}
+          }
+        },
+        "hindering_factors": {"$ref": "#/$defs/options"},
+        "required_competencies": {
+          "type": "object",
+          "required": ["education", "education_details", "training", "special_permissions", "languages", "other_knowledge",
+                       "soft_competencies", "experience"],
+          "properties": {
+            "education": {"$ref": "#/$defs/pair"},
+            "education_details": {"type": "array", "items": {"$ref": "#/$defs/pair"}},
+            "training": {"$ref": "#/$defs/pair"},
+            "special_permissions": {"$ref": "#/$defs/pair"},
+            "languages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["language", "level", "requirement"],
+                "properties": {"language": {"$ref": "#/$defs/nstr"}, "level": {"$ref": "#/$defs/nstr"},
+                               "requirement": {"enum": ["required", "additional"]}}
+              }
+            },
+            "other_knowledge": {"$ref": "#/$defs/pair"},
+            "soft_competencies": {"anyOf": [{"$ref": "#/$defs/soft"}, {"type": "null"}]},
+            "experience": {
+              "type": "object",
+              "required": ["length", "kind", "kind_details"],
+              "properties": {"length": {"$ref": "#/$defs/pair"}, "kind": {"$ref": "#/$defs/pair"},
+                             "kind_details": {"type": "array", "items": {"$ref": "#/$defs/pair"}}}
+            }
+          }
+        }
+      }
+    },
+    "part3": {
+      "type": "object",
+      "required": ["approvals"],
+      "properties": {
+        "approvals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["role", "person", "signature_markers"],
+            "properties": {
+              "role": {"$ref": "#/$defs/nstr"},
+              "person": {"enum": ["[osoba]", null]},
+              "signature_markers": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

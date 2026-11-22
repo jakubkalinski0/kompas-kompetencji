@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "form": "periodic_c",
+  "case_id": "demo-ewa-2026",
+  "office_name": "Ministerstwo Cyfryzacji (dane fikcyjne – demo)",
+  "employee": {
+    "full_name": "Ewa Fikcyjna",
+    "first_name": "Ewa",
+    "last_name": "Fikcyjna",
+    "position": "Starsza specjalistka w Wydziale Obsługi Incydentów",
+    "unit": "Departament Cyberbezpieczeństwa",
+    "corps_status": "pracownik_sc"
+  },
+  "evaluator": {
+    "full_name": "Marek Kierownik-Demo",
+    "first_name": "Marek",
+    "last_name": "Kierownik-Demo",
+    "position": "Dyrektor Departamentu Cyberbezpieczeństwa",
+    "unit": "Departament Cyberbezpieczeństwa"
+  },
+  "part1": {
+    "criteria_meeting_date": "2024-11-20",
+    "evaluation_deadline": "2026-11-18"
+  },
+  "interview_date": "2026-11-16",
+  "period": {
+    "from": "2024-11-20",
+    "to": "2026-11-18"
+  },
+  "criteria": [
+    {
+      "id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.1",
+          "level": 5,
+          "no_basis": false,
+          "sdr_note": "S: nowa klasa ataków phishingowych; D: samodzielnie opracowała reguły detekcji; R: wykrywalność +30%."
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wykorzystywanie_wiedzy_i_doskonalenie_zawodowe.3",
+          "level": 5,
+          "no_basis": false,
+          "sdr_note": "S: wdrożenie SIEM; D: przygotowała instrukcję dla zespołu; R: wdrożenie krótsze o 2 tygodnie."
+        }
+      ],
+      "final_points": 9,
+      "override_note": null
+    },
+    {
+      "id": "rzetelnosc",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "rzetelnosc.1",
+          "level": 1,
+          "no_basis": false,
+          "sdr_note": "S: raporty kwartalne o incydentach; D: 3 z 4 raportów przekazane po terminie, bez uprzedzenia; R: opóźniony raport do pełnomocnika."
+        },
+        {
+          "indicator_id": "rzetelnosc.2",
+          "level": 2,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 1,
+      "override_note": null
+    },
+    {
+      "id": "organizacja_pracy_i_orientacja_na_osiaganie_celow",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.4",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "organizacja_pracy_i_orientacja_na_osiaganie_celow.5",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "wspolpraca",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "wspolpraca.1",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.3",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.4",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.5",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "wspolpraca.6",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 7,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.3",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.4",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "final_points": 5,
+      "override_note": null
+    }
+  ],
+  "justification": "Mimo bardzo wysokiej wiedzy specjalistycznej oceniana wielokrotnie nie dotrzymała terminów obowiązkowych raportów (3 z 4 raportów kwartalnych po terminie, bez uprzedzenia przełożonego). To ocena cząstkowa „znacznie poniżej oczekiwań” w kryterium Rzetelność, a zgodnie z § 11 ust. 1 pkt 4 rozporządzenia – ocena negatywna.",
+  "development_conclusions": "Plan pracy z kamieniami milowymi dla raportów cyklicznych, cotygodniowy przegląd terminów z przełożonym, szkolenie z zarządzania czasem.",
+  "part3_requested": false,
+  "audit_log": []
+}

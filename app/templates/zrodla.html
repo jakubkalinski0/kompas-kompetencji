@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% from "_ui.html" import bar %}
+{% block title %}Źródła bazy wiedzy – Kompas Kompetencji{% endblock %}
+{% block caseref %}<span class="case-ref">Asystent formalny · baza wiedzy</span>{% endblock %}
+{% block body %}
+{% set is_admin = user and user.role == 'hr_admin' %}
+<section class="band">
+  <div class="art art-band" data-art="compass" data-cx="0.6" data-cy="0.98" data-r="0.92" data-seed="31" data-keep-left="0.12"></div>
+  <div class="band-inner">
+    <div>
+      <p class="part-label">Asystent formalny · baza wiedzy</p>
+      <h1>Źródła bazy wiedzy asystenta</h1>
+      <p>Podstawa odpowiedzi asystenta formalnego: {{ kb.total_units }} jednostek redakcyjnych z pełnym cytowaniem źródła.{% if is_admin %} Jako administrator możesz dodać dokumenty urzędu.{% endif %}</p>
+    </div>
+    <dl class="counters">
+      <div><dt>Jednostki</dt><dd>{{ kb.total_units }}</dd></div>
+      <div><dt>Pytania i odpowiedzi</dt><dd>{{ kb.faq_count }}</dd></div>
+      <div><dt>Źródła urzędu</dt><dd>{{ kb.custom|length }}</dd></div>
+    </dl>
+  </div>
+</section>
+<main class="page">
+  <p><a href="{{ '/hr' if is_admin else '/pulpit' }}">↢ {{ 'Panel HR' if is_admin else 'Pulpit' }}</a>{% if not is_admin %} · <a href="/asystent">Asystent AI</a>{% endif %}</p>
+
+  {% macro rows(items) %}
+  <table class="register">
+    <thead><tr><th>Źródło</th><th>Rodzaj</th><th class="col-due num">Jednostki</th><th></th></tr></thead>
+    <tbody>
+    {% for s in items %}
+      <tr>
+        <td><strong>{{ s.short_title }}</strong><br><small>{{ s.title }}{% if s.dz_u %} · {{ s.dz_u }}{% endif %}</small></td>
+        <td><span class="tag">{{ {'ustawa':'ustawa','rozporzadzenie':'rozporządzenie','poradnik':'poradnik','model_kompetencji':'model kompetencji','arkusz':'przypisy arkusza','kprm_qa':'pytania i odpowiedzi'}.get(s.doc_type, s.doc_type) }}</span></td>
+        <td class="cell-due num">{{ s.units }}</td>
+        <td class="row-go"><a href="/zrodla/{{ s.source_id }}/{{ s.doc_type }}">Przeglądaj</a>{% if s.url %} · <a href="{{ s.url }}" target="_blank" rel="noopener">oryginał</a>{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endmacro %}
+
+  <h2 id="wlasne">Dokumenty urzędu</h2>
+  {% include "_flash.html" %}
+  <p class="muted">Zarządzenia dyrektora generalnego, harmonogramy ocen, wytyczne kadr. Asystent przeszukuje je razem z przepisami i cytuje z numerem paragrafu albo fragmentu. Dokumenty są widoczne tylko w tej sesji demo.</p>
+  {% if kb.custom %}
+  <table class="register">
+    <thead><tr><th>Dokument</th><th>Rodzaj</th><th class="col-due num">Jednostki</th><th></th></tr></thead>
+    <tbody>
+    {% for s in kb.custom %}
+      <tr>
+        <td><strong>{{ s.title }}</strong><br><small>{{ s.filename }} · dodał(a): {{ s.added_by }} · {{ s.created_at|dt }}
+          · dotyczy: {{ {'oba': 'obu ścieżek', 'okresowa': 'oceny okresowej', 'pierwsza': 'pierwszej oceny'}[s.scope] }}
+          {% if s.masked %}· zamaskowano: {% for k, v in s.masked.items() %}{{ k }} × {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</small></td>
+        <td><span class="tag">{{ s.doc_type_label }}</span></td>
+        <td class="cell-due num">{{ s.units }}</td>
+        <td class="row-go"><a href="/zrodla/{{ s.source_id }}/wlasne">Przeglądaj</a>
+          {% if is_admin %}<form method="post" action="/zrodla/wlasne/{{ s.source_id }}/usun" class="inline-form"><button class="btn link" type="submit">Usuń</button></form>{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>Brak dokumentów urzędu – asystent korzysta tylko z przepisów, poradników, Q&A KPRM i modelu kompetencji.</p>
+  {% endif %}
+
+  {% if is_admin %}
+  <section class="win upload-win" aria-labelledby="upload-title">
+    {{ bar('Dodaj źródło do bazy wiedzy', tag='h3', id='upload-title', aside='PDF · DOCX · TXT') }}
+    <div class="win-body">
+      <form method="post" action="/zrodla/wgraj" enctype="multipart/form-data" class="upload-form">
+        <label class="field"><span>Tytuł dokumentu</span>
+          <input type="text" name="title" required maxlength="160" placeholder="np. Zarządzenie nr 12 Dyrektora Generalnego w sprawie harmonogramu ocen okresowych"></label>
+        <div class="upload-row">
+          <label class="field"><span>Rodzaj</span>
+            <select name="doc_type">{% for k, v in doc_types.items() %}<option value="{{ k }}">{{ v }}</option>{% endfor %}</select></label>
+          <label class="field"><span>Dotyczy</span>
+            <select name="scope"><option value="oba">obu ścieżek</option><option value="okresowa">oceny okresowej</option><option value="pierwsza">pierwszej oceny</option></select></label>
+          <label class="field"><span>Plik (do 5 MB)</span>
+            <input type="file" name="file" required accept=".pdf,.docx,.txt,.md"></label>
+        </div>
+        <button class="btn" type="submit">Dodaj do bazy wiedzy</button>
+        <span class="muted">Plik do wypróbowania: <a href="/static/demo/zarzadzenie_7_2026_DEMO.pdf" download>fikcyjne zarządzenie DG o organizacji ocen (PDF)</a> – potem zapytaj asystenta jako przełożony: „Do kiedy mam przekazać podpisany arkusz do kadr?”</span>
+      </form>
+      <p class="meta">Kompas dzieli tekst na paragrafy i artykuły (albo fragmenty ze stroną), maskuje PESEL, e-maile, telefony, adresy i imiona z nazwiskami, a oryginału pliku nie przechowuje. Treść dokumentu jest dla modelu danymi, nie poleceniami. Najwyżej {{ max_sources }} dokumentów w sesji demo; skany bez warstwy tekstowej nie są obsługiwane.</p>
+    </div>
+  </section>
+  {% else %}
+  <p class="muted">Dokumenty urzędu dodaje administrator (w prototypie: rola HR, „Zmień rolę” → Zofia Kadrowa-Demo).</p>
+  {% endif %}
+
+  <h2>Materiały Partnera (Ministerstwo Cyfryzacji)</h2>
+  {{ rows(kb.partner) }}
+  <h2>Źródła publiczne</h2>
+  <p class="muted">Tekst jednolity ustawy z ELI Sejmu; pytania i odpowiedzi KPRM z gov.pl (CC BY-SA 4.0).</p>
+  {{ rows(kb.public) }}
+  <h2>Zestaw pytań i odpowiedzi (FAQ)</h2>
+  <p>{{ kb.faq_count }} pozycji opracowanych na podstawie ustawy i rozporządzeń, z cytatami źródeł. <a href="/zrodla/faq/faq">Przeglądaj</a></p>
+  <p class="muted">Ewaluacja asystenta używa rozłącznego zbioru pytań (wyniki w README).</p>
+</main>
+{% endblock %}

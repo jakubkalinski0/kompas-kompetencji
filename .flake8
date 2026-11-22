@@ -1,0 +1,5 @@
+[flake8]
+# Jak w skillach .claude/skills/kompas-*: linie do 140 znaków, kolejność importów pilnowana ręcznie
+max-line-length = 140
+extend-ignore = I001, I005, E731
+exclude = .git, .venv, venv, __pycache__, .claude/hn-prep

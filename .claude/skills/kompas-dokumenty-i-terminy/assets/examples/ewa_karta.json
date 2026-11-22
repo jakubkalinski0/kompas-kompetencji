@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "office_name": "Urząd Demo (dane fikcyjne)",
+  "place": "Warszawa",
+  "case_id": "demo-ewa-c",
+  "form": "periodic_c",
+  "employee": {
+    "full_name": "Ewa Fikcyjna",
+    "position": "Starszy specjalista",
+    "unit": "Departament Cyberbezpieczeństwa",
+    "corps_status": "pracownik_sc"
+  },
+  "evaluator": {
+    "full_name": "Marek Kierownik-Demo",
+    "position": "Dyrektor departamentu",
+    "unit": "Departament Demo"
+  },
+  "period": {
+    "from": "2025-01-15",
+    "to": "2027-01-14"
+  },
+  "criteria": [
+    {
+      "id": "rzetelnosc",
+      "name": "Rzetelność",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "rzetelnosc.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Rzetelność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": "S: audyt konfiguracji 40 serwerów; D: lista kontrolna i podwójna weryfikacja; R: zero błędów w raporcie dla CSIRT."
+        },
+        {
+          "indicator_id": "rzetelnosc.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Rzetelność” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 3.5,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": null,
+      "override_note": null
+    },
+    {
+      "id": "komunikacja",
+      "name": "Komunikacja",
+      "kind": "mandatory",
+      "indicator_ratings": [
+        {
+          "indicator_id": "komunikacja.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 3,
+          "no_basis": false,
+          "sdr_note": null
+        },
+        {
+          "indicator_id": "komunikacja.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": "S: incydent phishingowy; D: komunikat dla pracowników w 2 h; R: 30% mniej kliknięć w kolejnym teście."
+        },
+        {
+          "indicator_id": "komunikacja.3",
+          "indicator_text": "Przykładowy wskaźnik 3 kryterium „Komunikacja” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": null,
+          "no_basis": true,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 3.5,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": null,
+      "override_note": null
+    },
+    {
+      "id": "myslenie_analityczne",
+      "name": "Myślenie analityczne",
+      "kind": "additional",
+      "indicator_ratings": [
+        {
+          "indicator_id": "myslenie_analityczne.1",
+          "indicator_text": "Przykładowy wskaźnik 1 kryterium „Myślenie analityczne” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": "S: analiza logów po incydencie; D: oddzieliła fałszywe alarmy; R: raport przyjęty bez poprawek."
+        },
+        {
+          "indicator_id": "myslenie_analityczne.2",
+          "indicator_text": "Przykładowy wskaźnik 2 kryterium „Myślenie analityczne” (tekst zastępczy – opisy z modelu kompetencji MC nie są publikowane).",
+          "level": 4,
+          "no_basis": false,
+          "sdr_note": null
+        }
+      ],
+      "suggestion": {
+        "points": 7,
+        "level": 4,
+        "level_label": "powyżej oczekiwań",
+        "average": 4.0,
+        "formula": "przykład demonstracyjny: średnia poziomów wskaźników zaokrąglona do poziomu"
+      },
+      "final_points": null,
+      "override_note": null
+    }
+  ],
+  "interview_questions": [
+    "Które działania przy incydencie phishingowym uważa Pani za najskuteczniejsze i dlaczego?"
+  ]
+}
