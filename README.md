@@ -2,7 +2,7 @@
 
 Kompas Kompetencji prowadzi przełożonego w służbie cywilnej przez ocenę okresową i pierwszą ocenę: od opisu stanowiska (OSP) przez kryteria i wskaźniki behawioralne do arkusza PDF według wzoru z rozporządzenia. Przełożony opisuje własnymi słowami, co zaobserwował u pracownika, a asystent oceny zachowań proponuje poziom przy każdym wskaźniku z cytatem opisu z modelu kompetencji i fragmentem opisu przełożonego jako dowodem. Przełożony przyjmuje albo zmienia propozycje, sugerowany poziom kryterium liczy jawna reguła, decyzję podejmuje przełożony. Asystent AI prowadzi też z przełożonym rozmowę o przepisach: można pytać potocznie i dopytywać, każde zdanie odpowiedzi ma cytat jednostki redakcyjnej, a bez podstawy asystent odmawia. Administrator może dopisać do bazy wiedzy dokumenty urzędu. Rozwiązanie zadania KOMPAS KOMPETENCJI (Biuro Dyrektora Generalnego, Ministerstwo Cyfryzacji) na HackNation 2026.
 
-**Demo (2 min):** {{DEMO_URL}} · **Prezentacja:** {{PREZENTACJA_URL}} · **Działająca wersja:** {{APP_URL}} · **Repozytorium:** https://github.com/jakubkalinski0/kompas-kompetencji
+**Demo (2 min):** https://youtu.be/VXlGYbgJ9tg · **Prezentacja:** [PDF, 10 slajdów](docs/prezentacja.pdf) · **Działająca wersja:** https://carpool-kinetic-upwind.ngrok-free.dev · **Repozytorium:** https://github.com/jakubkalinski0/kompas-kompetencji
 
 ![Wynik oceny okresowej w Kompasie](docs/screenshot.png)
 
